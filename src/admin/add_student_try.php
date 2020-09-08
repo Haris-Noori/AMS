@@ -205,8 +205,8 @@
                         }
 
 
-                        /*$msg = "New Student Registered!";
-                        header("Location: add_student.php?Message=$msg");*/
+                        $msg = "New Student Registered!";
+                        header("Location: add_student.php?Message=$msg");
                     }
                     else
                     {
