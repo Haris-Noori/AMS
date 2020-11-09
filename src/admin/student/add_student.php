@@ -1,4 +1,4 @@
-<?php include 'admin_header.php' ?>
+<?php include '../admin_header.php' ?>
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -310,7 +310,7 @@
 
                         <!-- Modal Student Fee Section -->
                         <div class="modal fade" id="ModalStudentFee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-dialog modal-lg" role="document" style="border: 2px solid black">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModallabel"><strong>Student Fee Section</strong></h5>
@@ -361,7 +361,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer" style="border-top: 2px solid black">
+                                    <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                                         <button name="add-btn" type="submit" class="btn btn-success">Add Student <span class="fa fa-user-plus"></span></button>
                                     </div>

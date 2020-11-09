@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2020 at 07:26 PM
+-- Generation Time: Nov 09, 2020 at 10:57 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -58,7 +58,7 @@ CREATE TABLE `students` (
   `st_gender` varchar(6) NOT NULL,
   `st_dob` date NOT NULL,
   `st_blood` varchar(10) NOT NULL,
-  `st_phone` bigint(11) NOT NULL,
+  `st_phone` varchar(11) NOT NULL,
   `st_email` varchar(200) NOT NULL,
   `st_status` varchar(200) NOT NULL,
   `st_medical_info` varchar(500) NOT NULL,
@@ -71,17 +71,72 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`st_id`, `st_first_name`, `st_last_name`, `st_gender`, `st_dob`, `st_blood`, `st_phone`, `st_email`, `st_status`, `st_medical_info`, `st_add_info`, `st_image`) VALUES
-(1, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(2, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(3, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(4, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(5, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(6, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(7, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(8, 'Haris', 'Noori', 'male', '2004-08-05', '', 3105625584, '', 'Very Poor', '', '', ''),
-(9, 'dfd', 'dsc', 'Not Sp', '0000-00-00', 'Not Specif', 0, '', 'Not Specified', '', '', ''),
-(10, 'Noor', 'Alam', 'Not Sp', '0000-00-00', 'Not Specif', 12345678912, '', 'Not Specified', '', '', ''),
-(11, 'Noor', 'Alam', 'Not Sp', '0000-00-00', 'Not Specif', 12345678912, '', 'Not Specified', '', '', '');
+(1, 'Shakeel ', 'Noori', 'male', '2020-05-06', 'Not Specif', '-51151', '', 'Not Specified', '', '', ''),
+(2, 'Haris', 'Noori', 'Not Sp', '0000-00-00', 'Not Specif', '0', '', 'Not Specified', '', '', ''),
+(3, 'MISS SHANZA', 'GOHAR', 'Not Sp', '0000-00-00', 'Not Specif', '3105625584', 'harisnoori20@gmail.com', 'Not Specified', '', '', ''),
+(4, 'Uzair ', 'Fahim', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(5, 'hello', 'world', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(6, 'hello', 'hi', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(7, 'hello', 'php', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(8, 'hi', 'php', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(9, 'AshfaqQ', 'Noori', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(10, 'Fahad', 'Noori', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(11, 'Waris', 'Noori', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(12, 'heyy', 'heyy', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(13, 'Cris', 'Ronaldo', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(14, 'Lionel', 'Messi', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(15, 'Naina', 'Haris', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(16, 'Hello World', 'PHP', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(17, 'Blah blah blah', 'blahhh', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(18, 'Genghis', 'Khan', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(19, 'M.Uzair ', 'Fahim', 'male', '1999-11-13', '', '03164738565', 'uzairfahima3@gmail.com', 'Genious & Beautiful Voice', 'Dolay sholaay', 'Gym karta hy bacha', 0x757a6169722d322d6d696e2e6a7067),
+(20, 'Saad ', 'Malik', 'Not Sp', '1999-08-01', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(21, 'Mubeen', 'Ghauri', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(22, 'Muhammad', 'Ali', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(23, 'Maham', 'Zakkriya', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(25, 'Mubariz', 'Khan', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', ''),
+(26, 'jnjnj', 'jnjnjnnj', 'Not Sp', '0000-00-00', 'Not Specif', '', '', 'Not Specified', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_accom`
+--
+
+CREATE TABLE `student_accom` (
+  `st_id` int(11) NOT NULL,
+  `st_food` varchar(200) NOT NULL,
+  `st_locker_no` int(10) NOT NULL,
+  `st_room_no` int(10) NOT NULL,
+  `st_uniform` varchar(50) NOT NULL,
+  `st_cap` varchar(50) NOT NULL,
+  `st_matress` varchar(50) NOT NULL,
+  `st_bedsheet` varchar(50) NOT NULL,
+  `st_pillow` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_accom`
+--
+
+INSERT INTO `student_accom` (`st_id`, `st_food`, `st_locker_no`, `st_room_no`, `st_uniform`, `st_cap`, `st_matress`, `st_bedsheet`, `st_pillow`) VALUES
+(9, 'Breakfast', 21, 5, '', '', '', '', ''),
+(10, 'Breakfast + Lunch', 20, 0, '', '', '', '', ''),
+(11, 'Full Time', 10, 0, '', '', '', '', ''),
+(12, 'Lunch', 5, 0, '', '', '', '', ''),
+(13, 'No Food', 0, 0, '', '', '', '', ''),
+(14, 'No Food', 0, 0, '', '', '', '', ''),
+(15, 'No Food', 0, 0, '', '', '', '', ''),
+(16, 'No Food', 0, 0, '', '', '', '', ''),
+(17, 'No Food', 0, 0, '', '', '', '', ''),
+(18, 'No Food', 0, 0, 'yes', 'yes', 'yes', 'no', 'no'),
+(19, 'Breakfast', 69, 0, 'yes', 'yes', 'no', 'no', 'no'),
+(20, 'No Food', 0, 0, 'yes', 'yes', 'no', 'no', 'no'),
+(21, 'No Food', 0, 0, 'yes', 'yes', 'no', 'no', 'no'),
+(22, 'No Food', 0, 0, 'yes', 'yes', 'no', 'no', 'no'),
+(23, 'No Food', 0, 0, 'yes', 'yes', 'no', 'no', 'no'),
+(25, 'No Food', 0, 0, 'yes', 'yes', 'no', 'no', 'no'),
+(26, 'No Food', 0, 0, 'yes', 'yes', 'no', 'no', 'no');
 
 -- --------------------------------------------------------
 
@@ -102,28 +157,56 @@ CREATE TABLE `student_address` (
 --
 
 INSERT INTO `student_address` (`st_id`, `st_add_type`, `st_st_add`, `st_city_add`, `st_dis_add`) VALUES
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
-(1, 'current', 'Flat-9, Block 4/C, Street #10, Sector G-8/1', 'Islamabad', 'Islamabad Capital Territory'),
-(1, 'permanent', 'Flat-9, Block 4/C, G-8/1,', 'Islamabad', 'Federal Capital Territory'),
+(1, 'current', '', '', ''),
+(1, 'permanent', '', '', ''),
+(2, 'current', '', '', ''),
+(2, 'permanent', '', '', ''),
+(3, 'current', '3 RYAN PLACE', 'Leeds', 'Leeds'),
+(3, 'permanent', '3 RYAN PLACE', 'Leeds', 'Leeds'),
+(4, 'current', '', '', ''),
+(4, 'permanent', '', '', ''),
+(5, 'current', '', '', ''),
+(5, 'permanent', '', '', ''),
+(6, 'current', '', '', ''),
+(6, 'permanent', '', '', ''),
+(7, 'current', '', '', ''),
+(7, 'permanent', '', '', ''),
+(8, 'current', '', '', ''),
+(8, 'permanent', '', '', ''),
 (9, 'current', '', '', ''),
 (9, 'permanent', '', '', ''),
 (10, 'current', '', '', ''),
 (10, 'permanent', '', '', ''),
-(10, 'current', '', '', ''),
-(10, 'permanent', '', '', '');
+(11, 'current', '', '', ''),
+(11, 'permanent', '', '', ''),
+(12, 'current', '', '', ''),
+(12, 'permanent', '', '', ''),
+(13, 'current', '', '', ''),
+(13, 'permanent', '', '', ''),
+(14, 'current', '', '', ''),
+(14, 'permanent', '', '', ''),
+(15, 'current', '', '', ''),
+(15, 'permanent', '', '', ''),
+(16, 'current', '', '', ''),
+(16, 'permanent', '', '', ''),
+(17, 'current', '', '', ''),
+(17, 'permanent', '', '', ''),
+(18, 'current', '', '', ''),
+(18, 'permanent', '', '', ''),
+(19, 'current', 'Sabzazar', 'Lahre', 'Punjab'),
+(19, 'permanent', 'Sabzazar', 'Lahore', 'Punjab'),
+(20, 'current', '', '', ''),
+(20, 'permanent', '', '', ''),
+(21, 'current', '', '', ''),
+(21, 'permanent', '', '', ''),
+(22, 'current', '', '', ''),
+(22, 'permanent', '', '', ''),
+(23, 'current', '', '', ''),
+(23, 'permanent', '', '', ''),
+(25, 'current', '', '', ''),
+(25, 'permanent', '', '', ''),
+(26, 'current', '', '', ''),
+(26, 'permanent', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -136,6 +219,38 @@ CREATE TABLE `student_course` (
   `st_crs_title` varchar(200) NOT NULL,
   `st_crs_time` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_course`
+--
+
+INSERT INTO `student_course` (`st_id`, `st_crs_title`, `st_crs_time`) VALUES
+(1, '', ''),
+(2, 'Naazra', ''),
+(3, 'Naazra', 'Morning'),
+(4, 'Hifz', 'Evening'),
+(5, 'Not Specified', 'Not Specified'),
+(6, 'Not Specified', 'Not Specified'),
+(7, 'Not Specified', 'Not Specified'),
+(8, 'Not Specified', 'Not Specified'),
+(9, 'Not Specified', 'Not Specified'),
+(10, 'Not Specified', 'Not Specified'),
+(11, 'Not Specified', 'Not Specified'),
+(12, 'Not Specified', 'Not Specified'),
+(13, 'Not Specified', 'Not Specified'),
+(14, 'Not Specified', 'Not Specified'),
+(15, 'Not Specified', 'Not Specified'),
+(16, 'Not Specified', 'Not Specified'),
+(17, 'Not Specified', 'Not Specified'),
+(18, 'Not Specified', 'Not Specified'),
+(19, 'Computer', 'Morning'),
+(20, 'Not Specified', 'Not Specified'),
+(21, 'Not Specified', 'Not Specified'),
+(22, 'Not Specified', 'Not Specified'),
+(23, 'Not Specified', 'Not Specified'),
+(24, 'Not Specified', 'Not Specified'),
+(25, 'Not Specified', 'Not Specified'),
+(26, 'Not Specified', 'Not Specified');
 
 -- --------------------------------------------------------
 
@@ -154,16 +269,30 @@ CREATE TABLE `student_docs` (
 
 INSERT INTO `student_docs` (`st_id`, `st_file`) VALUES
 (1, ''),
-(1, ''),
-(1, ''),
-(1, ''),
-(1, ''),
-(1, ''),
-(1, ''),
-(1, ''),
+(2, ''),
+(3, ''),
+(4, ''),
+(5, ''),
+(6, ''),
+(7, ''),
+(8, ''),
 (9, ''),
 (10, ''),
-(10, '');
+(11, ''),
+(12, ''),
+(13, ''),
+(14, ''),
+(15, ''),
+(16, ''),
+(17, ''),
+(18, ''),
+(19, ''),
+(20, ''),
+(21, ''),
+(22, ''),
+(23, ''),
+(25, ''),
+(26, '');
 
 -- --------------------------------------------------------
 
@@ -184,9 +313,55 @@ CREATE TABLE `student_education` (
 --
 
 INSERT INTO `student_education` (`st_id`, `st_edu_title`, `st_edu_inst`, `st_edu_year`, `st_edu_info`) VALUES
-(1, 'Level 3', 'SuperNova School', '2020-04-08', ''),
-(10, 'F.Sc', 'F-8/4 Model School Islamabad', '2020-08-05', '70% marks'),
-(10, 'F.Sc', 'F-8/4 Model School Islamabad', '2020-08-05', '70% marks');
+(1, 'F.Sc', 'Jhang Model School', '0000-00-00', ''),
+(2, '', '', '0000-00-00', ''),
+(3, 'Level 3', 'Leeds City College', '2020-03-31', ''),
+(4, 'F.Sc', 'Lahore School', '2017-08-15', ''),
+(5, '', '', '0000-00-00', ''),
+(6, '', '', '0000-00-00', ''),
+(7, '', '', '0000-00-00', ''),
+(8, '', '', '0000-00-00', ''),
+(9, '', '', '0000-00-00', ''),
+(10, '', '', '0000-00-00', ''),
+(11, '', '', '0000-00-00', ''),
+(12, '', '', '0000-00-00', ''),
+(13, '', '', '0000-00-00', ''),
+(14, '', '', '0000-00-00', ''),
+(15, '', '', '0000-00-00', ''),
+(16, '', '', '0000-00-00', ''),
+(17, '', '', '0000-00-00', ''),
+(18, '', '', '0000-00-00', ''),
+(19, 'F.Sc', 'Unique High School', '2017-08-01', '70% marks'),
+(20, '', '', '0000-00-00', ''),
+(21, '', '', '0000-00-00', ''),
+(22, '', '', '0000-00-00', ''),
+(23, '', '', '0000-00-00', ''),
+(25, '', '', '0000-00-00', ''),
+(26, '', '', '0000-00-00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_fee`
+--
+
+CREATE TABLE `student_fee` (
+  `st_id` int(11) NOT NULL,
+  `st_fee_status` varchar(100) NOT NULL,
+  `st_fee_amount` int(100) NOT NULL,
+  `st_donation` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_fee`
+--
+
+INSERT INTO `student_fee` (`st_id`, `st_fee_status`, `st_fee_amount`, `st_donation`) VALUES
+(21, 'Paid', 1000, ''),
+(22, 'UnPaid', 1500, ''),
+(23, 'Free', 5000, '10Kg Rice After every 3 months.'),
+(25, 'Paid', 15000, 'no'),
+(26, 'Paid', 0, '');
 
 -- --------------------------------------------------------
 
@@ -212,16 +387,117 @@ CREATE TABLE `student_guardian` (
 
 INSERT INTO `student_guardian` (`st_id`, `st_father_name`, `st_father_phone`, `st_father_cnic`, `st_father_occup`, `st_mother_name`, `st_guard_name`, `st_guard_rel`, `st_guard_phone`) VALUES
 (1, '', 0, 0, '', '', '', '', 0),
-(1, '', 0, 0, '', '', '', '', 0),
-(1, '', 0, 0, '', '', '', '', 0),
-(1, '', 0, 0, '', '', '', '', 0),
-(1, '', 0, 0, '', '', '', '', 0),
-(1, '', 0, 0, '', '', '', '', 0),
-(1, '', 0, 0, '', '', '', '', 0),
-(1, '', 0, 0, '', '', '', '', 0),
+(2, '', 0, 0, '', '', '', '', 0),
+(3, '', 0, 0, '', '', '', '', 0),
+(4, '', 0, 0, '', '', '', '', 0),
+(5, '', 0, 0, '', '', '', '', 0),
+(6, '', 0, 0, '', '', '', '', 0),
+(7, '', 0, 0, '', '', '', '', 0),
+(8, '', 0, 0, '', '', '', '', 0),
 (9, '', 0, 0, '', '', '', '', 0),
 (10, '', 0, 0, '', '', '', '', 0),
-(10, '', 0, 0, '', '', '', '', 0);
+(11, '', 0, 0, '', '', '', '', 0),
+(12, '', 0, 0, '', '', '', '', 0),
+(13, '', 0, 0, '', '', '', '', 0),
+(14, '', 0, 0, '', '', '', '', 0),
+(15, '', 0, 0, '', '', '', '', 0),
+(16, '', 0, 0, '', '', '', '', 0),
+(17, '', 0, 0, '', '', '', '', 0),
+(18, '', 0, 0, '', '', '', '', 0),
+(19, 'Fahim Siraaj', 3224995321, 0, 'Business Man', 'Uzma Fahim', '', '', 0),
+(20, '', 0, 0, '', '', '', '', 0),
+(21, '', 0, 0, '', '', '', '', 0),
+(22, '', 0, 0, '', '', '', '', 0),
+(23, '', 0, 0, '', '', '', '', 0),
+(25, '', 0, 0, '', '', '', '', 0),
+(26, '', 0, 0, '', '', '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_joining`
+--
+
+CREATE TABLE `student_joining` (
+  `st_id` int(11) NOT NULL,
+  `st_join_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_joining`
+--
+
+INSERT INTO `student_joining` (`st_id`, `st_join_date`) VALUES
+(7, '2030-08-20'),
+(8, '2020-08-30'),
+(9, '2020-09-01'),
+(10, '2020-09-01'),
+(11, '2020-09-01'),
+(12, '2020-09-01'),
+(13, '2020-09-02'),
+(14, '2020-09-02'),
+(15, '2020-09-02'),
+(16, '2020-09-02'),
+(17, '2020-09-02'),
+(18, '2020-09-02'),
+(19, '2020-09-08'),
+(20, '2020-10-11'),
+(21, '2020-10-11'),
+(22, '2020-10-11'),
+(23, '2020-10-11'),
+(25, '2020-10-11'),
+(26, '2020-10-11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_reference`
+--
+
+CREATE TABLE `student_reference` (
+  `st_id` int(11) NOT NULL,
+  `st_ref_name` varchar(200) NOT NULL,
+  `st_ref_num` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_residence`
+--
+
+CREATE TABLE `student_residence` (
+  `st_id` int(11) NOT NULL,
+  `st_resi_status` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_residence`
+--
+
+INSERT INTO `student_residence` (`st_id`, `st_resi_status`) VALUES
+(4, 'Hosteler'),
+(5, 'Not Specified'),
+(6, 'Not Specified'),
+(7, 'Not Specified'),
+(8, 'Not Specified'),
+(9, 'Hosteler'),
+(10, 'Day Scholar'),
+(11, 'Day Scholar'),
+(12, 'Day Scholar'),
+(13, 'Not Specified'),
+(14, 'Not Specified'),
+(15, 'Not Specified'),
+(16, 'Not Specified'),
+(17, 'Not Specified'),
+(18, 'Not Specified'),
+(19, 'Day Scholar'),
+(20, 'Not Specified'),
+(21, 'Not Specified'),
+(22, 'Not Specified'),
+(23, 'Not Specified'),
+(25, 'Not Specified'),
+(26, 'Not Specified');
 
 --
 -- Indexes for dumped tables
@@ -239,6 +515,12 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`st_id`);
+
+--
+-- Indexes for table `student_accom`
+--
+ALTER TABLE `student_accom`
+  ADD KEY `st_id_accom` (`st_id`);
 
 --
 -- Indexes for table `student_address`
@@ -265,10 +547,34 @@ ALTER TABLE `student_education`
   ADD KEY `st_education_id` (`st_id`);
 
 --
+-- Indexes for table `student_fee`
+--
+ALTER TABLE `student_fee`
+  ADD KEY `st_id_fee` (`st_id`);
+
+--
 -- Indexes for table `student_guardian`
 --
 ALTER TABLE `student_guardian`
   ADD KEY `st_id` (`st_id`);
+
+--
+-- Indexes for table `student_joining`
+--
+ALTER TABLE `student_joining`
+  ADD KEY `st_id_join` (`st_id`);
+
+--
+-- Indexes for table `student_reference`
+--
+ALTER TABLE `student_reference`
+  ADD KEY `st_id_refer` (`st_id`);
+
+--
+-- Indexes for table `student_residence`
+--
+ALTER TABLE `student_residence`
+  ADD KEY `st_id_residence` (`st_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -278,17 +584,23 @@ ALTER TABLE `student_guardian`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `st_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `st_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `student_accom`
+--
+ALTER TABLE `student_accom`
+  ADD CONSTRAINT `st_id_accom` FOREIGN KEY (`st_id`) REFERENCES `students` (`st_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student_address`
@@ -309,10 +621,28 @@ ALTER TABLE `student_education`
   ADD CONSTRAINT `st_id_education` FOREIGN KEY (`st_id`) REFERENCES `students` (`st_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `student_fee`
+--
+ALTER TABLE `student_fee`
+  ADD CONSTRAINT `st_id_fee` FOREIGN KEY (`st_id`) REFERENCES `students` (`st_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `student_guardian`
 --
 ALTER TABLE `student_guardian`
   ADD CONSTRAINT `st_id` FOREIGN KEY (`st_id`) REFERENCES `students` (`st_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `student_joining`
+--
+ALTER TABLE `student_joining`
+  ADD CONSTRAINT `st_id_join` FOREIGN KEY (`st_id`) REFERENCES `students` (`st_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `student_residence`
+--
+ALTER TABLE `student_residence`
+  ADD CONSTRAINT `st_id_residence` FOREIGN KEY (`st_id`) REFERENCES `students` (`st_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,6 @@
 <?php
-include 'admin_header.php';
-include '../connect.php';
+include '../admin_header.php';
+include '../../connect.php';
 ?>
 
     <!-- Page Heading -->
@@ -41,8 +41,8 @@ include '../connect.php';
                     <td> <?php echo $row['st_last_name'] ?> </td>
                     <td> <?php echo $row['st_gender'] ?> </td>
                     <td> <?php echo $row['st_status'] ?> </td>
-                    <td> <a href="all_admins_try.php?admin_id=<?php echo $row["admin_id"] ?>&action=edit"><button class="btn btn-primary">Edit</button></a> </td>
-                    <td> <a href="all_admins_try.php?admin_id=<?php echo $row["admin_id"] ?>&action=delete"><button class="btn btn-danger">Remove</button></a> </td>
+                    <td> <a href="">Edit</button></a> </td>
+                    <td> <a href="">Remove</button></a> </td>
                 </tr>
                 <?php
                 }
@@ -66,4 +66,4 @@ include '../connect.php';
         </div>
     </div>
 
-<?php include 'admin_footer.php' ?>
+<?php include '../admin_footer.php' ?>

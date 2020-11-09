@@ -2,7 +2,7 @@
 
     if(isset($_POST["add-btn"]))
     {
-        include "../connect.php";
+        include "../../connect.php";
 
         $st_first_name = $_POST["st_first_name"];
         $st_last_name = $_POST["st_last_name"];
@@ -120,7 +120,7 @@
                 if($flag == 1)
                 {
                     $msg = "Student with this name already exists:(";
-                    header("Location: add_student.php?Message=$msg");
+                    header("Location: add_faculty.php?Message=$msg");
                 }
                 else  // Register this New Student
                 {
@@ -232,14 +232,14 @@
 
 
                         $msg = "New Student Registered!";
-                        header("Location: add_student.php?Message=$msg");
+                        header("Location: add_faculty.php?Message=$msg");
                     }
                     else
                     {
                         echo "<br>Admin NOT Inserted\n";
                         echo $con->error;
                         $msg = "Admin NOT Inserted, something went wrong!";
-                        //header("Location: add_student.php?Message=$msg");
+                        //header("Location: add_faculty.php?Message=$msg");
                     }
                 }
         }

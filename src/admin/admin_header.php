@@ -94,22 +94,22 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="all_students.php">All Students</a>
-                    <a class="collapse-item" href="add_student.php">Add Student</a>
+                    <a class="collapse-item" href="student/all_students.php">All Students</a>
+                    <a class="collapse-item" href="student/add_student.php">Add Student</a>
                 </div>
             </div>
         </li>
 
-        <!-- Nav Item - Teacher Collapse Menu -->
+        <!-- Nav Item - Faculty Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                <i class="fas fa-fw fa-chalkboard-teacher"></i>
-                <span>Teachers</span>
+                <i class="fas fa-fw fa-chalkboard-faculty"></i>
+                <span>Faculty</span>
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#">All Teachers</a>
-                    <a class="collapse-item" href="#">Add Teacher</a>
+                    <a class="collapse-item" href="faculty/all_faculty.php">All Faculty Members</a>
+                    <a class="collapse-item" href="faculty/add_faculty.php">Add New Faculty</a>
                 </div>
             </div>
         </li>
