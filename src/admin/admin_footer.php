@@ -45,25 +45,25 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/AMS/src/admin/vendor/jquery/jquery.min.js"></script>
+<script src="/AMS/src/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/AMS/src/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="/AMS/src/admin/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="/AMS/src/admin/vendor/chart.js/Chart.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<script src="/AMS/src/admin/js/demo/chart-area-demo.js"></script>
+<script src="/AMS/src/admin/js/demo/chart-pie-demo.js"></script>
 
 
 <!-- Intl.Phone Plugin -->
-<script src="build/js/intlTelInput.js"></script>
+<script src="/AMS/src/admin/build/js/intlTelInput.js"></script>
 <script>
     var input = document.getElementsByClassName("phone");
     for (var i = 0; i < input.length; i++)
@@ -89,7 +89,7 @@
             // placeholderNumberType: "MOBILE",
             // preferredCountries: ['cn', 'jp'],
             // separateDialCode: true,
-            utilsScript: "build/js/utils.js",
+            utilsScript: "/AMS/src/admin/build/js/utils.js",
         });
     }
 </script>

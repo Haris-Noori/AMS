@@ -20,14 +20,14 @@
   <title>Jamia Noorul Aloom Noori</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/AMS/src/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
+  <link href="/AMS/src/admin/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Style Links for Intl.Phone Plugin -->
-    <link rel="stylesheet" href="build/css/intlTelInput.css">
+    <link rel="stylesheet" href="/AMS/src/admin/build/css/intlTelInput.css">
 
 </head>
 
@@ -42,7 +42,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_dashboard.php">
         <div class="sidebar-brand-icon">
-          <img src="img/logo.png" width="50">
+          <img src="/AMS/src/admin/img/logo.png" width="50">
         </div>
         <div class="sidebar-brand-text mx-1">Jamia Noorul Aloom Noori</div>
       </a>
@@ -94,8 +94,8 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="student/all_students.php">All Students</a>
-                    <a class="collapse-item" href="student/add_student.php">Add Student</a>
+                    <a class="collapse-item" href="#">All Students</a>
+                    <a class="collapse-item" href="/AMS/src/admin/student/add_student.php">Add Student</a>
                 </div>
             </div>
         </li>
@@ -103,12 +103,12 @@
         <!-- Nav Item - Faculty Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                <i class="fas fa-fw fa-chalkboard-faculty"></i>
+                <i class="fas fa-fw fa-chalkboard-teacher"></i>
                 <span>Faculty</span>
             </a>
             <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="faculty/all_faculty.php">All Faculty Members</a>
+                    <a class="collapse-item" href="/AMS/src/admin/faculty/all_faculty.php">All Faculty Members</a>
                     <a class="collapse-item" href="faculty/add_faculty.php">Add New Faculty</a>
                 </div>
             </div>

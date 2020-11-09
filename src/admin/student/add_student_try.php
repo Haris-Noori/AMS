@@ -89,6 +89,14 @@
         { $_POST["st_pillow"] = "no"; }
         $st_pillow = $_POST["st_pillow"];
 
+        /*
+         *  empty($_POST[]) ? ""
+         *
+         *
+         *
+         *
+         * */
+
         echo "Uniform: ".$st_uniform;
         echo "\nCap: ".$st_cap;
         echo "\nMatress: ".$st_matress;

@@ -662,4 +662,4 @@
         })
 
     </script>
-<?php include 'admin_footer.php' ?>
+<?php include '../admin_footer.php' ?>
