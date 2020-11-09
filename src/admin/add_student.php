@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Date Of Birth</label>
-                                <div class="row"><input name="st_dob" type="date" max="2010-12-31" pattern="d-m-Y" id="st_dob" class="form-control ml-3 col-md-7">
+                                <div class="row"><input name="st_dob" type="date" pattern="d-m-YY" max="2010-12-31" placeholder="dd-mm-yyyy" id="st_dob" class="form-control ml-3 col-md-7">
                                     <span id="st_age" class="ml-2">Age: </span>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInput">Student Phone No.</label>
-                                <input name="st_phone" type="tel" class="form-control phone" id="st_phone">
+                                <input name="st_phone" type="tel" class="form-control col-md-12 phone" id="st_phone">
                             </div>
                         </div>
                         <div class="row">
@@ -149,19 +149,19 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInput">Guardian Phone No.</label>
-                                <input name="st_guard_phone" type="tel" class="form-control phone">
+                                <input name="st_guard_phone" type="tel" id="st_guard_phone" class="form-control phone">
                             </div>
                         </div>
 
                         <!-- NEXT BUTTON -->
-                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-block col-md-12">Next <span class="fa fa-arrow-right"></span></button>
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary btn-block col-md-12">Next <span class="fa fa-arrow-right"></span></button>
 
                         <!-- Student's Education Information Modal -->
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle">Student's Education Information</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Student's Education Information</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -190,7 +190,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                                         <button type="button" data-toggle="modal" data-target="#ModalCourses" class="btn btn-primary">Next <span class="fa fa-arrow-right"></span></button>
                                     </div>
                                 </div>
@@ -199,11 +199,11 @@
                         <!-- Modal Ends Here -->
 
                         <!-- Modal Student Course Registration -->
-                        <div class="modal fade" id="ModalCourses" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal fade" id="ModalCourses" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle"><strong>Student's Course Enrollment</strong></h5>
+                                        <h5 class="modal-title" id="exampleModalLabel"><strong>Student's Course Enrollment</strong></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -300,20 +300,20 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" id="btn-next-modal" data-toggle="modal" data-target="#ModalAllowances" class="btn btn-primary">Next  <span class="fa fa-arrow-right"></span></button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                                        <button type="button" id="btn-next-modal" data-toggle="modal" data-target="#ModalStudentFee" class="btn btn-primary">Next  <span class="fa fa-arrow-right"></span></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Modal Ends Here -->
 
-                        <!-- Modal Student Accommodations -->
-                        <div class="modal fade" id="ModalAllowances" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <!-- Modal Student Fee Section -->
+                        <div class="modal fade" id="ModalStudentFee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle"><strong>Student Accommodation/Facilities</strong></h5>
+                                        <h5 class="modal-title" id="exampleModallabel"><strong>Student Fee Section</strong></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -321,26 +321,48 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="form-group col-md-6">
-
+                                                <label for="exampleFormControlSelect1">Fee Status</label>
+                                                <select name="st_fee_status" class="form-control st_fee_status"  id="exampleFormControlSelect1">
+                                                    <option value="Paid">Paid</option>
+                                                    <option value="UnPaid">UnPaid</option>
+                                                    <option value="Free">Free</option>
+                                                </select>
                                             </div>
                                             <div class="form-group col-md-6">
-
+                                                <label for="exampleInput">Fee Amount</label>
+                                                <input name="st_fee_amount" type="number" id="fee_amount" min="0" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-6">
-
+                                                <label for="exampleInputEmail1">Donation Promise(if any)</label>
+                                                <textarea name="st_donation" class="form-control" placeholder="monthly wheat 10kg e.g,"></textarea>
                                             </div>
                                             <div class="form-group col-md-6">
-
+                                                <label for="exampleFormControlSelect1">Select Fee Plans</label>
+                                                <select name="st_fee_plan" class="form-control fee_plan"  id="exampleFormControlSelect1">
+                                                    <option value="Monthly">Monthly</option>
+                                                    <option value="Quarterly">Quarterly (4 months)</option>
+                                                    <option value="Half">Half (6 months)</option>
+                                                    <option value="Annually">Annually (12 months)</option>
+                                                </select>
                                             </div>
                                         </div>
+                                        <hr>
+                                        <h5><strong>Admission Reference</strong></h5>
                                         <div class="row">
-
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleInputEmail1">Reference Name</label>
+                                                <input name="st_ref_name" type="text" class="form-control" placeholder="Full Name">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleEmail1">Phone No.</label><br>
+                                                <input name="st_ref_num" type="tel" class="form-control phone" id="st_ref_num">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <div class="modal-footer" style="border-top: 2px solid black">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
                                         <button name="add-btn" type="submit" class="btn btn-success">Add Student <span class="fa fa-user-plus"></span></button>
                                     </div>
                                 </div>
@@ -440,6 +462,7 @@
         });
     </script>
     <script>
+
         // Student Phone Number Validation Tests
         $('#st_phone').focusout(function () {
             var st_phone_chars = $('#st_phone').val().length;
@@ -447,7 +470,7 @@
 
             if(st_phone_chars < 11 || st_phone_chars > 11)
             {
-                alert("Phone Number Must be 11 Digits");
+                //alert("Phone Number Must be 11 Digits");
                 $('#st_phone').addClass('border-danger');
             }
             else if ($('#st_phone').val() < 0)
@@ -467,7 +490,7 @@
 
             if(st_phone_chars < 11 || st_phone_chars > 11)
             {
-                alert("Phone Number Must be 11 Digits");
+                //alert("Phone Number Must be 11 Digits");
                 $('#st_father_phone').addClass('border-danger');
             }
             else if ($('#st_father_phone').val() < 0)
@@ -486,7 +509,7 @@
 
             if(st_phone_chars < 11 || st_phone_chars > 11)
             {
-                alert("Phone Number Must be 11 Digits");
+                // alert("Phone Number Must be 11 Digits");
                 $('#st_guard_phone').addClass('border-danger');
             }
             else if ($('#st_guard_phone').val() < 0)
@@ -495,6 +518,25 @@
             else
             {
                 $('#st_guard_phone').removeClass('border-danger');
+            }
+        });
+
+        // Student Reference Number
+        $('#st_ref_num').focusout(function () {
+            var st_phone_chars = $('#st_ref_num').val().length;
+            console.log("Phone number characters: " + st_phone_chars);
+
+            if(st_phone_chars < 11 || st_phone_chars > 11)
+            {
+                // alert("Phone Number Must be 11 Digits");
+                $('#st_ref_num').addClass('border-danger');
+            }
+            else if ($('#st_ref_num').val() < 0)
+            { alert("Invalid Number!");
+                $('#st_ref_num').addClass('border-danger'); }
+            else
+            {
+                $('#st_ref_num').removeClass('border-danger');
             }
         });
 
@@ -595,6 +637,27 @@
             } else {
                 $pillowCheck.val('no');
                 console.log('no');
+            }
+        })
+
+        // Checks On Student Fee Status
+        $('.st_fee_status').click(function () {
+            if($('.st_fee_status').val() === 'Free')  //if free, then no fee amount
+            {
+                $('#fee_amount').attr('disabled',true);
+                $('.fee_plan').attr('disabled',true);
+                $('#fee_amount').attr('enabled',false);
+                $('.fee_plan').attr('enabled',false);
+
+                $('#fee_amount').val(0);
+                $('.fee_plan').val('Nil');
+            }
+            else
+            {
+                $('#fee_amount').attr('enabled',true);
+                $('.fee_plan').attr('enabled',true);
+                $('#fee_amount').attr('disabled',false);
+                $('.fee_plan').attr('disabled',false);
             }
         })
 

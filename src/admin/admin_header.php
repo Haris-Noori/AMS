@@ -100,6 +100,20 @@
             </div>
         </li>
 
+        <!-- Nav Item - Teacher Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                <span>Teachers</span>
+            </a>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="#">All Teachers</a>
+                    <a class="collapse-item" href="#">Add Teacher</a>
+                </div>
+            </div>
+        </li>
+
       <!-- Nav Item - Employees Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -117,13 +131,13 @@
         </div>
       </li>
 
-      <!-- Nav Item - Students Collapse Menu -->
+      <!-- Nav Item - Expenses Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
             <i class="fas fa-fw fa-money-bill"></i>
             <span>Expenses</span>
         </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+        <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="#">All Students</a>
                 <a class="collapse-item" href="#">Add Student</a>

@@ -18,7 +18,6 @@ include '../connect.php';
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Gender</th>
-                    <th>Current Address</th>
                     <th>Status</th>
                     <th>Edit Details</th>
                     <th>Delete Student</th>
@@ -41,7 +40,6 @@ include '../connect.php';
                     <td> <?php echo $row['st_first_name'] ?> </td>
                     <td> <?php echo $row['st_last_name'] ?> </td>
                     <td> <?php echo $row['st_gender'] ?> </td>
-                    <td> <?php echo $row['st_cur_add'] ?> </td>
                     <td> <?php echo $row['st_status'] ?> </td>
                     <td> <a href="all_admins_try.php?admin_id=<?php echo $row["admin_id"] ?>&action=edit"><button class="btn btn-primary">Edit</button></a> </td>
                     <td> <a href="all_admins_try.php?admin_id=<?php echo $row["admin_id"] ?>&action=delete"><button class="btn btn-danger">Remove</button></a> </td>

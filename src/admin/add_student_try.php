@@ -29,7 +29,6 @@
         $st_add_info = $_POST["st_add_info"];
         $st_image = $_POST["st_image"];
 
-
         //Student Guardian Info
         $st_father_name = $_POST["st_father_name"];
         $st_father_phone = $_POST["st_father_phone"];
@@ -52,6 +51,16 @@
 
         // Student Residence Info
         $st_resi_status = $_POST["st_resi_status"];
+
+        // Student Admission Fee Info
+        $st_fee_status = $_POST["st_fee_status"];
+        $st_fee_amount = $_POST["st_fee_amount"];
+        $st_donation = $_POST["st_donation"];
+        $st_fee_plan = $_POST["st_fee_plan"];
+
+        // Student Admission Reference Info
+        $st_ref_name = $_POST["st_ref_name"];
+        $st_ref_num = $_POST["st_ref_num"];
 
         // Student Accommodation Info
         $st_food = $_POST["st_food"];
@@ -192,6 +201,23 @@
                         } else{
                             echo "<br>Query 11: Something Wrong!";
                         }
+
+                        // Inserting Student Admission Fee Information
+                        $qry_12 = " INSERT INTO student_fee(st_id, st_fee_status, st_fee_amount, st_donation) VALUES('$st_id', '$st_fee_status', '$st_fee_amount', '$st_donation') ";
+                        if($con->query($qry_12)){
+                            echo "<br>Query 12: OK";
+                        } else{
+                            echo "<br>Query 12: Something Wrong!";
+                        }
+
+                        // Inserting Student Reference Information
+                        $qry_13 = " INSERT INTO student_reference(st_id, st_ref_name, st_ref_num) VALUES('$st_id', '$st_ref_name', '$st_ref_num') ";
+                        if($con->query($qry_13)){
+                            echo "<br>Query 13: OK";
+                        } else{
+                            echo "<br>Query 13: Something Wrong!";
+                        }
+
 
                         // Inserting Student School Joining Date
                         date_default_timezone_set("Asia/Karachi");
