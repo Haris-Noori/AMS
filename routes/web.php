@@ -24,7 +24,6 @@ Route::get('/admin/dash', function () {
     // echo "Ehhlo";
     return view('admin.dashboard');
 });
-<<<<<<< HEAD
 
 Route::get('/login', function(){
     return view('login');
