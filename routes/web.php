@@ -34,8 +34,6 @@ Route::get('/admin/login', function(){
 });
 
 
-||||||| merged common ancestors
-=======
 
 Route::get('/admin/all-admin', function () {
     return view('admin.all-admins');
@@ -45,4 +43,6 @@ Route::get('/admin/add-admin', function () {
     return view('admin.add-admin');
 });
 
->>>>>>> 564547ee203087920d86add85de2740db57f3da0
+Route::get('faculty/login', function(){
+    return view('faculty.login');
+});
