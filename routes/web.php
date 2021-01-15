@@ -17,3 +17,8 @@ Route::get('/', function () {
 	// echo "Ehhlo";
     return view('welcome');
 });
+
+Route::get('/dash', function () {
+	// echo "Ehhlo";
+    return view('admin.dashboard');
+});
