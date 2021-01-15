@@ -22,3 +22,13 @@ Route::get('/dash', function () {
 	// echo "Ehhlo";
     return view('admin.dashboard');
 });
+
+Route::get('/login', function(){
+    return view('login');
+});
+
+Route::get('/admin/login', function(){
+    return view('admin.login');
+});
+
+
