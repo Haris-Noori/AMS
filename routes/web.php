@@ -18,7 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dash', function () {
-	// echo "Ehhlo";
+// Routes for admin
+
+Route::get('/admin/dash', function () {
+    // echo "Ehhlo";
     return view('admin.dashboard');
 });
+
+Route::get('/admin/all-admin', function () {
+    return view('admin.all-admins');
+});
+
+Route::get('/admin/add-admin', function () {
+    return view('admin.add-admin');
+});
+
