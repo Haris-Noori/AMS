@@ -12,14 +12,14 @@
   <title>Jamia Noorul Aloom Noori</title>
 
   <!-- Custom fonts for this template-->
-  <link href="css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.css" rel="stylesheet">
+  <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Style Links for Intl.Phone Plugin -->
-    <link rel="stylesheet" href="css/intlTelInput.css">
+    <link rel="stylesheet" href="{{ asset('css/intlTelInput.css') }}">
 
 </head>
 
@@ -32,7 +32,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_dashboard.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dash">
         <div class="sidebar-brand-icon">
           <img src="img/logo.png" width="50">
         </div>
@@ -397,12 +397,12 @@
 <script src=" {{ asset('js/Chart.min.js') }}"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
+<script src="{{ asset('js/demo/chart-area-demo.js')}}"></script>
+<script src="{{ asset('js/demo/chart-pie-demo.js')}}"></script>
 
 
 <!-- Intl.Phone Plugin -->
-<script src="js/intlTelInput.js"></script>
+<script src="{{ asset('js/intlTelInput.js')}}"></script>
 <script>
     var input = document.getElementsByClassName("phone");
     for (var i = 0; i < input.length; i++)
