@@ -12,7 +12,7 @@ class AdminLoginController extends Controller
         return "Hello, this is Admin Login Controller";
     }
 
-    public function openAdminDashoard()
+    public function openAdminDash()
     {
         return view('/admin/dashboard');
     }

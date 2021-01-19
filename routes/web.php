@@ -24,7 +24,11 @@ Route::get('/admin', function(){
     return view('admin.login');
 });
 
-Route::get('/admin/dash', 'AdminLoginController@openAdminDashboard');
+Route::get('/admin/dash', 'AdminLoginController@openAdminDash');
+
+Route::get('/admin/dashboard', function(){
+    return view('/admin/dashboard');
+});
 
 // Routes for Faculty
 Route::get('/faculty', function(){

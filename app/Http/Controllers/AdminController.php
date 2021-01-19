@@ -11,4 +11,19 @@ class AdminController extends Controller
     {
         return "Hello, this is Admin Controller";
     }
+
+    public function loadDashboard()
+    {
+        return view('/admin/dashboard');
+    }
+
+    public function loadAllAdmins()
+    {
+        return view('/admin/all-admins');
+    }
+
+    public function loadAddAdmin()
+    {
+        return view('/admin/add-admin');
+    }
 }

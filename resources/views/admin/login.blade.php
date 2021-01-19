@@ -4,13 +4,13 @@
 
 <h2 class="h4 text-gray-900 mb-4">Admin Login</h2>
 </div>
-<form class="user" action="" method="">
+<form class="user">
     <div class="form-group">
-        <input name="admin_name" type="text" class="form-control form-control-user" id="exampleInputEmail"
+        <input name="" type="text" class="form-control form-control-user" id="exampleInputEmail"
             aria-describedby="emailHelp" placeholder="Enter Your Name">
     </div>
     <div class="form-group">
-        <input name="admin_pass" type="password" class="form-control form-control-user"
+        <input name="" type="password" class="form-control form-control-user"
             id="exampleInputPassword" placeholder="Password">
     </div>
     <div class="form-group">
