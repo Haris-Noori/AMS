@@ -26,10 +26,9 @@
     <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
 </form>
 <hr>
-<a href="index.html" class="btn btn-outline-success btn-user btn-block">Login as
+<a href="{{ url('/admin') }}" class="btn btn-outline-success btn-user btn-block">Login as
     Faculty</a>
-<a href="index.html" class="btn btn-outline-success btn-user btn-block">Login as
-    Admin</a>
+<a href="{{ url('/faculty') }}" class="btn btn-outline-success btn-user btn-block">Login as Admin</a>
 
 <hr>
 <div class="text-center">
