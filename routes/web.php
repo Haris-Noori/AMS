@@ -24,7 +24,10 @@ Route::get('/admin', function(){
     return view('admin.login');
 });
 
-Route::get('/admin/dash', 'AdminLoginController@openAdminDash');
+Route::get('/admin/insert', 'AdminController@createAdmin');
+Route::get('/admin/select', 'AdminController@getAdmins');
+
+Route::get('/admin/login', 'AdminController@login');
 
 Route::get('/admin/dashboard', function(){
     return view('/admin/dashboard');

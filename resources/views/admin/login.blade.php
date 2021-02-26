@@ -23,7 +23,7 @@
             }
         ?>
     </div>
-    <a href="{{ url('/admin/dash') }}"><button class="btn btn-primary btn-user btn-block" type="submit">Login</button></a>
+    <a href="{{ url('/admin/login') }}"><button class="btn btn-primary btn-user btn-block" type="submit">Login</button></a>
 </form>
 <hr>
 <a href="{{ url('/faculty') }}" class="btn btn-outline-success btn-user btn-block">Login as
