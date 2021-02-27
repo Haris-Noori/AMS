@@ -4,13 +4,14 @@
 
 <h2 class="h4 text-gray-900 mb-4">Admin Login</h2>
 </div>
-<form class="user">
+<form class="user" method="POST" action="{{ url('/admin/login') }}">
+@csrf
     <div class="form-group">
-        <input name="" type="text" class="form-control form-control-user" id="exampleInputEmail"
+        <input name="admin_name" type="text" class="form-control form-control-user" id="exampleInputEmail"
             aria-describedby="emailHelp" placeholder="Enter Your Name">
     </div>
     <div class="form-group">
-        <input name="" type="password" class="form-control form-control-user" id="exampleInputPassword"
+        <input name="admin_pass" type="password" class="form-control form-control-user" id="exampleInputPassword"
             placeholder="Password">
     </div>
     <div class="form-group">
@@ -23,8 +24,7 @@
             }
         ?>
     </div>
-    <a href="{{ url('/admin/login') }}"><button class="btn btn-primary btn-user btn-block"
-            type="submit">Login</button></a>
+    <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
 </form>
 <hr>
 <a href="{{ url('/faculty') }}" class="btn btn-outline-success btn-user btn-block">Login as

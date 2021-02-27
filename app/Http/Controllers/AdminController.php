@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Admin;
 
 class AdminController extends Controller
@@ -14,6 +15,47 @@ class AdminController extends Controller
         $admin = new Admin();   // admin model
 
         return "Hello, this is Admin Controller";
+    }
+
+    public function login(Request $request)
+    {
+        /*$users = DB::table('users')
+                ->whereColumn([
+                    ['first_name', '=', 'last_name'],
+                    ['updated_at', '>', 'created_at'],
+                ])->get();*/
+
+        $admin_name = $request->admin_name;
+        $admin_pass = $request->admin_pass;
+        /*$admin = DB::table('admins')
+                    ->whereColumn([
+                        ['admin_name', '=', $admin_name],
+                        ['admin_pass', '=', $admin_pass],
+                    ])->get();*/
+        $admin = Admin::where('admin_name', '=', $admin_name)->first();
+        if ($admin === null) 
+        {
+            // user doesn't exist
+            
+            return view('/admin/login');
+        }
+        else
+        {
+            $pageData = [
+                'session_name' => $admin_name,
+            ];
+            return view('/admin/dashboard', $pageData);
+        }
+
+        // return view('/admin/dashboard');
+    }
+
+    /**
+     * Logout the Admin
+     */
+    public function logout()
+    {
+        return view('/admin/login');
     }
 
     /**
@@ -45,11 +87,6 @@ class AdminController extends Controller
     {
         $admins = DB::select('select * from admins');
         return $admins;
-    }
-
-    public function login()
-    {
-        return view('/admin/dashboard');
     }
 
     public function loadDashboard()

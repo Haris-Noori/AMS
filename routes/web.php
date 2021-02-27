@@ -29,7 +29,10 @@ Route::get('/admin', function(){
 Route::get('/admin/insert', 'AdminController@createAdmin');
 Route::get('/admin/select', 'AdminController@getAdmins');
 
-Route::get('/admin/login', 'AdminController@login');
+// Passing Post Request to login function
+Route::post('/admin/login', [AdminController::class, 'login']);
+
+Route::get('/admin/logout', 'AdminController@logout');
 
 Route::get('/admin/dashboard', function(){
     return view('/admin/dashboard');
