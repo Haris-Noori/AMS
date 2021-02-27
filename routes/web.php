@@ -35,14 +35,13 @@ Route::get('/admin/dashboard', function(){
     return view('/admin/dashboard');
 });
 
-Route::get('/admin/add_admin', 'AdminController@addAdminView');
+Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
 
 // Passing Post Request to AdminController@addNewAdmin function
 Route::post('/addNewAdmin', [AdminController::class, 'addNewAdmin']);
 
-Route::get('/admin/all-admin', function () {
-    return view('admin.all-admins');
-});
+// Get All Admins View
+Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
 
 
 // Routes for Faculty

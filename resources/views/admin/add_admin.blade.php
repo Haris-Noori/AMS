@@ -57,12 +57,7 @@
                 <button name="add-btn" type="submit" class="btn btn-success col-md-8">Add Admin</button>
             </div>
             <div class="form-group col-md-6 btn-outline-warning">
-                <?php
-                    if(isset($_GET["Message"]))
-                    {
-                        echo $_GET["Message"];
-                    }
-                ?>
+                {{ $successMsg }}
             </div>
         </form>
     </div>

@@ -57,23 +57,26 @@ class AdminController extends Controller
         return view('/admin/dashboard');
     }
 
-    public function loadAllAdmins()
+    /**
+     * Returns the All Admins View
+     */
+    public function getAllAdminsView()
     {
-        return view('/admin/all-admins');
-    }
-
-    public function loadAddAdmin()
-    {
-        return view('/admin/add-admin');
+        $pageData = [
+            'viewTitle' => 'All Admins',
+            'admins' => $this->getAdmins(),
+        ];
+        return view('/admin/all_admins', $pageData);
     }
 
     /**
      * Returns the Add New Admin View
      */
-    public function addAdminView()
+    public function getAddAdminView()
     {
         $pageData = [
-            'viewTitle' => "Add New Admin",
+            'viewTitle' => 'Add New Admin',
+            'successMsg' => '',
         ];
         return view('/admin/add_admin', $pageData);
     }
@@ -84,13 +87,17 @@ class AdminController extends Controller
      */
     public function addNewAdmin(Request $request)
     {
-        // $admin_name = $request->input('admin_name');
-        // echo $admin_name;
+        $data = [
+            'admin_name' => $request->admin_name,
+            'admin_pass' => $request->admin_pass,
+            'type' => $request->type,
+        ];
+        Admin::create($data);   // inserting new database
 
-        error_log(request('admin_name'));
-        error_log(request('admin_pass'));
-        error_log(request('type'));
-
-        // return redirect('/');
+        $pageData = [
+            'viewTitle' => 'Add New Admin',
+            'successMsg' => 'Admin Created Successfully!',
+        ];
+        return view('/admin/add_admin', $pageData);
     }
 }
