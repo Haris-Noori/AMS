@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,7 @@ Route::get('/', function () {
 });
 
 // Routes for admin
+//======================================================================
 Route::get('/admin', function(){
     return view('admin.login');
 });
@@ -33,12 +35,29 @@ Route::get('/admin/dashboard', function(){
     return view('/admin/dashboard');
 });
 
+Route::get('/admin/add_admin', 'AdminController@addAdminView');
+
+// Passing Post Request to AdminController@addNewAdmin function
+Route::post('/addNewAdmin', [AdminController::class, 'addNewAdmin']);
+
+Route::get('/admin/all-admin', function () {
+    return view('admin.all-admins');
+});
+
+
 // Routes for Faculty
+//=======================================================================
 Route::get('/faculty', function(){
     return view('faculty/login');
 });
 
+Route::get('faculty/login', function(){
+    return view('faculty.login');
+});
+
+
 // Routes for Student
+//=======================================================================
 Route::get('/login', function(){
     return view('login');
 });
@@ -46,15 +65,3 @@ Route::get('/login', function(){
 
 
 
-
-Route::get('/admin/all-admin', function () {
-    return view('admin.all-admins');
-});
-
-Route::get('/admin/add-admin', function () {
-    return view('admin.add-admin');
-});
-
-Route::get('faculty/login', function(){
-    return view('faculty.login');
-});

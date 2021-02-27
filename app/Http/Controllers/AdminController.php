@@ -66,4 +66,31 @@ class AdminController extends Controller
     {
         return view('/admin/add-admin');
     }
+
+    /**
+     * Returns the Add New Admin View
+     */
+    public function addAdminView()
+    {
+        $pageData = [
+            'viewTitle' => "Add New Admin",
+        ];
+        return view('/admin/add_admin', $pageData);
+    }
+
+    /**
+     * Get Data from the Add New Admin Form
+     * Insert into Database
+     */
+    public function addNewAdmin(Request $request)
+    {
+        // $admin_name = $request->input('admin_name');
+        // echo $admin_name;
+
+        error_log(request('admin_name'));
+        error_log(request('admin_pass'));
+        error_log(request('type'));
+
+        // return redirect('/');
+    }
 }

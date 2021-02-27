@@ -10,8 +10,8 @@
             aria-describedby="emailHelp" placeholder="Enter Your Name">
     </div>
     <div class="form-group">
-        <input name="" type="password" class="form-control form-control-user"
-            id="exampleInputPassword" placeholder="Password">
+        <input name="" type="password" class="form-control form-control-user" id="exampleInputPassword"
+            placeholder="Password">
     </div>
     <div class="form-group">
         <?php
@@ -23,7 +23,8 @@
             }
         ?>
     </div>
-    <a href="{{ url('/admin/login') }}"><button class="btn btn-primary btn-user btn-block" type="submit">Login</button></a>
+    <a href="{{ url('/admin/login') }}"><button class="btn btn-primary btn-user btn-block"
+            type="submit">Login</button></a>
 </form>
 <hr>
 <a href="{{ url('/faculty') }}" class="btn btn-outline-success btn-user btn-block">Login as
