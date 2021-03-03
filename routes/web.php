@@ -15,10 +15,7 @@ use App\Http\Controllers\AdminController;
 */
 
 // Larvael Home Page
-Route::get('/', function () {
-	// echo "Ehhlo";
-    return view('welcome');
-});
+Route::get('/', 'AdminController@index');
 
 Route::get('/login', function () {
     return view('login');
@@ -26,20 +23,19 @@ Route::get('/login', function () {
 
 // Routes for admin
 //======================================================================
-Route::get('/admin', function(){
-    return view('admin.login');
-});
+Route::get('/admin', 'AdminController@index');
 
 Route::get('/admin/insert', 'AdminController@createAdmin');
 Route::get('/admin/select', 'AdminController@getAdmins');
 
 // Passing Post Request to login function
+Route::get('/admin/login', [AdminController::class, 'login']);
 Route::post('/admin/login', [AdminController::class, 'login']);
 
 Route::get('/admin/logout', 'AdminController@logout');
 
 Route::get('/admin/dashboard', function(){
-    return view('/admin/dashboard');
+    return view('admin.dashboard');
 });
 
 Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
