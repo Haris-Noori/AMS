@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Admin;
+use App\Models\Admin;
 use Closure;
 
 class AdminAuthGuard
