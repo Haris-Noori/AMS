@@ -11,66 +11,56 @@ use log;
 class AdminController extends Controller
 {
 
-    // public $session_admin_id = '';
-    // public $session_admin_name = '';
-    // public $session_admin_pass = '';
-    // public $session_admin_type = '';
-    //
     public function index(Request $request)
     {
-        // $admin = new Admin();   // admin model
-
-        // return "Hello, this is Admin Controller";
-
-        if(session('session_admin_id', 'none') != 'none') {
-        // if($request->session->has('session_admin_id'))
+        if($request->session()->has('session_admin_id')) {
             // user is logged in, 
-            $pageData = [
-                'session_admin_id' => session('session_admin_id'),
-                'session_admin_name' => session('session_admin_name'),
-                'session_admin_pass' => session('session_admin_pass'),
-                'session_admin_type' => session('session_admin_type'),
-            ];
-            return view('/admin/dashboard', $pageData);
+            $pageData = $this->getAdminSessionData();
+            return view('admin.dashboard', $pageData);
         } else {
+            // user is not logged ins
             return redirect('/admin/login');
-            // echo session('session_admin_id');
         }
     }
 
+    /**
+     * Authenticate user
+     */
     public function login(Request $request)
     {
-
-        $admin_name = $request->admin_name;
-        $admin_pass = $request->admin_pass;
-        
-        $admin = Admin::where('admin_name', '=', $admin_name)->where('admin_pass' , '=', $admin_pass)->first();
-        // return $admin;
-        if ($admin === null) 
-        {
-            // user doesn't exist
-            return view('/admin/login');
-        }
-        else
-        {   // user exists
-
-            session(['session_admin_id' => $admin->id]);
-            session(['session_admin_name' => $admin_name]);
-            session(['session_admin_pass' => $admin_pass]);
-            session(['session_admin_type' => $admin->type]); 
-
-        
-            $pageData = [
-                'session_admin_id' => session('session_admin_id'),
-                'session_admin_name' => session('session_admin_name'),
-                'session_admin_pass' => session('session_admin_pass'),
-                'session_admin_type' => session('session_admin_type'),
-            ];
-            // return $pageData;
-            return view('/admin/dashboard', $pageData);
+        if($request->isMethod('get')) {
+            return view('admin.login');
         }
 
-        
+        if($request->isMethod('post')) {   
+            $admin_name = $request->admin_name;
+            $admin_pass = $request->admin_pass;
+            $admin = Admin::where('admin_name', '=', $admin_name)->where('admin_pass' , '=', $admin_pass)->first();
+            if ($admin === null) {
+                // user doesn't exist
+                return view('admin.login', array('error' => 'Invalid Username or Password'));
+            } else {
+                session(['session_admin_id' => $admin->id]);
+                session(['session_admin_name' => $admin_name]);
+                session(['session_admin_pass' => $admin_pass]);
+                session(['session_admin_type' => $admin->type]);
+                return redirect('/admin');
+            }
+            
+        }
+    }
+
+    /**
+     * Get session data for current user
+     */
+    private function getAdminSessionData() 
+    {
+        return $data = [
+            'session_admin_id' => session('session_admin_id'),
+            'session_admin_name' => session('session_admin_name'),
+            'session_admin_pass' => session('session_admin_pass'),
+            'session_admin_type' => session('session_admin_type'),
+        ];
     }
 
     /**
@@ -89,21 +79,12 @@ class AdminController extends Controller
      */
     public function createAdmin()
     {
-        /*DB::insert('insert into admins(admin_name, admin_pass, type) values(?,?,?)',
-        ['admin', 'admin', 'super']);*/
-
-        /*$admin->admin_name = 'haris';
-        $admin->admin_pass = '12345';
-        $admin->type = 'normal';
-        $admin->save();*/
-
         $data = [
             'admin_name' => 'Haris',
             'admin_pass' => '12345',
             'type' => 'normal',
         ];
         Admin::create($data);
-
     }
 
     /**
@@ -117,7 +98,7 @@ class AdminController extends Controller
 
     public function loadDashboard()
     {
-        return view('/admin/dashboard');
+        return view('admin.dashboard');
     }
 
     /**
@@ -128,12 +109,9 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'All Admins',
             'admins' => $this->getAdmins(),
-            'session_admin_id' => session('session_admin_id'),
-            'session_admin_name' => session('session_admin_name'),
-            'session_admin_pass' => session('session_admin_pass'),
-            'session_admin_type' => session('session_admin_type'),
         ];
-        return view('/admin/all_admins', $pageData);
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_admins', $pageData);
     }
 
     /**
@@ -144,12 +122,9 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => '',
-            'session_admin_id' => session('session_admin_id'),
-            'session_admin_name' => session('session_admin_name'),
-            'session_admin_pass' => session('session_admin_pass'),
-            'session_admin_type' => session('session_admin_type'),
         ];
-        return view('/admin/add_admin', $pageData);
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.add_admin', $pageData);
     }
 
     /**
@@ -158,22 +133,20 @@ class AdminController extends Controller
      */
     public function addNewAdmin(Request $request)
     {
+        
         $data = [
             'admin_name' => $request->admin_name,
             'admin_pass' => $request->admin_pass,
             'type' => $request->type,
         ];
         Admin::create($data);   // inserting new database
-
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => 'Admin Created Successfully!',
-            'session_admin_id' => session('session_admin_id'),
-            'session_admin_name' => session('session_admin_name'),
-            'session_admin_pass' => session('session_admin_pass'),
-            'session_admin_type' => session('session_admin_type'),
         ];
-        return view('/admin/add_admin', $pageData);
+        $pageData = array_merge($pageData, $this->getAdminSessionData());  
+        log::debug('hey');
+        return view('admin.add_admin', $pageData);
     }
 
     /**
@@ -183,17 +156,7 @@ class AdminController extends Controller
     {
         // return $id;
         DB::table('admins')->where('id', '=', $id)->delete();
-        
-        // $pageData = [
-        //     'viewTitle' => 'All Admins',
-        //     'admins' => $this->getAdmins(),
-        //     'session_admin_id' => session('session_admin_id'),
-        //     'session_admin_name' => session('session_admin_name'),
-        //     'session_admin_pass' => session('session_admin_pass'),
-        //     'session_admin_type' => session('session_admin_type'),
-        // ];
-        // return view('/admin/all_admins', $pageData);
-
+     
         return redirect('/admin/all_admins');
     }
 }
