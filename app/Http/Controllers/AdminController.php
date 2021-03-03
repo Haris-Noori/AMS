@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Admin;
+use App\Models\Admin;
 use log;
 
 class AdminController extends Controller
@@ -128,10 +128,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'All Admins',
             'admins' => $this->getAdmins(),
-            'session_admin_id' => $this->session_admin_id,
-            'session_admin_name' => $this->session_admin_name,
-            'session_admin_pass' => $this->session_admin_pass,
-            'session_admin_type' => $this->session_admin_type,
+            'session_admin_id' => session('session_admin_id'),
+            'session_admin_name' => session('session_admin_name'),
+            'session_admin_pass' => session('session_admin_pass'),
+            'session_admin_type' => session('session_admin_type'),
         ];
         return view('/admin/all_admins', $pageData);
     }
@@ -144,10 +144,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => '',
-            'session_admin_id' => $this->session_admin_id,
-            'session_admin_name' => $this->session_admin_name,
-            'session_admin_pass' => $this->session_admin_pass,
-            'session_admin_type' => $this->session_admin_type,
+            'session_admin_id' => session('session_admin_id'),
+            'session_admin_name' => session('session_admin_name'),
+            'session_admin_pass' => session('session_admin_pass'),
+            'session_admin_type' => session('session_admin_type'),
         ];
         return view('/admin/add_admin', $pageData);
     }
@@ -168,11 +168,32 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => 'Admin Created Successfully!',
-            'session_admin_id' => $this->session_admin_id,
-            'session_admin_name' => $this->session_admin_name,
-            'session_admin_pass' => $this->session_admin_pass,
-            'session_admin_type' => $this->session_admin_type,
+            'session_admin_id' => session('session_admin_id'),
+            'session_admin_name' => session('session_admin_name'),
+            'session_admin_pass' => session('session_admin_pass'),
+            'session_admin_type' => session('session_admin_type'),
         ];
         return view('/admin/add_admin', $pageData);
+    }
+
+    /**
+     * Removes an Admin
+     */
+    public function removeAdmin($id)
+    {
+        // return $id;
+        DB::table('admins')->where('id', '=', $id)->delete();
+        
+        // $pageData = [
+        //     'viewTitle' => 'All Admins',
+        //     'admins' => $this->getAdmins(),
+        //     'session_admin_id' => session('session_admin_id'),
+        //     'session_admin_name' => session('session_admin_name'),
+        //     'session_admin_pass' => session('session_admin_pass'),
+        //     'session_admin_type' => session('session_admin_type'),
+        // ];
+        // return view('/admin/all_admins', $pageData);
+
+        return redirect('/admin/all_admins');
     }
 }
