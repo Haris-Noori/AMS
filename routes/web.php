@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminAuthGuard;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,37 +21,41 @@ Route::get('/', 'AdminController@index');
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/admin/login', [AdminController::class, 'login']);
 
 // Routes for admin
 //======================================================================
-Route::get('/admin', 'AdminController@index');
 
-Route::get('/admin/insert', 'AdminController@createAdmin');
-Route::get('/admin/select', 'AdminController@getAdmins');
+Route::middleware([AdminAuthGuard::class])->group(function () {
 
-// Passing Post Request to login function
-Route::get('/admin/login', [AdminController::class, 'login']);
-Route::post('/admin/login', [AdminController::class, 'login']);
+    Route::get('/admin', 'AdminController@index');
 
-Route::get('/admin/logout', 'AdminController@logout');
+    Route::get('/admin/insert', 'AdminController@createAdmin');
+    Route::get('/admin/select', 'AdminController@getAdmins');
 
-Route::get('/admin/dashboard', function(){
-    return view('admin.dashboard');
+    // Passing Post Request to login function
+    Route::post('/admin/login', [AdminController::class, 'login']);
+
+    Route::get('/admin/logout', 'AdminController@logout');
+
+    Route::get('/admin/dashboard', function(){
+        return view('admin.dashboard');
+    });
+
+    Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
+
+    // Passing Post Request to AdminController@addNewAdmin function
+    Route::post('/addNewAdmin', [AdminController::class, 'addNewAdmin']);
+
+    // Get All Admins View
+    Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
 });
-
-Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
-
-// Passing Post Request to AdminController@addNewAdmin function
-Route::post('/addNewAdmin', [AdminController::class, 'addNewAdmin']);
-
-// Get All Admins View
-Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
 
 
 // Routes for Faculty
 //=======================================================================
 Route::get('/faculty', function(){
-    return view('faculty/login');
+    return view('faculty.login');
 });
 
 Route::get('faculty/login', function(){
