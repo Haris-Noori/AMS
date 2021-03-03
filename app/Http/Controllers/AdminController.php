@@ -9,6 +9,11 @@ use App\Admin;
 
 class AdminController extends Controller
 {
+
+    public $session_admin_id = '';
+    public $session_admin_name = '';
+    public $session_admin_pass = '';
+    public $session_admin_type = '';
     //
     public function index()
     {
@@ -19,35 +24,35 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
-        /*$users = DB::table('users')
-                ->whereColumn([
-                    ['first_name', '=', 'last_name'],
-                    ['updated_at', '>', 'created_at'],
-                ])->get();*/
 
         $admin_name = $request->admin_name;
         $admin_pass = $request->admin_pass;
-        /*$admin = DB::table('admins')
-                    ->whereColumn([
-                        ['admin_name', '=', $admin_name],
-                        ['admin_pass', '=', $admin_pass],
-                    ])->get();*/
-        $admin = Admin::where('admin_name', '=', $admin_name)->first();
+        
+        $admin = Admin::where('admin_name', '=', $admin_name)->where('admin_pass' , '=', $admin_pass)->first();
+        // return $admin;
         if ($admin === null) 
         {
             // user doesn't exist
-            
             return view('/admin/login');
         }
         else
-        {
+        {   // user exists
+
+            $this->session_admin_id = $admin->id;
+            $this->session_admin_name = $admin_name;
+            $this->session_admin_pass = $admin_pass;
+            $this->session_admin_type = $admin->type; 
             $pageData = [
-                'session_name' => $admin_name,
+                'session_admin_id' => $this->session_admin_id,
+                'session_admin_name' => $this->session_admin_name,
+                'session_admin_pass' => $this->session_admin_pass,
+                'session_admin_type' => $this->session_admin_type,
             ];
+            // return $pageData;
             return view('/admin/dashboard', $pageData);
         }
 
-        // return view('/admin/dashboard');
+        
     }
 
     /**
@@ -102,6 +107,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'All Admins',
             'admins' => $this->getAdmins(),
+            'session_admin_id' => $this->session_admin_id,
+            'session_admin_name' => $this->session_admin_name,
+            'session_admin_pass' => $this->session_admin_pass,
+            'session_admin_type' => $this->session_admin_type,
         ];
         return view('/admin/all_admins', $pageData);
     }
@@ -114,6 +123,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => '',
+            'session_admin_id' => $this->session_admin_id,
+            'session_admin_name' => $this->session_admin_name,
+            'session_admin_pass' => $this->session_admin_pass,
+            'session_admin_type' => $this->session_admin_type,
         ];
         return view('/admin/add_admin', $pageData);
     }
@@ -134,6 +147,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => 'Admin Created Successfully!',
+            'session_admin_id' => $this->session_admin_id,
+            'session_admin_name' => $this->session_admin_name,
+            'session_admin_pass' => $this->session_admin_pass,
+            'session_admin_type' => $this->session_admin_type,
         ];
         return view('/admin/add_admin', $pageData);
     }
