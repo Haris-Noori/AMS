@@ -5,21 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Admin;
+use App\Admin;
+use log;
 
 class AdminController extends Controller
 {
 
-    public $session_admin_id = '';
-    public $session_admin_name = '';
-    public $session_admin_pass = '';
-    public $session_admin_type = '';
+    // public $session_admin_id = '';
+    // public $session_admin_name = '';
+    // public $session_admin_pass = '';
+    // public $session_admin_type = '';
     //
-    public function index()
+    public function index(Request $request)
     {
-        $admin = new Admin();   // admin model
+        // $admin = new Admin();   // admin model
 
-        return "Hello, this is Admin Controller";
+        // return "Hello, this is Admin Controller";
+
+        if(session('session_admin_id', 'none') != 'none') {
+        // if($request->session->has('session_admin_id'))
+            // user is logged in, 
+            $pageData = [
+                'session_admin_id' => session('session_admin_id'),
+                'session_admin_name' => session('session_admin_name'),
+                'session_admin_pass' => session('session_admin_pass'),
+                'session_admin_type' => session('session_admin_type'),
+            ];
+            return view('/admin/dashboard', $pageData);
+        } else {
+            return redirect('/admin/login');
+            // echo session('session_admin_id');
+        }
     }
 
     public function login(Request $request)
@@ -38,15 +54,17 @@ class AdminController extends Controller
         else
         {   // user exists
 
-            $this->session_admin_id = $admin->id;
-            $this->session_admin_name = $admin_name;
-            $this->session_admin_pass = $admin_pass;
-            $this->session_admin_type = $admin->type; 
+            session(['session_admin_id' => $admin->id]);
+            session(['session_admin_name' => $admin_name]);
+            session(['session_admin_pass' => $admin_pass]);
+            session(['session_admin_type' => $admin->type]); 
+
+        
             $pageData = [
-                'session_admin_id' => $this->session_admin_id,
-                'session_admin_name' => $this->session_admin_name,
-                'session_admin_pass' => $this->session_admin_pass,
-                'session_admin_type' => $this->session_admin_type,
+                'session_admin_id' => session('session_admin_id'),
+                'session_admin_name' => session('session_admin_name'),
+                'session_admin_pass' => session('session_admin_pass'),
+                'session_admin_type' => session('session_admin_type'),
             ];
             // return $pageData;
             return view('/admin/dashboard', $pageData);
@@ -58,9 +76,12 @@ class AdminController extends Controller
     /**
      * Logout the Admin
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        return view('/admin/login');
+        // clear session
+        $request->session()->flush();
+        // log::debug('here');
+        return redirect('/admin');
     }
 
     /**
