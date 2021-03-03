@@ -1,8 +1,10 @@
+<?php use \App\Http\Controllers\AdminController; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,7 +14,7 @@
   <title>Jamia Noorul Aloom Noori</title>
 
   <!-- Custom fonts for this template-->
-  <link href="{{ asset('css/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -32,9 +34,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dash">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon">
-          <img src="img/logo.png" width="50">
+          <img src="{{ asset('img/logo.png') }}" width="50">
         </div>
         <div class="sidebar-brand-text mx-1">Jamia Noorul Aloom Noori</div>
       </a>
@@ -44,7 +46,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="admin_dashboard.php">
+        <a class="nav-link" href="{{ url('/admin/dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -58,7 +60,6 @@
       </div>
 
       <!-- Nav Item - Admins Collapse Menu -->
-    
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <i class="fas fa-fw fa-user-shield"></i>
@@ -66,8 +67,8 @@
                     </a>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="all_admins.php">All Admins</a>
-                            <a class="collapse-item" href="add_admin.php">Add Admin</a>
+                            <a class="collapse-item" href="{{ url('/admin/all_admins') }}">All Admins</a>
+                            <a class="collapse-item" href="{{ url('/admin/add_admin') }}">Add Admin</a>
                         </div>
                     </div>
                 </li>
@@ -302,7 +303,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> $ADMIN NAME </span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{$session_name}} </span>
                 <img class="img-profile rounded-circle" src="AdMINIMAGE" width="100">
               </a>
               <!-- Dropdown - User Information -->
@@ -377,7 +378,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="logout.php">Logout</a>
+                <a class="btn btn-primary" href="{{ url('/admin/logout') }}">Logout</a>
             </div>
         </div>
     </div>
