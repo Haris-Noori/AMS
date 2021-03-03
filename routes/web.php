@@ -18,25 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 // Routes for admin
 
 Route::get('/admin/dash', function () {
     // echo "Ehhlo";
     return view('admin.dashboard');
 });
-<<<<<<< HEAD
-
-Route::get('/login', function(){
-    return view('login');
-});
-
-Route::get('/admin/login', function(){
-    return view('admin.login');
-});
-
-
-||||||| merged common ancestors
-=======
 
 Route::get('/admin/all-admin', function () {
     return view('admin.all-admins');
@@ -46,4 +37,3 @@ Route::get('/admin/add-admin', function () {
     return view('admin.add-admin');
 });
 
->>>>>>> 564547ee203087920d86add85de2740db57f3da0
