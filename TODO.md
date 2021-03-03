@@ -3,9 +3,9 @@
 - To create database, type, php artisan migrate
 - To create a model, type, php artisan make:model <model_name>
 
-# TO DO LIST FOR AMS ON laravel
+# TO DO LIST FOR AMS IN Project
 ==============================
-- Also Check Admin Password at login, 
+- Delete Admin
 
 
 

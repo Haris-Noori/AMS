@@ -19,35 +19,30 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
-        /*$users = DB::table('users')
-                ->whereColumn([
-                    ['first_name', '=', 'last_name'],
-                    ['updated_at', '>', 'created_at'],
-                ])->get();*/
 
         $admin_name = $request->admin_name;
         $admin_pass = $request->admin_pass;
-        /*$admin = DB::table('admins')
-                    ->whereColumn([
-                        ['admin_name', '=', $admin_name],
-                        ['admin_pass', '=', $admin_pass],
-                    ])->get();*/
-        $admin = Admin::where('admin_name', '=', $admin_name)->first();
+        
+        $admin = Admin::where('admin_name', '=', $admin_name)->where('admin_pass' , '=', $admin_pass)->first();
+        // return $admin;
         if ($admin === null) 
         {
             // user doesn't exist
-            
             return view('/admin/login');
         }
         else
-        {
+        {   // user exists
             $pageData = [
-                'session_name' => $admin_name,
+                'session_admin_id' => $admin->id,
+                'session_admin_name' => $admin_name,
+                'session_admin_pass' => $admin_pass,
+                'session_admin_type' => $admin->type,
             ];
+            // return $pageData;
             return view('/admin/dashboard', $pageData);
         }
 
-        // return view('/admin/dashboard');
+        
     }
 
     /**
