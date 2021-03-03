@@ -5,7 +5,7 @@
 
 # TO DO LIST FOR AMS IN Project
 ==============================
-- Delete Admin
+- Delete Admin Feature in All Admins View,
 
 
 

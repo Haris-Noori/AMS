@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Admin;
+use App\Models\Admin;
 use log;
 
 class AdminController extends Controller
@@ -147,5 +147,16 @@ class AdminController extends Controller
         $pageData = array_merge($pageData, $this->getAdminSessionData());  
         log::debug('hey');
         return view('admin.add_admin', $pageData);
+    }
+
+    /**
+     * Removes an Admin
+     */
+    public function removeAdmin($id)
+    {
+        // return $id;
+        DB::table('admins')->where('id', '=', $id)->delete();
+     
+        return redirect('/admin/all_admins');
     }
 }
