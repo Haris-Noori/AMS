@@ -9,6 +9,11 @@ use App\Admin;
 
 class AdminController extends Controller
 {
+
+    public $session_admin_id = '';
+    public $session_admin_name = '';
+    public $session_admin_pass = '';
+    public $session_admin_type = '';
     //
     public function index()
     {
@@ -32,11 +37,16 @@ class AdminController extends Controller
         }
         else
         {   // user exists
+
+            $this->session_admin_id = $admin->id;
+            $this->session_admin_name = $admin_name;
+            $this->session_admin_pass = $admin_pass;
+            $this->session_admin_type = $admin->type; 
             $pageData = [
-                'session_admin_id' => $admin->id,
-                'session_admin_name' => $admin_name,
-                'session_admin_pass' => $admin_pass,
-                'session_admin_type' => $admin->type,
+                'session_admin_id' => $this->session_admin_id,
+                'session_admin_name' => $this->session_admin_name,
+                'session_admin_pass' => $this->session_admin_pass,
+                'session_admin_type' => $this->session_admin_type,
             ];
             // return $pageData;
             return view('/admin/dashboard', $pageData);
@@ -97,6 +107,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'All Admins',
             'admins' => $this->getAdmins(),
+            'session_admin_id' => $this->session_admin_id,
+            'session_admin_name' => $this->session_admin_name,
+            'session_admin_pass' => $this->session_admin_pass,
+            'session_admin_type' => $this->session_admin_type,
         ];
         return view('/admin/all_admins', $pageData);
     }
@@ -109,6 +123,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => '',
+            'session_admin_id' => $this->session_admin_id,
+            'session_admin_name' => $this->session_admin_name,
+            'session_admin_pass' => $this->session_admin_pass,
+            'session_admin_type' => $this->session_admin_type,
         ];
         return view('/admin/add_admin', $pageData);
     }
@@ -129,6 +147,10 @@ class AdminController extends Controller
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => 'Admin Created Successfully!',
+            'session_admin_id' => $this->session_admin_id,
+            'session_admin_name' => $this->session_admin_name,
+            'session_admin_pass' => $this->session_admin_pass,
+            'session_admin_type' => $this->session_admin_type,
         ];
         return view('/admin/add_admin', $pageData);
     }
