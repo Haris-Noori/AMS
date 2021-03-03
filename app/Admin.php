@@ -26,4 +26,8 @@ class Admin extends Model
         'admin_name', 'admin_pass', 'type',
     ];
     
+
+    public function isLoggedIn() {
+        return session('session_admin_id', false);
+    }
 }
