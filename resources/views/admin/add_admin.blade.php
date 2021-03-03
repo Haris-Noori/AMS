@@ -3,14 +3,15 @@
 @section('pageContent')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Add New Admin</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{ $viewTitle }}</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <div class="col-md-12">
         <h3>Admin Details</h3>
 
-        <form action="add_admin_try.php" method="POST" class="col-md-10 mt-1">
+        <form action="{{ url('/addNewAdmin') }}" method="POST" class="col-md-10 mt-1">
+        @csrf
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
@@ -28,8 +29,8 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="exampleFormControlSelect1">Set Admin Type</label>
-                            <select name="admin_type" class="form-control" id="exampleFormControlSelect1">
-                                <option value="">None</option>
+                            <select name="type" class="form-control" id="exampleFormControlSelect1">
+                                <option value="normal">None</option>
                                 <option value="super">Super Admin</option>
                             </select>
                         </div>
@@ -53,15 +54,10 @@
             </div>
 
             <div class="form-group">
-                <button name="add-btn" type="submit" class="btn btn-success col-md-8">Add</button>
+                <button name="add-btn" type="submit" class="btn btn-success col-md-8">Add Admin</button>
             </div>
             <div class="form-group col-md-6 btn-outline-warning">
-                <?php
-                    if(isset($_GET["Message"]))
-                    {
-                        echo $_GET["Message"];
-                    }
-                ?>
+                {{ $successMsg }}
             </div>
         </form>
     </div>
