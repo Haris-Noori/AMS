@@ -47,7 +47,7 @@ Route::post('/addNewAdmin', [AdminController::class, 'addNewAdmin']);
 Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
 
 // Remove Admin
-Route::get('/admin/removeAdmin?id', 'AdminController@removeAdmin');
+Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
 
 
 // Routes for Faculty
