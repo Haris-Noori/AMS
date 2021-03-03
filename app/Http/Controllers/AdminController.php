@@ -154,4 +154,12 @@ class AdminController extends Controller
         ];
         return view('/admin/add_admin', $pageData);
     }
+
+    /**
+     * Removes an Admin
+     */
+    public function removeAdmin()
+    {
+        DB::table('admins')->where('id', '=', '10')->delete();
+    }
 }

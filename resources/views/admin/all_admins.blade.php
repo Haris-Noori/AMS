@@ -31,7 +31,7 @@
                                 <td> {{$admin->type}} </td>
                                 <td> <a href="#"><button class="btn btn-success">Reset</button></a> </td>
                                 <td> <a href="#"><button class="btn btn-primary">Edit</button></a> </td>
-                                <td> <a href="#"><button class="btn btn-danger">Remove</button></a> </td>
+                                <td> <a href="{{ url('/admin/removeAdmin?id='.$admin->id.' ') }}"><button class="btn btn-danger">Remove</button></a> </td>
                             </tr>
                             <?php   
                         }
