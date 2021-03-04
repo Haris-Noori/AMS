@@ -21,39 +21,22 @@ Route::get('/', 'AdminController@index');
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/admin/login', [AdminController::class, 'login']);
 
 // Routes for admin
 //======================================================================
-
+Route::get('/admin/login', "AdminController@login");
+Route::post('/admin/login', "AdminController@login");
 Route::middleware([AdminAuthGuard::class])->group(function () {
-
     Route::get('/admin', 'AdminController@index');
-
     Route::get('/admin/insert', 'AdminController@createAdmin');
     Route::get('/admin/select', 'AdminController@getAdmins');
-
-    // Passing Post Request to login function
-    Route::post('/admin/login', [AdminController::class, 'login']);
-
     Route::get('/admin/logout', 'AdminController@logout');
-
-    Route::get('/admin/dashboard', function(){
-        return view('admin.dashboard');
-    });
-
+    Route::get('/admin/dashboard', 'AdminController@loadDashboard');
     Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
-
-    // Passing Post Request to AdminController@addNewAdmin function
-    Route::post('/addNewAdmin', [AdminController::class, 'addNewAdmin']);
-
-    // Get All Admins View
+    Route::post('/addNewAdmin', 'AdminController@addNewAdmin');
     Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
+    Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
 });
-
-// Remove Admin
-Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
-
 
 // Routes for Faculty
 //=======================================================================
