@@ -24,10 +24,10 @@ Route::get('/login', function () {
 
 // Routes for admin
 //======================================================================
-Route::get('/admin/login', "AdminController@login");
-Route::post('/admin/login', "AdminController@login");
+Route::get('/admin', 'AdminController@index');
 Route::middleware([AdminAuthGuard::class])->group(function () {
-    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
+    Route::post('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::get('/admin/insert', 'AdminController@createAdmin');
     Route::get('/admin/select', 'AdminController@getAdmins');
     Route::get('/admin/logout', 'AdminController@logout');
@@ -36,6 +36,9 @@ Route::middleware([AdminAuthGuard::class])->group(function () {
     Route::post('/addNewAdmin', 'AdminController@addNewAdmin');
     Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
     Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
+    Route::get('/admin/add-student', 'AdminController@addStudent');
+    Route::post('/admin/add-student', 'AdminController@addStudent');
+
 });
 
 // Routes for Faculty

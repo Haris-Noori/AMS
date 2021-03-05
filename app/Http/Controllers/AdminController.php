@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
-use log;
+use Log;
 
 class AdminController extends Controller
 {
 
     public function index(Request $request)
     {
-        if($request->session()->has('session_admin_id')) {
+        if(Admin::isLoggedIn()) {
             // user is logged in, 
-            $pageData = $this->getAdminSessionData();
-            return view('admin.dashboard', $pageData);
+            // $pageData = $this->getAdminSessionData();
+            return redirect('/admin/dashboard');
         } else {
             // user is not logged ins
             return redirect('/admin/login');
@@ -36,6 +36,7 @@ class AdminController extends Controller
             $admin_name = $request->admin_name;
             $admin_pass = $request->admin_pass;
             $admin = Admin::where('admin_name', '=', $admin_name)->where('admin_pass' , '=', $admin_pass)->first();
+            print_r($admin);
             if ($admin === null) {
                 // user doesn't exist
                 return view('admin.login', array('error' => 'Invalid Username or Password'));
@@ -45,8 +46,7 @@ class AdminController extends Controller
                 session(['session_admin_pass' => $admin_pass]);
                 session(['session_admin_type' => $admin->type]);
                 return redirect('/admin');
-            }
-            
+            }   
         }
     }
 
@@ -98,7 +98,7 @@ class AdminController extends Controller
 
     public function loadDashboard()
     {
-        return view('admin.dashboard');
+        return view('admin.dashboard', $this->getAdminSessionData());
     }
 
     /**
@@ -158,5 +158,21 @@ class AdminController extends Controller
         DB::table('admins')->where('id', '=', $id)->delete();
      
         return redirect('/admin/all_admins');
+    }
+
+    /**************************************************
+     * Functions for students
+    ************************************************** */
+
+    public function addStudent(Request $request) {
+        log::debug("hey");
+        if($request->isMethod('get')) {
+
+            return view('admin.add-student', $this->getAdminSessionData() );
+        }
+
+        if($request->isMethod('post')) {
+            
+        }
     }
 }
