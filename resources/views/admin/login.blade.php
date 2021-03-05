@@ -16,10 +16,12 @@
     </div>
     <div class="form-group">
         <?php
-            if(isset($_GET["Message"]))
-            {
+        
+            if(isset($error))
+            {   
+                // echo $error;
                 echo "<div class='col-sm-12 alert alert-danger'>";
-                echo $_GET["Message"];
+                echo $error;
                 echo "</div>";
             }
         ?>
