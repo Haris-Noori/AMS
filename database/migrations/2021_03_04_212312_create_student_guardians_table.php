@@ -15,15 +15,15 @@ class CreateStudentGuardiansTable extends Migration
     {
         Schema::create('student_guardians', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('father_name');
-            $table->string('phone');
-            $table->string('cnic');
-            $table->string('occupation');
-            $table->string('mother_name');
-            $table->string('guardian_name');
-            $table->string('relation_with_student');
-            $table->string('guardian_phone');
-
+            $table->string('father_name')->default('N/A');
+            $table->string('phone')->default('N/A');
+            $table->string('cnic')->default('N/A');
+            $table->string('occupation')->default('N/A');
+            $table->string('mother_name')->default('N/A');
+            $table->string('guardian_name')->default('N/A');
+            $table->string('relation_with_student')->default('N/A');
+            $table->string('guardian_phone')->default('N/A');
+            $table->timestamps();
         });
     }
 
