@@ -26,7 +26,7 @@ Route::get('/login', function () {
 // Routes for admin
 //======================================================================
 Route::get('/admin', 'AdminController@index');
-Route::middleware([AdminAuthGuard::class, XSS::class])->group(function () {
+Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function () {
     Route::get('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::post('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::get('/admin/insert', 'AdminController@createAdmin');
