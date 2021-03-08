@@ -17,7 +17,7 @@ class AdminAuthGuard
     public function handle($request, Closure $next)
     {
         if(Admin::isLoggedIn()) {
-            $next($request);
+            return $next($request);
         } else {
             return redirect('/admin/login');
         }

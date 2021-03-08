@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+set -x
+
+mysql -u db_ams -p db_ams < runner.sql

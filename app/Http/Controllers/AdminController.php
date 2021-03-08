@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Admin;
+use League\Fractal;
 use Log;
+
+use App\Models\Admin;
+use App\Models\Student;
+use App\Models\StudentGuardian;
+
 
 class AdminController extends Controller
 {
@@ -145,7 +150,7 @@ class AdminController extends Controller
             'successMsg' => 'Admin Created Successfully!',
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());  
-        log::debug('hey');
+        // log::debug('hey');
         return view('admin.add_admin', $pageData);
     }
 
@@ -165,13 +170,36 @@ class AdminController extends Controller
     ************************************************** */
 
     public function addStudent(Request $request) {
-        log::debug("hey");
         if($request->isMethod('get')) {
-
+            // return view
             return view('admin.add-student', $this->getAdminSessionData() );
         }
 
         if($request->isMethod('post')) {
+            // process submitted
+            log::debug("hey2");
+
+            // validation request 
+            $request->validate([
+                // 'token' => 'required',
+                'st_first_name' => 'required | alpha',
+                'st_last_name' => 'required | alpha',
+                'st_gender' => 'required | in:Male,Female',
+                'st_dob' => 'required | date',
+                'st_blood' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
+                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal, Genious & Beautiful Voice',
+                'st_cur_st_add' => 'required'
+            ]);
+
+            // create guardian
+
+            if(!Student::isUnique($request->input('st_first_name'), 
+                                 $request->input('st_last_name'), 
+                                 $request->input('st_father_name'))) {
+                echo "Student not unique";
+            } else {
+                Student::register($request);
+            }
             
         }
     }
