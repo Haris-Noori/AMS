@@ -60,18 +60,18 @@
       </div>
 
       <!-- Nav Item - Admins Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <i class="fas fa-fw fa-user-shield"></i>
-                        <span>Admins</span>
-                    </a>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ url('/admin/all_admins') }}">All Admins</a>
-                            <a class="collapse-item" href="{{ url('/admin/add_admin') }}">Add Admin</a>
-                        </div>
-                    </div>
-                </li>
+      <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="fas fa-fw fa-user-shield"></i>
+              <span>Admins</span>
+          </a>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                  <a class="collapse-item" href="{{ url('/admin/all_admins') }}">All Admins</a>
+                  <a class="collapse-item" href="{{ url('/admin/add_admin') }}">Add Admin</a>
+              </div>
+          </div>
+      </li>
  
 
       <!-- Nav Item - Students Collapse Menu -->
@@ -82,7 +82,7 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="#">All Students</a>
+                    <a class="collapse-item" href="{{ url('/admin/all_students') }}">All Students</a>
                     <a class="collapse-item" href="{{ url('/admin/add-student') }}">Add Student</a>
                 </div>
             </div>

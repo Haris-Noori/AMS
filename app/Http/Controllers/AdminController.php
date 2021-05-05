@@ -203,4 +203,24 @@ class AdminController extends Controller
             
         }
     }
+
+    /**
+     * Returns the All Students View
+     */
+    public function getAllStudentsView() {
+        $pageData = [
+            'students' => $this->getStudents(),
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_students', $pageData);
+    }
+
+    /**
+     * Get Students From Database
+     */
+    public function getStudents()
+    {
+        $students = DB::select('select * from students');
+        return $students;
+    }
 }

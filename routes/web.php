@@ -39,6 +39,7 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
     Route::get('/admin/add-student', 'AdminController@addStudent');
     Route::post('/admin/add-student', 'AdminController@addStudent');
+    Route::get('/admin/all_students', 'AdminController@getAllStudentsView');
 
 });
 
