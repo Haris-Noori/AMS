@@ -23,7 +23,7 @@ class AdminController extends Controller
             // $pageData = $this->getAdminSessionData();
             return redirect('/admin/dashboard');
         } else {
-            // user is not logged ins
+            // user is not logged in
             return redirect('/admin/login');
         }
     }
@@ -187,7 +187,7 @@ class AdminController extends Controller
                 'st_gender' => 'required | in:Male,Female',
                 'st_dob' => 'required | date',
                 'st_blood' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
-                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal, Genious & Beautiful Voice',
+                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal,Genious & Beautiful Voice',
                 'st_cur_st_add' => 'required'
             ]);
 
