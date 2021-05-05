@@ -10,14 +10,18 @@
 <div class="col-md-12">
     <div class="float-right" >Joining Date: <strong><?php date_default_timezone_set("Asia/Karachi"); echo date("d M, Y") ?></strong></div>
     <h3>Student Registration Form</h3>
-    <form action="add_student_try.php" method="POST" class="col-md-12 mt-1">
+    <form action="{{ url('/admin/add-student') }}" method="POST" class="col-md-12 mt-1">
+        @csrf
         <div class="form-group col-md-6 btn-outline-warning">
-            <?php
-            if(isset($_GET["Message"]))
-            {
-                echo $_GET["Message"];
-            }
-            ?>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
         <div class="container">
             <div class="row">
@@ -35,7 +39,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Gender</label>
-                            <select name="st_gender" class="form-control" required id="exampleFormControlSelect1">
+                            <select name="st_gender" required class="form-control" required id="exampleFormControlSelect1">
                                 <option value="Not Specified">Not Specified</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -43,7 +47,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Date Of Birth</label>
-                            <div class="row"><input name="st_dob" type="date" pattern="d-m-YY" max="2010-12-31" placeholder="dd-mm-yyyy" id="st_dob" class="form-control ml-3 col-md-7">
+                            <div class="row"><input name="st_dob" type="date" required pattern="de-m-YYYY" max="2010-12-31" placeholder="dd-mm-yyyy" id="st_dob" class="form-control ml-3 col-md-7">
                                 <span id="st_age" class="ml-2">Age: </span>
                             </div>
                         </div>
@@ -51,22 +55,22 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Blood Group</label>
-                            <select name="st_blood" class="form-control"  id="exampleFormControlSelect1">
-                                <option value="Not Specified">Not Specified</option>
-                                <option value="">A +ve</option>
-                                <option value="">A -ve</option>
-                                <option value="">B +ve</option>
-                                <option value="">B -ve</option>
-                                <option value="">O +ve</option>
-                                <option value="">O -ve</option>
-                                <option value="">AB +ve</option>
-                                <option value="">AB -ve</option>
+                            <select name="st_blood" required class="form-control"  id="exampleFormControlSelect1">
+                                <option value="N/A">Not Specified</option>
+                                <option value="A-">A +ve</option>
+                                <option value="A+">A -ve</option>
+                                <option value="B+">B +ve</option>
+                                <option value="B-">B -ve</option>
+                                <option value="O+">O +ve</option>
+                                <option value="O-">O -ve</option>
+                                <option value="AB+">AB +ve</option>
+                                <option value="AB-">AB -ve</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Student Status</label>
                             <select name="st_status" class="form-control" id="exampleFormControlSelect1">
-                                <option value="Not Specified">Not Specified</option>
+                                <option value="N/A">Not Specified</option>
                                 <option value="Genious">Genious</option>
                                 <option value="Addled">Addled</option>
                                 <option value="Very Poor">Very Poor</option>

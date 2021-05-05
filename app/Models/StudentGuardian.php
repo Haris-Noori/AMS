@@ -21,6 +21,22 @@ class StudentGuardian extends Model
     protected $primaryKey = 'guardian_id';
 
     /**
+     * Fields fillable by student
+     * 
+     * @var array
+     */
+    protected $fillable = [
+        'father_name', 
+        'phone', 
+        'cnic', 
+        'occupation', 
+        'mother_name', 
+        'guardian_name', 
+        'relation_with_student',
+        'guardian_phone'
+    ];
+
+    /**
      * Get the student associated with the guardian.
      */
     public function student() 

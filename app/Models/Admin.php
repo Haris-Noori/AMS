@@ -27,6 +27,10 @@ class Admin extends Model
     ];
     
 
+    /**
+     * Check if Admin is logged in
+     * @return bool
+     */
     public static function isLoggedIn() {
         return session('session_admin_id', false);
     }
