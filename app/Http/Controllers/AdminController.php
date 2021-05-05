@@ -184,7 +184,7 @@ class AdminController extends Controller
                 // 'token' => 'required',
                 'st_first_name' => 'required | alpha',
                 'st_last_name' => 'required | alpha',
-                'st_gender' => 'required | in:Male,Female',
+                'st_gender' => 'required',
                 'st_dob' => 'required | date',
                 'st_blood' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
                 'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal, Genious & Beautiful Voice',
