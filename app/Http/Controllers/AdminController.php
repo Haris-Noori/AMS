@@ -223,4 +223,13 @@ class AdminController extends Controller
         $students = DB::select('select * from students');
         return $students;
     }
+
+    /**************************************************
+     * Functions for students
+    ************************************************** */
+
+    public function getAddEmployeeView()
+    {
+        return view('admin.add_employee', $this->getAdminSessionData());
+    }
 }

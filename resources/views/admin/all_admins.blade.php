@@ -15,9 +15,9 @@
                         <th>Admin ID</th>
                         <th>Admin Name</th>
                         <th>Admin Type</th>
-                        <th>Reset Password</th>
-                        <th>Edit Details</th>
-                        <th>Remove Admin</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,8 +29,8 @@
                                 <th> {{$admin->id}} </th>
                                 <td> {{$admin->admin_name}} </td>
                                 <td> {{$admin->type}} </td>
-                                <td> <a href="#"><button class="btn btn-success">Reset</button></a> </td>
-                                <td> <a href="#"><button class="btn btn-primary">Edit</button></a> </td>
+                                <td> <a href="#"><button class="btn btn-success">Reset Password</button></a> </td>
+                                <td> <a href="#"><button class="btn btn-primary">Edit Details</button></a> </td>
                                 <td> <a href="{{ url('/admin/removeAdmin/'.$admin->id) }}"><button class="btn btn-danger">Remove</button></a> </td>
                             </tr>
                             <?php   

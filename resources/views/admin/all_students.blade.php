@@ -12,9 +12,10 @@
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead class="thead-dark">
                     <tr>
-                        <th>Student ID</th>
+                        <th>ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th>Email</th>
                         <th>Phone</th>
                         <th>Course Title</th>
                         <th>Current Address</th>
@@ -31,6 +32,7 @@
                                 <th> {{$student->id}} </th>
                                 <td> {{$student->first_name}} </td>
                                 <td> {{$student->last_name}} </td>
+                                <td> {{$student->email}} </td>
                                 <td> {{$student->phone}} </td>
                                 <td> {{$student->course_title}} </td>
                                 <td> {{$student->current_address}} </td>
