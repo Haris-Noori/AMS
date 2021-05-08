@@ -23,7 +23,7 @@ class Employee extends Model
     protected $primaryKey = 'employee_id';
 
     /**
-     * Fields fillable by student
+     * Fields fillable by Employee
      * 
      * @var array
      */
@@ -53,22 +53,21 @@ class Employee extends Model
     /**
      * @param request Illuminate\Http\Request
      * Recieves form data and makes entry in
-     * Students and Students Guardian Table
+     * Employees Table
      * @return void
      */
-    /*public static function register(Request $request) {
+    public static function create(Request $request) {
         
         try {
             // create employee
-            $student = StudentTransformer::fromRequest($request);
-            $student['guardian_id'] = (string)StudentGuardian::latest()->first()->id;
-            Log::debug('Created Student', $student);
-            Student::create($student);
+            $employee = EmployeeTransformer::fromRequest($request);
+            Log::debug('Created Employee', $employee);
+            Employee::create($employee);
         } catch(Exception $e) {
-            return ["error" => "Failed registering user."];
+            return ["error" => "Failed creating employee."];
         }
-        // echo "Student registered";
-    }*/
+        
+    }
 
 
 }

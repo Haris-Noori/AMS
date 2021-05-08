@@ -11,6 +11,7 @@ use Log;
 use App\Models\Admin;
 use App\Models\Student;
 use App\Models\StudentGuardian;
+use App\Models\Employee;
 
 
 class AdminController extends Controller
@@ -224,12 +225,25 @@ class AdminController extends Controller
         return $students;
     }
 
-    /**************************************************
-     * Functions for students
-    ************************************************** */
+    /***************************************************************************************
+     * Functions for Employees
+    *************************************************************************************** */
 
     public function getAddEmployeeView()
     {
         return view('admin.add_employee', $this->getAdminSessionData());
+    }
+
+    public function addEmployee(Request $request)
+    {
+        // return $request->all();
+        $request->validate([
+            'first_name' => 'required | alpha',
+            'last_name' => 'required | alpha',
+            'gender' => 'required | in:[N/A,male,female]',
+            'blood_group' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
+        ]);
+
+        Employee::create($request);
     }
 }

@@ -10,7 +10,7 @@
 <div class="col-md-12">
     <div class="float-right" >Joining Date: <strong><?php date_default_timezone_set("Asia/Karachi"); echo date("d M, Y") ?></strong></div>
     <h4>Employee Form</h4>
-    <form action="{{ url('/admin/add_employee') }}" method="POST" class="col-md-12 mt-1">
+    <form action="{{ url('/admin/addEmployee') }}" method="POST" class="col-md-12 mt-1">
         @csrf
         <div class="form-group col-md-6 btn-outline-warning">
             @if ($errors->any())
@@ -30,22 +30,22 @@
                     <div class="row">
                         <div class="form-group col-md-6" >
                             <label for="exampleInputEmail1">First Name</label>
-                            <input name="st_first_name" type="text" required class="form-control" placeholder="First Name">
+                            <input name="first_name" type="text" required class="form-control" placeholder="First Name">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Last Name</label>
-                            <input name="st_last_name" type="text" required class="form-control" placeholder="Last Name">
+                            <input name="last_name" type="text" required class="form-control" placeholder="Last Name">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6" >
                             <label for="exampleInputEmail1">Father Name</label>
-                            <input name="st_father_name" type="text" class="form-control" placeholder="Father Full Name">
+                            <input name="father_name" type="text" class="form-control" placeholder="Father Full Name">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Gender</label>
-                            <select name="st_gender" required class="form-control" required id="exampleFormControlSelect1">
+                            <select name="gender" class="form-control" required id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -56,13 +56,11 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Date Of Birth</label>
-                            <div class="row"><input name="st_dob" type="date" required pattern="de-m-YYYY" max="2010-12-31" placeholder="dd-mm-yyyy" id="st_dob" class="form-control ml-3 col-md-7">
-                                <span id="st_age" class="ml-2">Age: </span>
-                            </div>
+                            <input name="date_of_birth" type="date" pattern="de-m-YYYY" max="2010-12-31" placeholder="dd-mm-yyyy" id="st_dob" class="form-control">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Blood Group</label>
-                            <select name="st_blood" required class="form-control"  id="exampleFormControlSelect1">
+                            <select name="blood_group" class="form-control"  id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="A-">A +ve</option>
                                 <option value="A+">A -ve</option>
@@ -79,11 +77,11 @@
                     <div class="row">
                         <div class="form-group col-md-6" >
                             <label for="exampleInputEmail1">CNIC</label>
-                            <input name="st_father_cnic" type="number" class="form-control" placeholder="no dashes(-)">
+                            <input name="cnic" type="number" class="form-control" placeholder="no dashes(-)">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Marital Status</label>
-                            <select name="st_status" class="form-control" id="exampleFormControlSelect1">
+                            <select name="marital_status" class="form-control" id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="Married">Married</option>
                                 <option value="Un-Married">Un-Married</option>
@@ -94,44 +92,44 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Email Address</label>
-                            <input name="st_email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInput">Phone Number</label>
-                            <input name="st_phone" type="tel" class="form-control col-md-12 phone" id="st_phone">
+                            <input name="phone" type="tel" class="form-control col-md-12 phone" id="st_phone">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6" >
                             <label for="exampleFormControlTextarea1">Current Address</label>
-                            <input name="st_cur_st_add" type="text" placeholder="Street Address" class="form-group form-control">
-                            <input name="st_cur_city_add" type="text" placeholder="City/Village" class="form-control form-group">
-                            <input name="st_cur_dis_add" type="text" placeholder="State/District" class="form-control form-group">
+                            <input name="current_address" type="text" placeholder="Street Address" class="form-group form-control">
+                            <input name="" type="text" placeholder="City/Village" class="form-control form-group">
+                            <input name="" type="text" placeholder="State/District" class="form-control form-group">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlTextarea1">Permanent Address</label>
-                            <input name="st_perm_st_add" type="text" placeholder="Street Address" class="form-group form-control">
-                            <input name="st_perm_city_add" type="text" placeholder="City/Village" class="form-control form-group">
-                            <input name="st_perm_dis_add" type="text" placeholder="State/District" class="form-control form-group">
+                            <input name="permanent_address" type="text" placeholder="Street Address" class="form-group form-control">
+                            <input name="" type="text" placeholder="City/Village" class="form-control form-group">
+                            <input name="" type="text" placeholder="State/District" class="form-control form-group">
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class="form-group col-md-6" >
                             <label for="exampleFormControlTextarea1">Medical Information</label>
-                            <textarea name="st_medical_info" rows="3" class="form-control" placeholder="Any medical disability"></textarea>
+                            <textarea name="medical_information" rows="3" class="form-control" placeholder="Any medical disability"></textarea>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlTextarea1">Additional Information</label>
-                            <textarea name="st_add_info" rows="3" class="form-control" placeholder="500 Characters allowed"></textarea>
+                            <textarea name="additional_information" rows="3" class="form-control" placeholder="500 Characters allowed"></textarea>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Employee Type</label>
-                            <select name="st_status" class="form-control" id="exampleFormControlSelect1">
+                            <select name="employee_type" class="form-control" id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="">Faculty</option>
                                 <option value="">Accountant</option>
@@ -141,25 +139,25 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Joining Date</label>
-                            <input name="st_dob" type="date" required pattern="de-m-YYYY" max="2010-12-31" placeholder="dd-mm-yyyy" id="st_dob" class="form-control">
+                            <input name="joining_date" type="date" pattern="de-m-YYYY" placeholder="dd-mm-yyyy" class="form-control">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6" >
                             <label for="exampleInputEmail1">Basic Salary</label>
-                            <input name="st_father_cnic" type="number" class="form-control" placeholder="In Rupees">
+                            <input name="basic_salary" type="number" class="form-control" placeholder="In Rupees">
                         </div>
                         <div class="form-group col-md-6" >
                             <label for="exampleInputEmail1">Bank Account</label>
-                            <input name="st_father_cnic" type="text" class="form-control" placeholder="IBAN Number">
+                            <input name="bank_account" type="text" class="form-control" placeholder="IBAN Number">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Job Status</label>
-                            <select name="st_status" class="form-control" id="exampleFormControlSelect1">
+                            <select name="job_status" class="form-control" id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="">On Job</option>
                                 <option value="">On Vocation</option>
@@ -177,7 +175,7 @@
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <span class="btn btn-default btn-file">
-                                    <span class="btn btn-primary">Choose Photo</span><input name="st_image" type="file" id="imgInp">
+                                    <span class="btn btn-primary">Choose Photo</span><input name="image" type="file" id="imgInp">
                                 </span>
                             </span>
                             <input type="text" class="form-control" readonly hidden>

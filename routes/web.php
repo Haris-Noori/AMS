@@ -29,18 +29,22 @@ Route::get('/admin', 'AdminController@index');
 Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function () {
     Route::get('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::post('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
-    Route::get('/admin/insert', 'AdminController@createAdmin');
-    Route::get('/admin/select', 'AdminController@getAdmins');
     Route::get('/admin/logout', 'AdminController@logout');
     Route::get('/admin/dashboard', 'AdminController@loadDashboard');
+    // admins
+    Route::get('/admin/insert', 'AdminController@createAdmin');
+    Route::get('/admin/select', 'AdminController@getAdmins');
     Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
     Route::post('/addNewAdmin', 'AdminController@addNewAdmin');
     Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
     Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
+    // students
     Route::get('/admin/add-student', 'AdminController@addStudent');
     Route::post('/admin/add-student', 'AdminController@addStudent');
     Route::get('/admin/all_students', 'AdminController@getAllStudentsView');
+    //employees
     Route::get('/admin/add_employee', 'AdminController@getAddEmployeeView');
+    Route::post('/admin/addEmployee', 'AdminController@addEmployee');
 
 });
 
