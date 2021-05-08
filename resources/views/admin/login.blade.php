@@ -31,7 +31,7 @@
 <hr>
 <a href="{{ url('/faculty') }}" class="btn btn-outline-success btn-user btn-block">Login as
     Faculty</a>
-<a href="{{ url('/login') }}" class="btn btn-outline-success btn-user btn-block">Login as Student</a>
+<a href="{{ url('/employee/login') }}" class="btn btn-outline-success btn-user btn-block">Login as Employee</a>
 
 <hr>
 <div class="text-center">
