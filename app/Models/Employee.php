@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Log;
 
+use App\Transformers\EmployeeTransformer;
+
 class Employee extends Model
 {
     /**
@@ -63,7 +65,7 @@ class Employee extends Model
      * Employees Table
      * @return void
      */
-    public static function create(Request $request) {
+    public static function add(Request $request) {
         
         try {
             // create employee
