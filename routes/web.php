@@ -65,6 +65,21 @@ Route::get('/login', function(){
     return view('login');
 });
 
+// Routes for Employee
+//=======================================================================
+Route::get('/employee/login', function(){
+    return view('employee.login');
+});
 
 
+Route::get('/employee/index', function(){
+    return view('employee.index');
+});
 
+Route::get('/employee/dashboard', function(){
+    return view('employee.dashboard');
+});
+
+Route::get('/employee/add_activity', function(){
+    return view('employee.add_activity');
+});
