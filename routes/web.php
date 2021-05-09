@@ -77,3 +77,7 @@ Route::get('/employee/dashboard', function(){
 Route::get('/employee/add_activity', function(){
     return view('employee.add_activity');
 });
+
+Route::get('/employee/all_activity', function(){
+    return view('employee.all_activity');
+});
