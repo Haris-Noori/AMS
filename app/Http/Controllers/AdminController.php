@@ -200,7 +200,33 @@ class AdminController extends Controller
             } else {
                 Student::register($request);
             }
+                       
+            $total_std = Student::count();  //returns number of data in database
+            $std_id = $total_std+1;          //generating next roll number
             
+            $year = date('Y');
+            $year = substr($year,-2);      //last two number
+
+            $month = date('m');             //current month
+
+            if($std_id < 10){
+                $new_std_id = $year.$month.'-000'.$std_id;
+            }
+            elseif($std_id > 10 and $std_id < 99){
+                $new_std_id = $year.$month.'-00'.$std_id;
+            }
+            elseif($std_id > 100 and $std_id < 999){
+                $new_std_id = $year.$month.'-0'.$std_id;
+            }
+            else{
+                $new_std_id = $year.$month.'-'.$std_id;
+            }
+            
+            print_r($new_std_id);
+
+            //return ;
+
+        
         }
     }
 }
