@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Middleware\AdminAuthGuard;
 use App\Http\Middleware\XSS;
 /*
@@ -26,6 +27,7 @@ Route::get('/login', function () {
 // Routes for admin
 //======================================================================
 Route::get('/admin', 'AdminController@index');
+
 Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function () {
     Route::get('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::post('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
@@ -71,6 +73,7 @@ Route::get('/employee/login', function(){
     return view('employee.login');
 });
 
+Route::post('/employee/login', 'EmployeeController@login');
 
 Route::get('/employee/index', function(){
     return view('employee.index');

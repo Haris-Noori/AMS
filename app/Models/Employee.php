@@ -52,6 +52,13 @@ class Employee extends Model
         'job_status'
     ];
 
+    public static function login(String $name, String $pass) {
+        if ($name == 'employee' && $pass = '1234' ) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * @param request Illuminate\Http\Request
      * Recieves form data and makes entry in

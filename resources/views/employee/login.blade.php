@@ -4,26 +4,24 @@
 
 <h2 class="h4 text-gray-900 mb-4">Employee Login</h2>
 </div>
-<form class="user" action="" method="POST">
+<form class="user" action="{{ url('/employee/login') }}" method="POST">
+    @csrf
     <div class="form-group">
-        <input name="admin_name" type="text" required class="form-control form-control-user" id="exampleInputEmail"
+        <input name="emp_name" type="text" required class="form-control form-control-user" id="exampleInputEmail"
             aria-describedby="emailHelp" placeholder="Enter Your Name">
     </div>
     <div class="form-group">
-        <input name="admin_pass" type="password" required class="form-control form-control-user"
+        <input name="emp_pass" type="password" required class="form-control form-control-user"
             id="exampleInputPassword" placeholder="Password">
     </div>
     <div class="form-group">
-        <?php
-            if(isset($_GET["Message"]))
-            {
-                echo "<div class='col-sm-12 alert alert-danger'>";
-                echo $_GET["Message"];
-                echo "</div>";
-            }
-        ?>
+        @error('error')
+            <div class='col-sm-12 alert alert-danger'>
+                {{ $message }}
+            </div>
+        @enderror
     </div>
-    <a href= "{{ url('/employee/index')}}"><button class="btn btn-primary btn-user btn-block" type="submit">Login</button></a>
+    <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
 </form>
 <hr>
 <a href="{{ url('/faculty/login') }}" class="btn btn-outline-success btn-user btn-block">Login as
