@@ -31,7 +31,7 @@ class Employee extends Model
         // general info
         'first_name', 
         'last_name',
-        'father_name'
+        'father_name',
         'gender', 
         'date_of_birth', 
         'blood_group', 
@@ -49,6 +49,13 @@ class Employee extends Model
         'bank_account',
         'job_status'
     ];
+
+    public static function login(String $name, String $pass) {
+        if ($name == 'employee' && $pass = '1234' ) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * @param request Illuminate\Http\Request
