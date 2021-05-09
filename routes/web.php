@@ -71,7 +71,6 @@ Route::get('/employee/login', function(){
     return view('employee.login');
 });
 
-
 Route::get('/employee/index', function(){
     return view('employee.index');
 });
