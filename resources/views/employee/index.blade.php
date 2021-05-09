@@ -1,4 +1,4 @@
-<?php use \App\Http\Controllers\AdminController; ?>
+<?php use \App\Http\Controllers\EmployeeController; ?>
 
 
 <!DOCTYPE html>
@@ -60,68 +60,67 @@
       </div>
 
       <!-- Nav Item - Admins Collapse Menu -->
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <i class="fas fa-fw fa-user-shield"></i>
-              <span>Admins</span>
-          </a>
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Admins</h6>
-                  <a class="collapse-item" href="{{ url('/admin/all_admins') }}">All Admins</a>
-                  <a class="collapse-item" href="{{ url('/admin/add_admin') }}">Add Admin</a>
-              </div>
-          </div>
-      </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="fas fa-fw fa-user-shield"></i>
+                        <span>Activities</span>
+                    </a>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ url('/admin/all_admins') }}">All Activities</a>
+                            <a class="collapse-item" href="{{ url('/employee/add_activity') }}">Add Activity</a>
+                        </div>
+                    </div>
+                </li>
  
-      <!-- Nav Item - Employees Collapse Menu -->
+
+      <!-- Nav Item - Students Collapse Menu
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-user-graduate"></i>
+                <span>Students</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="#">All Students</a>
+                    <a class="collapse-item" href="{{ url('/admin/add-student') }}">Add Student</a>
+                </div>
+            </div>
+        </li> -->
+
+        <!-- Nav Item - Faculty Collapse Menu -->
+        <!-- <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                <span>Faculty</span>
+            </a>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/AMS/src/admin/faculty/all_faculty.php">All Faculty Members</a>
+                    <a class="collapse-item" href="faculty/add_faculty.php">Add New Faculty</a>
+                </div>
+            </div>
+        </li> -->
+
+      <!-- Nav Item - Employees Collapse Menu -->
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-user-friends"></i>
           <span>Employees</span>
         </a>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Manage Employees</h6>
-            <a class="collapse-item" href="#">All Employees</a>
-            <a class="collapse-item" href="{{ url('/admin/add_employee') }}">Add Employee</a>
-            <a class="collapse-item" href="#">Employee Report</a>
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-color.html">Colors</a>
+            <a class="collapse-item" href="utilities-border.html">Borders</a>
+            <a class="collapse-item" href="utilities-animation.html">Animations</a>
+            <a class="collapse-item" href="utilities-other.html">Other</a>
           </div>
         </div>
-      </li>
-
-      <!-- Nav Item - Students Collapse Menu -->
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              <i class="fas fa-fw fa-user-graduate"></i>
-              <span>Students</span>
-          </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Students</h6>
-                  <a class="collapse-item" href="{{ url('/admin/all_students') }}">All Students</a>
-                  <a class="collapse-item" href="{{ url('/admin/add-student') }}">Add Student</a>
-              </div>
-          </div>
-      </li>
-
-      <!-- Nav Item - Faculty Collapse Menu -->
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-              <i class="fas fa-fw fa-chalkboard-teacher"></i>
-              <span>Faculty</span>
-          </a>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Faculty</h6>  
-                  <a class="collapse-item" href="/AMS/src/admin/faculty/all_faculty.php">All Faculty Members</a>
-                  <a class="collapse-item" href="faculty/add_faculty.php">Add New Faculty</a>
-              </div>
-          </div>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Expenses Collapse Menu -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
             <i class="fas fa-fw fa-money-bill"></i>
             <span>Expenses</span>
@@ -131,8 +130,8 @@
                 <a class="collapse-item" href="#">All Students</a>
                 <a class="collapse-item" href="#">Add Student</a>
             </div>
-        </div>
-      </li>
+        </div>k
+    </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -304,7 +303,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{$session_admin_name}} </span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> haider </span>
                 <img class="img-profile rounded-circle" src="AdMINIMAGE" width="100">
               </a>
               <!-- Dropdown - User Information -->

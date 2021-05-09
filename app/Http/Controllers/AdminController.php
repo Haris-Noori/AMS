@@ -11,6 +11,7 @@ use Log;
 use App\Models\Admin;
 use App\Models\Student;
 use App\Models\StudentGuardian;
+use App\Models\Employee;
 
 
 class AdminController extends Controller
@@ -23,7 +24,7 @@ class AdminController extends Controller
             // $pageData = $this->getAdminSessionData();
             return redirect('/admin/dashboard');
         } else {
-            // user is not logged ins
+            // user is not logged in
             return redirect('/admin/login');
         }
     }
@@ -187,7 +188,7 @@ class AdminController extends Controller
                 'st_gender' => 'required',
                 'st_dob' => 'required | date',
                 'st_blood' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
-                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal, Genious & Beautiful Voice',
+                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal,Genious & Beautiful Voice',
                 'st_cur_st_add' => 'required'
             ]);
 
@@ -228,5 +229,47 @@ class AdminController extends Controller
 
         
         }
+    }
+
+    /**
+     * Returns the All Students View
+     */
+    public function getAllStudentsView() {
+        $pageData = [
+            'students' => $this->getStudents(),
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_students', $pageData);
+    }
+
+    /**
+     * Get Students From Database
+     */
+    public function getStudents()
+    {
+        $students = DB::select('select * from students');
+        return $students;
+    }
+
+    /***************************************************************************************
+     * Functions for Employees
+    *************************************************************************************** */
+
+    public function getAddEmployeeView()
+    {
+        return view('admin.add_employee', $this->getAdminSessionData());
+    }
+
+    public function addEmployee(Request $request)
+    {
+        // return $request->all();
+        $request->validate([
+            'first_name' => 'required | alpha',
+            'last_name' => 'required | alpha',
+            'gender' => 'required | in:[N/A,male,female]',
+            'blood_group' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
+        ]);
+
+        Employee::add($request);
     }
 }

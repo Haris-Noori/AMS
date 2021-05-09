@@ -40,7 +40,7 @@
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Gender</label>
                             <select name="st_gender" required class="form-control" required id="exampleFormControlSelect1">
-                                <option value="Not Specified">Not Specified</option>
+                                <option value="N/A">Not Specified</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
