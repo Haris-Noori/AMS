@@ -47,8 +47,8 @@
                             <label for="exampleFormControlSelect1">Gender</label>
                             <select name="gender" class="form-control" required id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>

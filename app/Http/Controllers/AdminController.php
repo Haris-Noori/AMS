@@ -244,6 +244,6 @@ class AdminController extends Controller
             'blood_group' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
         ]);
 
-        Employee::create($request);
+        Employee::add($request);
     }
 }
