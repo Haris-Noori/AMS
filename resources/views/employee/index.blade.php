@@ -67,7 +67,8 @@
                     </a>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ url('/admin/all_admins') }}">All Activities</a>
+                            <h6 class="collapse-header">Manage Activities</h6>
+                            <a class="collapse-item" href="{{ url('/employee/all_activity') }}">All Activities</a>
                             <a class="collapse-item" href="{{ url('/employee/add_activity') }}">Add Activity</a>
                         </div>
                     </div>
