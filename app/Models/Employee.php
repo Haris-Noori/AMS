@@ -71,6 +71,13 @@ class Employee extends Model
         }
     }
 
+    /**
+     * id of current employee
+     */
+    public static function id() {
+        return session('session_employee_id');
+    }
+
     public static function getEmployeeSessionData(){
        
        return $data = [
