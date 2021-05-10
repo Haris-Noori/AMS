@@ -18,8 +18,10 @@
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Select Activity</label>
                             <select name="type" class="form-control" id="exampleFormControlSelect1">
-                                <option value="normal">Yes</option>
-                                <option value="super">No</option>
+                                <option value="normal">Attending Meeting</option>
+                                <option value="super">Gardening</option>
+                                <option value="super">Cleaning Washrooms</option>
+                                <option value="super">Had a break</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
