@@ -74,7 +74,10 @@ class Student extends Model
         'ref_name',
         'ref_num',
         'image',
-        'document_path'
+        'document_path',
+
+        // rollnumber
+        'rollnumber'
     ];
 
     /**

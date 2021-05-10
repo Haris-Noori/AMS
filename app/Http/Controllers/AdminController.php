@@ -24,7 +24,7 @@ class AdminController extends Controller
             // $pageData = $this->getAdminSessionData();
             return redirect('/admin/dashboard');
         } else {
-            // user is not logged in
+            // user is not logged ins
             return redirect('/admin/login');
         }
     }
@@ -188,7 +188,7 @@ class AdminController extends Controller
                 'st_gender' => 'required',
                 'st_dob' => 'required | date',
                 'st_blood' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
-                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal,Genious & Beautiful Voice',
+                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal, Genious & Beautiful Voice',
                 'st_cur_st_add' => 'required'
             ]);
 
@@ -199,51 +199,36 @@ class AdminController extends Controller
                                  $request->input('st_father_name'))) {
                 echo "Student not unique";
             } else {
-                Student::register($request);
+
+                $total_std = Student::count();  //returns number of data in database
+                $std_id = $total_std+1;          //generating next roll number
+                
+                $year = date('Y');          //2021
+                $year = substr($year,-2);      //last two number
+
+                $month = date('m');             //current month 05 
+
+                if($std_id < 10){
+                    $new_std_id = $year.$month.'-000'.$std_id;
+                }
+                elseif($std_id > 10 and $std_id < 99){
+                    $new_std_id = $year.$month.'-00'.$std_id;
+                }
+                elseif($std_id > 100 and $std_id < 999){
+                    $new_std_id = $year.$month.'-0'.$std_id;
+                }
+                else{
+                    $new_std_id = $year.$month.'-'.$std_id;
+                }
+                
+                //$request->request->add(['rollnumber' => $new_std_id]);
+                //print_r($request);
+                Student::register($request->all(),['rollnumber'=> $new_std_id]);
+                
             }
-            
+        
         }
     }
 
-    /**
-     * Returns the All Students View
-     */
-    public function getAllStudentsView() {
-        $pageData = [
-            'students' => $this->getStudents(),
-        ];
-        $pageData = array_merge($pageData, $this->getAdminSessionData());
-        return view('admin.all_students', $pageData);
-    }
-
-    /**
-     * Get Students From Database
-     */
-    public function getStudents()
-    {
-        $students = DB::select('select * from students');
-        return $students;
-    }
-
-    /***************************************************************************************
-     * Functions for Employees
-    *************************************************************************************** */
-
-    public function getAddEmployeeView()
-    {
-        return view('admin.add_employee', $this->getAdminSessionData());
-    }
-
-    public function addEmployee(Request $request)
-    {
-        // return $request->all();
-        $request->validate([
-            'first_name' => 'required | alpha',
-            'last_name' => 'required | alpha',
-            'gender' => 'required | in:[N/A,male,female]',
-            'blood_group' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
-        ]);
-
-        Employee::add($request);
-    }
+    
 }
