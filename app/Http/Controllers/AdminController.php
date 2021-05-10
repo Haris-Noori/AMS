@@ -253,14 +253,16 @@ class AdminController extends Controller
      * Functions for Donations
     *************************************************************************************** */
 
-
-    public function addDonation()
+    public function getAddDonationView()
     {
-        // return $request->all();
-      
-
         return view('admin.add_donation', $this->getAdminSessionData());
     }
+    public function getAllDonationView()
+    {
+        
+        return view('admin.all_donation', $this->getAdminSessionData());
+    }
+
 
 
 

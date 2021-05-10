@@ -137,12 +137,12 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDonations" aria-expanded="true" aria-controls="collapseDonations">
-            <i class="fas fa-fw fa-money-bill"></i>
+            <i class="fas fa-fw fa-donate"></i>
             <span>Donations</span>
         </a>
         <div id="collapseDonations" class="collapse" aria-labelledby="headingDonations" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">All Donations</a>
+                <a class="collapse-item" href="{{ url('/admin/all-donation') }}">All Donations</a>
                 <a class="collapse-item" href="{{ url('/admin/add-donation') }}">Add Donations</a>
             </div>
         </div>
