@@ -11,14 +11,14 @@
             aria-describedby="emailHelp" placeholder="Enter Your Name">
     </div>
     <div class="form-group">
-        <input name="emp_pass" type="password" required class="form-control form-control-user"
-            id="exampleInputPassword" placeholder="Password">
+        <input name="emp_pass" type="password" required class="form-control form-control-user" id="exampleInputPassword"
+            placeholder="Password">
     </div>
     <div class="form-group">
         @error('error')
-            <div class='col-sm-12 alert alert-danger'>
-                {{ $message }}
-            </div>
+        <div class='col-sm-12 alert alert-danger'>
+            {{ $message }}
+        </div>
         @enderror
     </div>
     <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
