@@ -64,8 +64,8 @@ class Employee extends Model
         else{
             // //employee exist
             session(['session_employee_id' => $employee->id]);
-            session(['session_employee_name' => $employee->name]);
-            session(['session_employee_pass'=> $employee->password]);
+            session(['session_employee_name' => $employee->first_name]);
+            session(['session_employee_password'=> $employee->password]);
             return TRUE;
             
         }
@@ -74,9 +74,9 @@ class Employee extends Model
     public static function getEmployeeSessionData(){
        
        return $data = [
-        'session_employee_id' => session('employee->id'),
-        'session_employee_name' => session('employee->name'),
-        'session_employee_pass'=> session('employee->password')
+        'session_employee_id' => session('session_employee_id'),
+        'session_employee_name' => session('session_employee_name'),
+        'session_employee_pass'=> session('session_employee_password')
        ];
     }
 

@@ -21,9 +21,10 @@ class EmployeeController extends Controller
                 // return view('employee.login');//->withErrors([ 'error' => 'invaild credentials' ]);
                 return back()->withErrors([ 'error' => 'invaild credentials' ]);
             } else {
-                //$session_data = Employee::getEmployeeSessionData();
-                //print_r($session_data);
-                return view('/employee/index',Employee::getEmployeeSessionData());
+                
+                // return Employee::getEmployeeSessionData();  
+                return view('/employee/dashboard', Employee::getEmployeeSessionData());
+
             }
         } else {
             log::debug("Hey");
