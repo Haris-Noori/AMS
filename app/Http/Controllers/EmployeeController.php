@@ -31,4 +31,14 @@ class EmployeeController extends Controller
             return "Not post";
         }
     }
+
+    public function getAddActivityView()
+    {
+        return view('employee.add_activity', Employee::getEmployeeSessionData());
+    }
+
+    public function getAllActivityView()
+    {
+        return view('employee.all_activity', Employee::getEmployeeSessionData());
+    }
 }
