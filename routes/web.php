@@ -52,7 +52,8 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::post('/admin/addEmployee', 'AdminController@addEmployee');
 
     //Donations
-    Route::get('/admin/add-donation', 'AdminController@addDonation');
+    Route::get('/admin/add-donation', 'AdminController@getAddDonationView');
+    Route::get('/admin/all-donation', 'AdminController@getAllDonationView');
     
 });
 
