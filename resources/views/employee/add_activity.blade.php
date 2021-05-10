@@ -10,18 +10,18 @@
     <div class="col-md-12">
         <h4>Fill activity form</h4>
 
-        <form action="{{ url('/addNewAdmin') }}" method="POST" class="col-md-10 mt-1">
+        <form action="{{ url('employee/add-activity') }}" method="POST" class="col-md-10 mt-1">
         @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Select Activity</label>
-                            <select name="type" class="form-control" id="exampleFormControlSelect1">
-                                <option value="normal">Attending Meeting</option>
-                                <option value="super">Gardening</option>
-                                <option value="super">Cleaning Washrooms</option>
-                                <option value="super">Had a break</option>
+                            <select name="activity_type" class="form-control" id="exampleFormControlSelect1">
+                                <option value="Attending Meeting">Attending Meeting</option>
+                                <option value="Gardening">Gardening</option>
+                                <option value="Cleaning Washrooms">Cleaning Washrooms</option>
+                                <option value="Had a break">Had a break</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
@@ -34,11 +34,11 @@
                        
                         <div class="form-group col-md-6">
                             <label for="StartTime">Start time of activity</label>
-                            <input name="time" type="time" class="form-control" id="StartTime" placeholder="Start Time">
+                            <input name="begin_time" type="time" class="form-control" id="StartTime" placeholder="Start Time">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="EndTime">End time of activity</label>
-                            <input name="time" type="time" class="form-control" id="EndTime" placeholder="End Time">
+                            <input name="end_time" type="time" class="form-control" id="EndTime" placeholder="End Time">
                         </div>
                     </div>
                    
