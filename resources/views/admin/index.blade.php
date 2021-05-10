@@ -143,7 +143,7 @@
         <div id="collapseDonations" class="collapse" aria-labelledby="headingDonations" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">All Donations</a>
-                <a class="collapse-item" href="{{ url('/admin/add_donation') }}">Add Donations</a>
+                <a class="collapse-item" href="{{ url('/admin/add-donation') }}">Add Donations</a>
             </div>
         </div>
       </li>
