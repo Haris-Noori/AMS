@@ -36,9 +36,6 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::post('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::get('/admin/logout', 'AdminController@logout');
     Route::get('/admin/dashboard', 'AdminController@loadDashboard');
-    
-    
-
     // admins
     Route::get('/admin/insert', 'AdminController@createAdmin');
     Route::get('/admin/select', 'AdminController@getAdmins');
@@ -46,8 +43,6 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::post('/addNewAdmin', 'AdminController@addNewAdmin');
     Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
     Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
-
-
     // students
     Route::get('/admin/add-student', 'AdminController@addStudent');
     Route::post('/admin/add-student', 'AdminController@addStudent');
@@ -58,10 +53,7 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
 
     //Donations
     Route::get('/admin/add-donation', 'AdminController@addDonation');
-
     
-    
-
 });
 
 // Routes for Faculty
@@ -97,11 +89,5 @@ Route::get('/employee/dashboard', function(){
     return view('employee.dashboard');
 });
 
-Route::get('/employee/add_activity', function(){
-    return view('employee.add_activity');
-});
-
-Route::get('/employee/all_activity', function(){
-    return view('employee.all_activity');
-});
-
+Route::get('/employee/add-activity', 'EmployeeController@getAddActivityView');
+Route::get('/employee/all-activity', 'EmployeeController@getAllActivityView');
