@@ -17,8 +17,8 @@ class CreateActivitiesTable extends Migration
             $table->id();
             $table->string('activity_name');
             $table->string('activity_description');
-            $table->datetime('from');
-            $table->datetime('to');
+            $table->time('from');
+            $table->time('to');
             $table->integer('employee_id')->unsigned();
             $table->timestamps();
         });
