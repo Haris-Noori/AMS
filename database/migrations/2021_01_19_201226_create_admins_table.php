@@ -20,7 +20,6 @@ class CreateAdminsTable extends Migration
             $table->string('type');
             $table->timestamps();
         });
-        DB::table('admins')->insert(array('admin_name'=>'admin','admin_pass'=>'admin','type'=>'super_admin'));
     }
 
     /**
