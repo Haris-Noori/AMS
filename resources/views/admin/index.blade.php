@@ -83,8 +83,8 @@
         <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage Employees</h6>
-            <a class="collapse-item" href="#">All Employees</a>
-            <a class="collapse-item" href="{{ url('/admin/add_employee') }}">Add Employee</a>
+            <a class="collapse-item" href="{{ url('/admin/all-employees') }}">All Employees</a>
+            <a class="collapse-item" href="{{ url('/admin/add-employee') }}">Add Employee</a>
             <a class="collapse-item" href="#">Employee Report</a>
           </div>
         </div>
@@ -114,7 +114,7 @@
           <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage Faculty</h6>  
-                  <a class="collapse-item" href="/AMS/src/admin/faculty/all_faculty.php">All Faculty Members</a>
+                  <a class="collapse-item" href="/AMS/src/admin/faculty/all_faculty.php">All Faculty</a>
                   <a class="collapse-item" href="faculty/add_faculty.php">Add New Faculty</a>
               </div>
           </div>
@@ -128,8 +128,9 @@
         </a>
         <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">All Students</a>
-                <a class="collapse-item" href="#">Add Student</a>
+              <h6 class="collapse-header">Manage Expenses</h6>
+                <a class="collapse-item" href="#"></a>
+                <a class="collapse-item" href="#">Add Expense</a>
             </div>
         </div>
       </li>
@@ -142,6 +143,7 @@
         </a>
         <div id="collapseDonations" class="collapse" aria-labelledby="headingDonations" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Manage Donations</h6>
                 <a class="collapse-item" href="{{ url('/admin/all-donation') }}">All Donations</a>
                 <a class="collapse-item" href="{{ url('/admin/add-donation') }}">Add Donations</a>
             </div>

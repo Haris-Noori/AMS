@@ -249,10 +249,26 @@ class AdminController extends Controller
 
         Employee::add($request);
     }
-/***************************************************************************************
+
+    public function getEmployees()
+    {
+        $employees = DB::select('select * from employees');
+        return $employees;
+    }
+
+    public function allEmployeesView()
+    {
+        $pageData = [
+            'employees' => $this->getEmployees(),
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_employees', $pageData);
+    }
+    
+    
+    /***************************************************************************************
      * Functions for Donations
     *************************************************************************************** */
-
     public function getAddDonationView()
     {
         return view('admin.add_donation', $this->getAdminSessionData());
