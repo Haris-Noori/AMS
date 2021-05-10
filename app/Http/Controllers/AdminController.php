@@ -249,6 +249,24 @@ class AdminController extends Controller
 
         Employee::add($request);
     }
+/***************************************************************************************
+     * Functions for Donations
+    *************************************************************************************** */
 
-    
+    public function getAddDonationView()
+    {
+        return view('admin.add_donation', $this->getAdminSessionData());
+    }
+    public function getAllDonationView()
+    {
+        
+        return view('admin.all_donation', $this->getAdminSessionData());
+    }
+
+
+
+
+
 }
+
+
