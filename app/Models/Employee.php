@@ -52,12 +52,35 @@ class Employee extends Model
         'job_status'
     ];
 
+
     public static function login(String $name, String $pass) {
-        if ($name == 'employee' && $pass = '1234' ) {
-            return true;
+        
+        $employee = Employee::where('first_name', '=', $name)->where('password', '=', $pass)->first();
+        //print_r($employee);
+        if ($employee === null ) {
+            //employee does not exist
+            return FALSE;
         }
-        return false;
+        else{
+            // //employee exist
+            session(['session_employee_id' => $employee->id]);
+            session(['session_employee_name' => $employee->first_name]);
+            session(['session_employee_password'=> $employee->password]);
+            return TRUE;
+            
+        }
     }
+
+    public static function getEmployeeSessionData(){
+       
+       return $data = [
+        'session_employee_id' => session('session_employee_id'),
+        'session_employee_name' => session('session_employee_name'),
+        'session_employee_pass'=> session('session_employee_password')
+       ];
+    }
+
+
 
     /**
      * @param request Illuminate\Http\Request

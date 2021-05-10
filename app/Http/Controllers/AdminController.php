@@ -24,7 +24,7 @@ class AdminController extends Controller
             // $pageData = $this->getAdminSessionData();
             return redirect('/admin/dashboard');
         } else {
-            // user is not logged in
+            // user is not logged ins
             return redirect('/admin/login');
         }
     }
@@ -199,9 +199,12 @@ class AdminController extends Controller
                                  $request->input('st_father_name'))) {
                 echo "Student not unique";
             } else {
+                //$request->request->add(['rollnumber' => $new_std_id]);
+                //print_r($request);
                 Student::register($request);
+                
             }
-            
+        
         }
     }
 
@@ -240,10 +243,12 @@ class AdminController extends Controller
         $request->validate([
             'first_name' => 'required | alpha',
             'last_name' => 'required | alpha',
-            'gender' => 'required | in:[N/A,male,female]',
+            'gender' => 'required | in:[N/A,Male,Female]',
             'blood_group' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
         ]);
 
         Employee::add($request);
     }
+
+    
 }

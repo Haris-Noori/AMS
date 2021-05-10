@@ -134,6 +134,20 @@
         </div>
       </li>
 
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDonations" aria-expanded="true" aria-controls="collapseDonations">
+            <i class="fas fa-fw fa-money-bill"></i>
+            <span>Donations</span>
+        </a>
+        <div id="collapseDonations" class="collapse" aria-labelledby="headingDonations" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="">All Donations</a>
+                <a class="collapse-item" href="{{ url('/admin/add_donation') }}">Add Donations</a>
+            </div>
+        </div>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
