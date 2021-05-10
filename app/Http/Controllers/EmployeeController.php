@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Activity;
 use Log;
 
 class EmployeeController extends Controller
@@ -40,5 +41,21 @@ class EmployeeController extends Controller
     public function getAllActivityView()
     {
         return view('employee.all_activity', Employee::getEmployeeSessionData());
+    }
+
+    public function addActivity(Request $request) {
+        if( $request->isMethod('post') ) {
+            // print_r($request->all());
+            $activity = [
+                'activity_name' => $request->activity_type,
+                'activity_description' => $request->description,
+                'from' => $request->begin_time, 
+                'to' => $request->end_time,
+                'employee_id' => Employee::id()
+            ];
+            // print_r($activity);
+            Activity::create($activity);
+            return back();
+        }
     }
 }
