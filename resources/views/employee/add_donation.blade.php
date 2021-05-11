@@ -34,7 +34,7 @@
                        
                         <div class="form-group col-md-6">
                             <label for="StartTime">Upload picture(optional)</label>
-                            <input name="picture" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
+                            <input name="" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
                         </div>
                         
                     </div>

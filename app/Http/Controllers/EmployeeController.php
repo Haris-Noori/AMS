@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Activity;
+use App\Models\Donation;
 use Log;
 
 class EmployeeController extends Controller
@@ -74,8 +75,27 @@ class EmployeeController extends Controller
         return view('employee.add_donation', Employee::getEmployeeSessionData());
     }
 
+    public function allDonations()
+    {
+        return view('employee.all_donations', 
+            array_merge(Employee::getEmployeeSessionData(),
+                ['donations' => Donation::where('employee_id', Employee::id())->orderBy('created_at', 'desc')->get()]
+            )
+        );
+    }
+
     public function addDonation(Request $request)
     {
-        return $request->all();
+        if($request->isMethod('post'))
+        {
+            $donation = [
+                'box_name' => $request->box_name,
+                'amount_collected' => $request->amount_collected,
+                'employee_id' => Employee::id()
+            ];
+            Donation::create($donation);
+            return back();
+        }
     }
+
 }

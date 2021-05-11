@@ -25,7 +25,7 @@ Route::get('/login', function () {
 });
 
 
-// Routes for admin
+// Routes for Admin
 //======================================================================
 Route::get('/admin', 'AdminController@index');
 
@@ -96,3 +96,7 @@ Route::post('/employee/add-activity', 'EmployeeController@addActivity');
 Route::get('/employee/all-activity', 'EmployeeController@getAllActivityView');
 Route::get('/employee/logout', 'EmployeeController@logout');
 Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
+Route::post('/employee/add-donation', 'EmployeeController@addDonation');
+ROute::get('/employee/all-donations', 'EmployeeController@allDonations');
+
+
