@@ -80,8 +80,7 @@ class EmployeeController extends Controller
         return view('employee.all_donations', 
             array_merge(Employee::getEmployeeSessionData(),
                 ['donations' => Donation::where('employee_id', Employee::id())->orderBy('created_at', 'desc')->get()]
-            )
-        );
+        ));
     }
 
     public function addDonation(Request $request)
