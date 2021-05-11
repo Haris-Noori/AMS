@@ -10,10 +10,11 @@
     <div class="col-md-12">
         <h4>Fill Donation Box Details</h4>
 
-        <form action="{{ url('/addNewDonation') }}" method="POST" class="col-md-10 mt-1">
+        <form action="{{ url('/adm') }}" method="POST" class="col-md-10 mt-1">
         @csrf
         <div class="row">
                 <div class="col-md-12">
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Donation Box name</label>
@@ -24,10 +25,8 @@
                             <label for="ActivityDescription">Reference Name</label>
                             <input name="" type="text" class="form-control" id="ActivityDescription" placeholder="Person Name">
                         </div>
-                        
-
-
                     </div>
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Collector</label>
@@ -48,15 +47,8 @@
                                 
                             </select>
                         </div>
-
-
-
-
                     </div>  
 
-
-
-                   
                     <div class="row">
                        <div class="form-group col-md-4">
                             <label for="ActivityDescription">Location Name</label>
@@ -70,10 +62,8 @@
                             <label for="ActivityDescription">City</label>
                             <input name="" type="text" class="form-control" id="ActivityDescription" placeholder="Mandi Sadiq Gunj...">
                         </div>
-
                     </div>
-                    
-                    
+                       
                 </div>
             </div>
             
