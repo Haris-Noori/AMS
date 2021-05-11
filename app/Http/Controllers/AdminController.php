@@ -197,12 +197,13 @@ class AdminController extends Controller
             if(!Student::isUnique($request->input('st_first_name'), 
                                  $request->input('st_last_name'), 
                                  $request->input('st_father_name'))) {
-                echo "Student not unique";
+                // echo "Student not unique";
+                return back()->withErrors(['error' => "Student is not unique"]);
             } else {
                 //$request->request->add(['rollnumber' => $new_std_id]);
                 //print_r($request);
                 Student::register($request);
-                
+                return back();
             }
         
         }
@@ -248,6 +249,8 @@ class AdminController extends Controller
         ]);
 
         Employee::add($request);
+
+        return back();
     }
 
     public function getEmployees()
