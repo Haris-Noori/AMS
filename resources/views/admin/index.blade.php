@@ -85,7 +85,7 @@
             <h6 class="collapse-header">Manage Employees</h6>
             <a class="collapse-item" href="{{ url('/admin/all-employees') }}">All Employees</a>
             <a class="collapse-item" href="{{ url('/admin/add-employee') }}">Add Employee</a>
-            <a class="collapse-item" href="#">Employee Report</a>
+            <a class="collapse-item" href="{{ url('/admin/employees-activities') }}">Employees Activities</a>
           </div>
         </div>
       </li>
@@ -120,22 +120,7 @@
           </div>
       </li>
 
-      <!-- Nav Item - Expenses Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
-            <i class="fas fa-fw fa-money-bill"></i>
-            <span>Expenses</span>
-        </a>
-        <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Manage Expenses</h6>
-                <a class="collapse-item" href="#"></a>
-                <a class="collapse-item" href="#">Add Expense</a>
-            </div>
-        </div>
-      </li>
-
-
+      <!-- Nav Item - E Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDonations" aria-expanded="true" aria-controls="collapseDonations">
             <i class="fas fa-fw fa-donate"></i>

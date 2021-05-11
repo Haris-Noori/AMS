@@ -12,6 +12,7 @@ use App\Models\Admin;
 use App\Models\Student;
 use App\Models\StudentGuardian;
 use App\Models\Employee;
+use App\Models\Activity;
 use App\Models\DonationBox;
 use App\Models\Donation;
 
@@ -310,12 +311,16 @@ class AdminController extends Controller
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_donations', $pageData);
-
-        // $donations = Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.image_path', 'employees.first_name')->join('employees', 'employees.id', '=', 'donations.employee_id')->orderBy('donations.created_at', 'desc')->get();
-        // return $donations;
     }
 
-
+    public function employeesActivities()
+    {
+        $pageData = [
+            'activities' => Activity::select('activities.id', 'activities.activity_name', 'activities.activity_description', 'activities.from', 'activities.to', 'activities.created_at', 'employees.first_name')->join('employees', 'employees.id', '=', 'activities.employee_id')->orderBy('activities.created_at', 'desc')->get()
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.employees_activities', $pageData);
+    }
 
 
 }
