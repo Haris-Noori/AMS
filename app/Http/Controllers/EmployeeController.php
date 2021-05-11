@@ -40,7 +40,9 @@ class EmployeeController extends Controller
 
     public function getAllActivityView()
     {
-        return view('employee.all_activity', Employee::getEmployeeSessionData());
+
+        return view('employee.all_activity', array_merge(Employee::getEmployeeSessionData(), 
+                [ 'activities' => Activity::where('employee_id', Employee::id())->orderBy('created_at', 'desc')->get()] ));
     }
 
     public function addActivity(Request $request) {
