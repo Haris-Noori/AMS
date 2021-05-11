@@ -12,6 +12,7 @@ use App\Models\Admin;
 use App\Models\Student;
 use App\Models\StudentGuardian;
 use App\Models\Employee;
+use App\Models\DonationBox;
 
 
 class AdminController extends Controller
@@ -272,16 +273,35 @@ class AdminController extends Controller
     /***************************************************************************************
      * Functions for Donations
     *************************************************************************************** */
-    public function getAddDonationView()
+    public function addDonationBoxView()
     {
-        return view('admin.add_donation', $this->getAdminSessionData());
-    }
-    public function getAllDonationView()
-    {
-        
-        return view('admin.all_donation', $this->getAdminSessionData());
+        return view('admin.add_donation_box', $this->getAdminSessionData());
     }
 
+    public function getAllDonationBoxes()
+    {
+        $pageData = [
+            'donation_boxes' => DonationBox::all()
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_donation_boxes', $pageData);
+    }
+
+    public function addDonationBox(Request $request)
+    {
+        // return $request->all();
+        $donation_box = [
+            'box_name' => $request->box_name,
+            'reference' => $request->reference,
+            'collector' => $request->collector,
+            'frequency' => $request->frequency,
+            'location_name' => $request->location_name,
+            'address' => $request->address,
+            'city' => $request->city
+        ];
+        DonationBox::create($donation_box);
+        return back();
+    }
 
 
 

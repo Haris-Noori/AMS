@@ -51,10 +51,10 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/add-employee', 'AdminController@getAddEmployeeView');
     Route::post('/admin/addEmployee', 'AdminController@addEmployee');
     Route::get('/admin/all-employees', 'AdminController@allEmployeesView');
-
     //Donations
-    Route::get('/admin/add-donation', 'AdminController@getAddDonationView');
-    Route::get('/admin/all-donation', 'AdminController@getAllDonationView');
+    Route::get('/admin/add-donation-box', 'AdminController@addDonationBoxView');
+    Route::post('/admin/add-donation-box', 'AdminController@addDonationBox');
+    Route::get('/admin/all-donation-boxes', 'AdminController@getAllDonationBoxes');
     
 });
 
@@ -96,4 +96,3 @@ Route::post('/employee/add-activity', 'EmployeeController@addActivity');
 Route::get('/employee/all-activity', 'EmployeeController@getAllActivityView');
 Route::get('/employee/logout', 'EmployeeController@logout');
 Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
-Route::post('/employee/add-donation', 'EmployeeController@addDonation');
