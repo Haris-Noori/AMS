@@ -33,6 +33,14 @@ class EmployeeController extends Controller
         }
     }
 
+    public function logout(Request $request)
+    {
+        // clear session
+        $request->session()->flush();
+        // log::debug('here');
+        return redirect('/employee/login');
+    }
+
     public function getAddActivityView()
     {
         return view('employee.add_activity', Employee::getEmployeeSessionData());
@@ -59,5 +67,15 @@ class EmployeeController extends Controller
             Activity::create($activity);
             return back();
         }
+    }
+
+    public function addDonationView()
+    {
+        return view('employee.add_donation', Employee::getEmployeeSessionData());
+    }
+
+    public function addDonation(Request $request)
+    {
+        return $request->all();
     }
 }

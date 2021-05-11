@@ -94,3 +94,6 @@ Route::get('/employee/dashboard', function(){
 Route::get('/employee/add-activity', 'EmployeeController@getAddActivityView');
 Route::post('/employee/add-activity', 'EmployeeController@addActivity');
 Route::get('/employee/all-activity', 'EmployeeController@getAllActivityView');
+Route::get('/employee/logout', 'EmployeeController@logout');
+Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
+Route::post('/employee/add-donation', 'EmployeeController@addDonation');
