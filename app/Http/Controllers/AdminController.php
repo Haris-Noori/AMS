@@ -13,7 +13,7 @@ use App\Models\Student;
 use App\Models\StudentGuardian;
 use App\Models\Employee;
 use App\Models\DonationBox;
-
+use App\Models\Donation;
 
 class AdminController extends Controller
 {
@@ -301,6 +301,18 @@ class AdminController extends Controller
         ];
         DonationBox::create($donation_box);
         return back();
+    }
+
+    public function allDonations()
+    {
+        $pageData = [
+            'donations' => Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.created_at', 'donations.image_path', 'employees.first_name')->join('employees', 'employees.id', '=', 'donations.employee_id')->orderBy('donations.created_at', 'desc')->get()
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_donations', $pageData);
+
+        // $donations = Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.image_path', 'employees.first_name')->join('employees', 'employees.id', '=', 'donations.employee_id')->orderBy('donations.created_at', 'desc')->get();
+        // return $donations;
     }
 
 

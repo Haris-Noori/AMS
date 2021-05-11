@@ -55,6 +55,7 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/add-donation-box', 'AdminController@addDonationBoxView');
     Route::post('/admin/add-donation-box', 'AdminController@addDonationBox');
     Route::get('/admin/all-donation-boxes', 'AdminController@getAllDonationBoxes');
+    Route::get('/admin/all-donations', 'AdminController@allDonations');
     
 });
 

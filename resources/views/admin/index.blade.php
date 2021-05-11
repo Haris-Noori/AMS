@@ -146,6 +146,7 @@
               <h6 class="collapse-header">Manage Donations</h6>
                 <a class="collapse-item" href="{{ url('/admin/all-donation-boxes') }}">All Donation Boxes</a>
                 <a class="collapse-item" href="{{ url('/admin/add-donation-box') }}">Add Donation Box</a>
+                <a class="collapse-item" href="{{ url('/admin/all-donations') }}">Donations</a>
             </div>
         </div>
       </li>
