@@ -37,8 +37,6 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/logout', 'AdminController@logout');
     Route::get('/admin/dashboard', 'AdminController@loadDashboard');
     // admins
-    Route::get('/admin/insert', 'AdminController@createAdmin');
-    Route::get('/admin/select', 'AdminController@getAdmins');
     Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
     Route::post('/addNewAdmin', 'AdminController@addNewAdmin');
     Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');

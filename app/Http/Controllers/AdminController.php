@@ -82,28 +82,6 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    /**
-     * Insert new admin in Database
-     */
-    public function createAdmin()
-    {
-        $data = [
-            'admin_name' => 'Haris',
-            'admin_pass' => '12345',
-            'type' => 'normal',
-        ];
-        Admin::create($data);
-    }
-
-    /**
-     * Get Admins From Database
-     */
-    public function getAdmins()
-    {
-        $admins = DB::select('select * from admins');
-        return $admins;
-    }
-
     public function loadDashboard()
     {
         return view('admin.dashboard', $this->getAdminSessionData());
