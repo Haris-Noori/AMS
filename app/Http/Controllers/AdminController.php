@@ -276,13 +276,27 @@ class AdminController extends Controller
     *************************************************************************************** */
     public function addDonationBoxView()
     {
-        return view('admin.add_donation_box', $this->getAdminSessionData());
+       $pageData = [
+            'employees' => Employee::all(),
+       ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.add_donation_box', $pageData);
     }
 
     public function getAllDonationBoxes()
     {
         $pageData = [
-            'donation_boxes' => DonationBox::all()
+            // 'donation_boxes' => DonationBox::all()
+            'donation_boxes' => DonationBox::select('donation_boxes.id',
+                                'donation_boxes.box_name', 
+                                'donation_boxes.reference', 
+                                'donation_boxes.collector', 
+                                'donation_boxes.frequency', 
+                                'donation_boxes.location_name', 
+                                'donation_boxes.address',
+                                'donation_boxes.city',
+                                'employees.first_name',
+                                'employees.last_name')->join('employees', 'employees.id', '=', 'donation_boxes.collector')->get()
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_donation_boxes', $pageData);

@@ -120,7 +120,7 @@
           </div>
       </li>
 
-      <!-- Nav Item - E Collapse Menu -->
+      <!-- Nav Item - Donations Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDonations" aria-expanded="true" aria-controls="collapseDonations">
             <i class="fas fa-fw fa-donate"></i>
