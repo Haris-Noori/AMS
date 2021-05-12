@@ -28,7 +28,7 @@
                                 <td> {{ $donation->box_name }} </td>
                                 <td> {{ $donation->amount_collected }} </td>
                                 <td> {{ $donation->created_at }} </td>
-                                <td> {{ $donation->first_name }} </td>
+                                <td> {{ $donation->first_name }} {{ $donation->last_name }} </td>
                                 <td> {{ $donation->image_path }} </td>
                             </tr>
                         @endforeach

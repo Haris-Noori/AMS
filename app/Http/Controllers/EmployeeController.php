@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Activity;
 use App\Models\Donation;
+use App\Models\DonationBox;
 use Log;
 
 class EmployeeController extends Controller
@@ -72,7 +73,14 @@ class EmployeeController extends Controller
 
     public function addDonationView()
     {
-        return view('employee.add_donation', Employee::getEmployeeSessionData());
+        $pageData = [
+            // 'donation_boxes' => DonationBox::all()
+            'donation_boxes' => DonationBox::select('donation_boxes.id',
+                                'donation_boxes.box_name',  
+                                'donation_boxes.collector')->where('donation_boxes.collector', Employee::id())->get()
+        ];
+        $pageData = array_merge($pageData, Employee::getEmployeeSessionData());
+        return view('employee.add_donation', $pageData);
     }
 
     public function allDonations()
