@@ -74,7 +74,10 @@ class Student extends Model
         'ref_name',
         'ref_num',
         'image',
-        'document_path'
+        'document_path',
+
+        // rollnumber
+        'rollnumber'
     ];
 
     /**
@@ -93,7 +96,12 @@ class Student extends Model
             // create student
             $student = StudentTransformer::fromRequest($request);
             $student['guardian_id'] = (string)StudentGuardian::latest()->first()->id;
+            // Log::debug('Created Student', $student);
+
+            $rollNumber = Student::rollNumber();
+            $student = array_merge($student, ['rollnumber' => $rollNumber]);
             Log::debug('Created Student', $student);
+
             Student::create($student);
         } catch(Exception $e) {
             return ["error" => "Failed registering user."];
@@ -126,5 +134,32 @@ class Student extends Model
     public function guardian() 
     {
         return $this->hasOne('App\Models\StudentGuardian');
+    }
+
+    private static function rollNumber() 
+    {
+        $total_std = Student::count();  //returns number of data in database
+        $std_id = $total_std+1;          //generating next roll number
+        
+        $year = date('Y');          //2021
+        $year = substr($year,-2);      //last two number
+
+        $month = date('m');             //current month 05 
+
+        $new_std_id = '';
+        if($std_id < 10){
+            $new_std_id = $year.$month.'-000'.$std_id;
+        }
+        elseif($std_id > 10 and $std_id < 99){
+            $new_std_id = $year.$month.'-00'.$std_id;
+        }
+        elseif($std_id > 100 and $std_id < 999){
+            $new_std_id = $year.$month.'-0'.$std_id;
+        }
+        else{
+            $new_std_id = $year.$month.'-'.$std_id;
+        }
+
+        return $new_std_id;
     }
 }

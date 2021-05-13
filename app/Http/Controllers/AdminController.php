@@ -11,7 +11,10 @@ use Log;
 use App\Models\Admin;
 use App\Models\Student;
 use App\Models\StudentGuardian;
-
+use App\Models\Employee;
+use App\Models\Activity;
+use App\Models\DonationBox;
+use App\Models\Donation;
 
 class AdminController extends Controller
 {
@@ -77,28 +80,6 @@ class AdminController extends Controller
         $request->session()->flush();
         // log::debug('here');
         return redirect('/admin');
-    }
-
-    /**
-     * Insert new admin in Database
-     */
-    public function createAdmin()
-    {
-        $data = [
-            'admin_name' => 'Haris',
-            'admin_pass' => '12345',
-            'type' => 'normal',
-        ];
-        Admin::create($data);
-    }
-
-    /**
-     * Get Admins From Database
-     */
-    public function getAdmins()
-    {
-        $admins = DB::select('select * from admins');
-        return $admins;
     }
 
     public function loadDashboard()
@@ -184,10 +165,10 @@ class AdminController extends Controller
                 // 'token' => 'required',
                 'st_first_name' => 'required | alpha',
                 'st_last_name' => 'required | alpha',
-                'st_gender' => 'required | in:Male,Female',
+                'st_gender' => 'required',
                 'st_dob' => 'required | date',
                 'st_blood' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
-                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal, Genious & Beautiful Voice',
+                'st_status' => 'required | in:N/A,Genious,Addled,Very Poor,Normal,Genious & Beautiful Voice',
                 'st_cur_st_add' => 'required'
             ]);
 
@@ -196,11 +177,144 @@ class AdminController extends Controller
             if(!Student::isUnique($request->input('st_first_name'), 
                                  $request->input('st_last_name'), 
                                  $request->input('st_father_name'))) {
-                echo "Student not unique";
+                // echo "Student not unique";
+                return back()->withErrors(['error' => "Student is not unique"]);
             } else {
+                //$request->request->add(['rollnumber' => $new_std_id]);
+                //print_r($request);
                 Student::register($request);
+                return back();
             }
-            
+        
         }
     }
+
+    /**
+     * Returns the All Students View
+     */
+    public function getAllStudentsView() {
+        $pageData = [
+            'students' => $this->getStudents(),
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_students', $pageData);
+    }
+
+    /**
+     * Get Students From Database
+     */
+    public function getStudents()
+    {
+        $students = DB::select('select * from students');
+        return $students;
+    }
+
+    /***************************************************************************************
+     * Functions for Employees
+    *************************************************************************************** */
+
+    public function getAddEmployeeView()
+    {
+        return view('admin.add_employee', $this->getAdminSessionData());
+    }
+
+    public function addEmployee(Request $request)
+    {
+        // return $request->all();
+        $request->validate([
+            'first_name' => 'required | alpha',
+            'last_name' => 'required | alpha',
+            'gender' => 'required | in:[N/A,Male,Female]',
+            'blood_group' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
+        ]);
+
+        Employee::add($request);
+
+        return back();
+    }
+
+    public function getEmployees()
+    {
+        $employees = DB::select('select * from employees');
+        return $employees;
+    }
+
+    public function allEmployeesView()
+    {
+        $pageData = [
+            'employees' => $this->getEmployees(),
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_employees', $pageData);
+    }
+    
+    
+    /***************************************************************************************
+     * Functions for Donations
+    *************************************************************************************** */
+    public function addDonationBoxView()
+    {
+       $pageData = [
+            'employees' => Employee::all(),
+       ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.add_donation_box', $pageData);
+    }
+
+    public function getAllDonationBoxes()
+    {
+        $pageData = [
+            // 'donation_boxes' => DonationBox::all()
+            'donation_boxes' => DonationBox::select('donation_boxes.id',
+                                'donation_boxes.box_name', 
+                                'donation_boxes.reference', 
+                                'donation_boxes.collector', 
+                                'donation_boxes.frequency', 
+                                'donation_boxes.location_name', 
+                                'donation_boxes.address',
+                                'donation_boxes.city',
+                                'employees.first_name',
+                                'employees.last_name')->join('employees', 'employees.id', '=', 'donation_boxes.collector')->get()
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_donation_boxes', $pageData);
+    }
+
+    public function addDonationBox(Request $request)
+    {
+        // return $request->all();
+        $donation_box = [
+            'box_name' => $request->box_name,
+            'reference' => $request->reference,
+            'collector' => $request->collector,
+            'frequency' => $request->frequency,
+            'location_name' => $request->location_name,
+            'address' => $request->address,
+            'city' => $request->city
+        ];
+        DonationBox::create($donation_box);
+        return back();
+    }
+
+    public function allDonations()
+    {
+        $pageData = [
+            'donations' => Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.created_at', 'donations.image_path', 'employees.first_name', 'employees.last_name')->join('employees', 'employees.id', '=', 'donations.employee_id')->orderBy('donations.created_at', 'desc')->get()
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.all_donations', $pageData);
+    }
+
+    public function employeesActivities()
+    {
+        $pageData = [
+            'activities' => Activity::select('activities.id', 'activities.activity_name', 'activities.activity_description', 'activities.from', 'activities.to', 'activities.created_at', 'employees.first_name')->join('employees', 'employees.id', '=', 'activities.employee_id')->orderBy('activities.created_at', 'desc')->get()
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.employees_activities', $pageData);
+    }
+
+
 }
+
+
