@@ -159,8 +159,8 @@
                             <label for="exampleFormControlSelect1">Job Status</label>
                             <select name="job_status" class="form-control" id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
-                                <option value="">On Job</option>
-                                <option value="">On Vocation</option>
+                                <option value="On Job">On Job</option>
+                                <option value="On Vocation">On Vocation</option>
                             </select>
                         </div>
                     </div>
