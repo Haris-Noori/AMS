@@ -25,7 +25,7 @@ Route::get('/login', function () {
 });
 
 
-// Routes for admin
+// Routes for Admin
 //======================================================================
 Route::get('/admin', 'AdminController@index');
 
@@ -37,8 +37,6 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/logout', 'AdminController@logout');
     Route::get('/admin/dashboard', 'AdminController@loadDashboard');
     // admins
-    Route::get('/admin/insert', 'AdminController@createAdmin');
-    Route::get('/admin/select', 'AdminController@getAdmins');
     Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
     Route::post('/addNewAdmin', 'AdminController@addNewAdmin');
     Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
@@ -48,12 +46,15 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::post('/admin/add-student', 'AdminController@addStudent');
     Route::get('/admin/all_students', 'AdminController@getAllStudentsView');
     //employees
-    Route::get('/admin/add_employee', 'AdminController@getAddEmployeeView');
+    Route::get('/admin/add-employee', 'AdminController@getAddEmployeeView');
     Route::post('/admin/addEmployee', 'AdminController@addEmployee');
-
+    Route::get('/admin/all-employees', 'AdminController@allEmployeesView');
     //Donations
-    Route::get('/admin/add-donation', 'AdminController@getAddDonationView');
-    Route::get('/admin/all-donation', 'AdminController@getAllDonationView');
+    Route::get('/admin/add-donation-box', 'AdminController@addDonationBoxView');
+    Route::post('/admin/add-donation-box', 'AdminController@addDonationBox');
+    Route::get('/admin/all-donation-boxes', 'AdminController@getAllDonationBoxes');
+    Route::get('/admin/all-donations', 'AdminController@allDonations');
+    Route::get('/admin/employees-activities', 'AdminController@employeesActivities');
     
 });
 
@@ -93,3 +94,9 @@ Route::get('/employee/dashboard', function(){
 Route::get('/employee/add-activity', 'EmployeeController@getAddActivityView');
 Route::post('/employee/add-activity', 'EmployeeController@addActivity');
 Route::get('/employee/all-activity', 'EmployeeController@getAllActivityView');
+Route::get('/employee/logout', 'EmployeeController@logout');
+Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
+Route::post('/employee/add-donation', 'EmployeeController@addDonation');
+ROute::get('/employee/all-donations', 'EmployeeController@allDonations');
+
+

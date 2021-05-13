@@ -1,9 +1,9 @@
-@extends('employee.index')
+@extends('admin.index')
 
 @section('pageContent')
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">All Activities</h1>
+            <h1 class="h3 mb-0 text-gray-800">Employees Activities</h1>
             {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
         </div>
     
@@ -12,26 +12,26 @@
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead class="thead-dark">
                     <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
                         <th>Activity Name</th>
                         <th>Activity Description</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
+                        <th>From</th>
+                        <th>To</th>
                         <th>Date</th>
-                        <th>Edit Activity</th>
-                        <th>Delete Activity</th>
                     </tr>
                     </thead>
                     <tbody>
                     
                         @foreach ($activities as $activity )
                             <tr>
-                                <th> {{ $activity->activity_name }} </th>
+                                <th> {{ $activity->id }} </th>
+                                <td> {{ $activity->first_name }} </td>
+                                <td> {{ $activity->activity_name }} </td>
                                 <td> {{ $activity->activity_description }} </td>
                                 <td> {{ $activity->from }} </td>
                                 <td> {{ $activity->to }} </td>
                                 <td> {{ $activity->created_at }} </td>
-                                <td> <a href="#"><button class="btn btn-primary">Edit</button></a> </td>
-                                <td> <a href=""><button class="btn btn-danger">Remove</button></a> </td>
                             </tr>
                         @endforeach
                     </tbody>

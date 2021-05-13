@@ -10,70 +10,59 @@
     <div class="col-md-12">
         <h4>Fill Donation Box Details</h4>
 
-        <form action="{{ url('/addNewDonation') }}" method="POST" class="col-md-10 mt-1">
+        <form action="{{ url('/admin/add-donation-box') }}" method="POST" class="col-md-10 mt-1">
         @csrf
         <div class="row">
                 <div class="col-md-12">
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Donation Box name</label>
-                            <input name="" type="text" class="form-control" id="ActivityDescription" placeholder="Name">
+                            <input name="box_name" type="text" class="form-control" id="ActivityDescription" placeholder="Name">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Reference Name</label>
-                            <input name="" type="text" class="form-control" id="ActivityDescription" placeholder="Person Name">
+                            <input name="reference" type="text" class="form-control" id="ActivityDescription" placeholder="Person Name">
                         </div>
-                        
-
-
                     </div>
+
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Collector</label>
-                            <select name="type" class="form-control" id="exampleFormControlSelect1">
-                                <option value="">Collector 1</option>
-                                <option value="">Collector 2</option>
-                                <option value="">Collector 3</option>
-                                <option value="">Collector 4</option>
+                            <select name="collector" class="form-control" id="exampleFormControlSelect1">
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Frequency</label>
-                            <select name="type" class="form-control" id="exampleFormControlSelect1">
-                                <option value="">on wish</option>
-                                <option value="">1 week</option>
-                                <option value="">2 weeks</option>
-                                <option value="">monthly</option>
+                            <select name="frequency" class="form-control" id="exampleFormControlSelect1">
+                                <option value="On wish">On wish</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="2 Weeks">2 Weeks</option>
+                                <option value="Monthly">Monthly</option>
                                 
                             </select>
                         </div>
-
-
-
-
                     </div>  
 
-
-
-                   
                     <div class="row">
                        <div class="form-group col-md-4">
                             <label for="ActivityDescription">Location Name</label>
-                            <input name="" type="text" class="form-control" id="ActivityDescription" placeholder="Any shop/institute name">
+                            <input name="location_name" type="text" class="form-control" id="ActivityDescription" placeholder="Any shop/institute name">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="ActivityDescription">Street Address</label>
-                            <input name="" type="text" class="form-control" id="ActivityDescription" placeholder="Area/Mohalla">
+                            <input name="address" type="text" class="form-control" id="ActivityDescription" placeholder="Area/Mohalla">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="ActivityDescription">City</label>
-                            <input name="" type="text" class="form-control" id="ActivityDescription" placeholder="Mandi Sadiq Gunj...">
+                            <input name="city" type="text" class="form-control" id="ActivityDescription" placeholder="Mandi Sadiq Gunj...">
                         </div>
-
                     </div>
-                    
-                    
+                       
                 </div>
             </div>
             
