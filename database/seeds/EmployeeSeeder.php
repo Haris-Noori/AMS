@@ -13,8 +13,8 @@ class EmployeeSeeder extends Seeder
     {
         //
         $employee = [
-            'first_name' => 'employee',
-            'last_name'  => 'employee',
+            'first_name' => 'Employee',
+            'last_name'  => 'Employee',
             'father_name'=> 'employee',
             'gender'     => 'male',
             'blood_group'=> 'A+',

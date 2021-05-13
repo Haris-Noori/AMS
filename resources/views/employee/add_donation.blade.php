@@ -18,10 +18,13 @@
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Select Donation Box</label>
                             <select name="box_name" class="form-control" id="exampleFormControlSelect1">
-                                <option value="Lahore-1">Lahore-1</option>
+                                @foreach ($donation_boxes as $donation_box)
+                                    <option value="{{ $donation_box->id }}">{{ $donation_box->box_name }}</option>
+                                @endforeach
+                                {{-- <option value="Lahore-1">Lahore-1</option>
                                 <option value="Lahore-2">Lahore-2</option>
                                 <option value="Mandi-1">Mandi-1</option>
-                                <option value="Mandi-2">Mandi-2</option>
+                                <option value="Mandi-2">Mandi-2</option> --}}
                             </select>
                         </div>
                         <div class="form-group col-md-6">
@@ -34,7 +37,7 @@
                        
                         <div class="form-group col-md-6">
                             <label for="StartTime">Upload picture(optional)</label>
-                            <input name="picture" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
+                            <input name="" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
                         </div>
                         
                     </div>

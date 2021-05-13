@@ -31,11 +31,9 @@
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Collector</label>
                             <select name="collector" class="form-control" id="exampleFormControlSelect1">
-                                <option value="Hafeez Noori">Hafeez Noori</option>
-                                <option value="Muhammad Irfan">Muhammad Irfan</option>
-                                <option value="Ikhlaq Ahmed Noori">Ikhlaq Ahmed Noori</option>
-                                <option value="Kazim ALi Shami">Kazim ALi Shami</option>
-                                <option value="Haris Noori">Haris Noori</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">

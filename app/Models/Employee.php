@@ -65,6 +65,7 @@ class Employee extends Model
             // //employee exist
             session(['session_employee_id' => $employee->id]);
             session(['session_employee_name' => $employee->first_name]);
+            session(['session_employee_last_name' => $employee->last_name]);
             session(['session_employee_password'=> $employee->password]);
             return TRUE;
             
@@ -83,6 +84,7 @@ class Employee extends Model
        return $data = [
         'session_employee_id' => session('session_employee_id'),
         'session_employee_name' => session('session_employee_name'),
+        'session_employee_last_name' => session('session_employee_last_name'),
         'session_employee_pass'=> session('session_employee_password')
        ];
     }

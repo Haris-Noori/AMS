@@ -83,7 +83,8 @@
           </a>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
-                  <a class="collapse-item" href="#">My Collected Donations</a>
+                <h6 class="collapse-header">Manage Donations</h6>
+                  <a class="collapse-item" href="{{ url('/employee/all-donations') }}">My Collected Donations</a>
                   <a class="collapse-item" href="{{ url('/employee/add-donation') }}">Add New Donation</a>
               </div>
           </div>
@@ -304,7 +305,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{$session_employee_name}} </span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{$session_employee_name}} {{ $session_employee_last_name }} </span>
                 <img class="img-profile rounded-circle" src="AdMINIMAGE" width="100">
               </a>
               <!-- Dropdown - User Information -->

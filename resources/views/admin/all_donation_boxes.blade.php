@@ -31,7 +31,7 @@
                                 <td> {{ $donation_box->id }}</td>
                                 <td> {{ $donation_box->box_name }}</td>
                                 <td> {{ $donation_box->reference }} </td>
-                                <td> {{ $donation_box->collector }} </td>
+                                <td> {{ $donation_box->first_name }} {{ $donation_box->last_name }} </td>
                                 <td> {{ $donation_box->frequency }} </td>
                                 <td> {{ $donation_box->location_name }} </td>
                                 <td> {{ $donation_box->address }} </td>
