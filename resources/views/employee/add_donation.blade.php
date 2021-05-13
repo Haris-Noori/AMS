@@ -19,7 +19,7 @@
                             <label for="exampleFormControlSelect1">Select Donation Box</label>
                             <select name="box_name" class="form-control" id="exampleFormControlSelect1">
                                 @foreach ($donation_boxes as $donation_box)
-                                    <option value="{{ $donation_box->id }}">{{ $donation_box->box_name }}</option>
+                                    <option value="{{ $donation_box->box_name }}">{{ $donation_box->box_name }}</option>
                                 @endforeach
                                 {{-- <option value="Lahore-1">Lahore-1</option>
                                 <option value="Lahore-2">Lahore-2</option>
