@@ -126,14 +126,18 @@ class Student extends Model
             && (count(StudentGuardian::where('father_name', $fatherName)->get()) == 0);
     }
 
-    
+
+    public function fatherName() 
+    {
+        return StudentGuardian::where('id', $this->guardian_id)->get()[0]->father_name;
+    }    
 
     /**
      * Get the guardian associated with the student.
      */
     public function guardian() 
     {
-        return $this->hasOne('App\Models\StudentGuardian');
+        return $this->hasOne('App\Models\StudentGuardian', 'id');
     }
 
     private static function rollNumber() 

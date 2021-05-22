@@ -203,20 +203,12 @@ class AdminController extends Controller
      */
     public function getAllStudentsView() {
         $pageData = [
-            'students' => $this->getStudents(),
+            'students' => Student::all(),
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_students', $pageData);
     }
 
-    /**
-     * Get Students From Database
-     */
-    public function getStudents()
-    {
-        $students = DB::select('select * from students');
-        return $students;
-    }
 
     /***************************************************************************************
      * Functions for Employees
