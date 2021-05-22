@@ -82,6 +82,15 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
+    /**
+     * Get Admins From Database
+     */
+    public function getAdmins()
+    {
+        $admins = DB::select('select * from admins');
+        return $admins;
+    }
+
     public function loadDashboard()
     {
         return view('admin.dashboard', $this->getAdminSessionData());
@@ -222,7 +231,7 @@ class AdminController extends Controller
     {
         // return $request->all();
         $request->validate([
-            'first_name' => 'required | alpha',
+            'first_name' => 'required',
             'last_name' => 'required | alpha',
             'gender' => 'required | in:[N/A,Male,Female]',
             'blood_group' => 'required | in:N/A,A-,A+,B-,B+,O+,O-,AB+,AB-',
