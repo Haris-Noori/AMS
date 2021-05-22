@@ -37,7 +37,7 @@
                                 <td> {{$employee->job_status}} </td>
                                 <td> {{$employee->joining_date}} </td>
                                 <td> <a href="#"><button class="btn btn-primary">Edit</button></a> </td>
-                                <td> <a href="#"><button class="btn btn-danger">Remove</button></a> </td>
+                                <td> <a href="{{ url('/admin/removeEmployee/'.$employee->id) }}"><button class="btn btn-danger">Remove</button></a> </td>
                             </tr>
                             <?php   
                         }

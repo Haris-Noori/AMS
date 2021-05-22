@@ -192,7 +192,7 @@ class AdminController extends Controller
                 //$request->request->add(['rollnumber' => $new_std_id]);
                 //print_r($request);
                 Student::register($request);
-                return back();
+                return back()->with('status', 'Student Registered!');
             }
         
         }
@@ -203,19 +203,20 @@ class AdminController extends Controller
      */
     public function getAllStudentsView() {
         $pageData = [
-            'students' => $this->getStudents(),
+            'students' => Student::all(),
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_students', $pageData);
     }
 
+
     /**
-     * Get Students From Database
+     * Removes a Student
      */
-    public function getStudents()
+    public function removeStudent($id)
     {
-        $students = DB::select('select * from students');
-        return $students;
+        DB::table('students')->where('id', '=', $id)->delete();
+        return redirect('admin/all_students');
     }
 
     /***************************************************************************************
@@ -239,7 +240,7 @@ class AdminController extends Controller
 
         Employee::add($request);
 
-        return back();
+        return back()->with('status', 'Employee Registered!');
     }
 
     public function getEmployees()
@@ -255,6 +256,15 @@ class AdminController extends Controller
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_employees', $pageData);
+    }
+
+    /**
+     * Removes an Employee
+     */
+    public function removeEmployee($id)
+    {
+        DB::table('employees')->where('id', '=', $id)->delete();
+        return redirect('admin/all-employees');
     }
     
     
