@@ -114,8 +114,8 @@
           <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage Faculty</h6>  
-                  <a class="collapse-item" href="/AMS/src/admin/faculty/all_faculty.php">All Faculty</a>
-                  <a class="collapse-item" href="faculty/add_faculty.php">Add New Faculty</a>
+                  <a class="collapse-item" href="#">All Faculty</a>
+                  <a class="collapse-item" href="#">Add New Faculty</a>
               </div>
           </div>
       </li>
