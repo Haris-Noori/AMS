@@ -160,7 +160,7 @@ class Student extends Model
             $new_std_id = $year.$month.'-'.$std_id;
         }
 
-        print_r('Roll Number: '.$new_std_id);
+        // print_r('Roll Number: '.$new_std_id);
         return $new_std_id;
     }
 }
