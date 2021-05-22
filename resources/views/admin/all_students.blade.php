@@ -39,7 +39,7 @@
                                 <td> {{$student->course_title}} </td>
                                 <td> {{$student->current_address}} </td>
                                 <td> <a href="#"><button class="btn btn-primary">Edit</button></a> </td>
-                                <td> <a href="#"><button class="btn btn-danger">Remove</button></a> </td>
+                                <td> <a href="{{ url('/admin/removeStudent/'.$student->id) }}"><button class="btn btn-danger">Remove</button></a> </td>
                             </tr>
                             <?php   
                         }

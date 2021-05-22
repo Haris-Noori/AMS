@@ -218,6 +218,12 @@ class AdminController extends Controller
         return $students;
     }
 
+    public function removeStudent($id)
+    {
+        DB::table('students')->where('id', '=', $id)->delete();
+        return redirect('admin/all_students');
+    }
+
     /***************************************************************************************
      * Functions for Employees
     *************************************************************************************** */
