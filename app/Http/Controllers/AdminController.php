@@ -192,7 +192,7 @@ class AdminController extends Controller
                 //$request->request->add(['rollnumber' => $new_std_id]);
                 //print_r($request);
                 Student::register($request);
-                return back();
+                return back()->with('status', 'Student Registered!');
             }
         
         }
@@ -239,7 +239,7 @@ class AdminController extends Controller
 
         Employee::add($request);
 
-        return back();
+        return back()->with('status', 'Employee Registered!');
     }
 
     public function getEmployees()

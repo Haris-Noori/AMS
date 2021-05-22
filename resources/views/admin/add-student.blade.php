@@ -12,7 +12,7 @@
     <h3>Student Registration Form</h3>
     <form action="{{ url('/admin/add-student') }}" method="POST" class="col-md-12 mt-1">
         @csrf
-        <div class="form-group col-md-6 btn-outline-warning">
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -22,7 +22,12 @@
                     </ul>
                 </div>
             @endif
-        </div>
+            @if (session('status'))
+                <div class="col-md-4 alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
