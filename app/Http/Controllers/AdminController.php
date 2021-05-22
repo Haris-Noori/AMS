@@ -82,6 +82,15 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
+    /**
+     * Get Admins From Database
+     */
+    public function getAdmins()
+    {
+        $admins = DB::select('select * from admins');
+        return $admins;
+    }
+
     public function loadDashboard()
     {
         return view('admin.dashboard', $this->getAdminSessionData());
