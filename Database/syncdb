@@ -3,4 +3,4 @@
 set -e
 set -x
 
-mysql -u db_ams -p db_ams < runner.sql
+mysql -u jumpstar_db_ams -p < runner.sql

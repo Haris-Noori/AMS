@@ -44,7 +44,7 @@ class AdminController extends Controller
             $admin_name = $request->admin_name;
             $admin_pass = $request->admin_pass;
             $admin = Admin::where('admin_name', '=', $admin_name)->where('admin_pass' , '=', $admin_pass)->first();
-            print_r($admin);
+            // print_r($admin);
             if ($admin === null) {
                 // user doesn't exist
                 return view('admin.login', array('error' => 'Invalid Username or Password'));
