@@ -11,32 +11,11 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $admins = [
-            [
-                'admin_name' => 'admin',
-                'admin_pass' => 'admin',
-                'type' => 'super'
-            ],
-            [
-                'admin_name' => 'Haris',
-                'admin_pass' => 'haris',
-                'type' => 'super'
-            ],
-            [
-                'admin_name' => 'Shakeel',
-                'admin_pass' => 'shakeel',
-                'type' => 'super'
-            ],
-            [
-                'admin_name' => 'Mubeen',
-                'admin_pass' => 'mubeen',
-                'type' => 'super'
-            ]
-            
+        $admin = [
+            'admin_name' => 'Noori',
+            'admin_pass' => 'Noori@Noori',
+            'type' => 'super'
         ];
-        foreach($admins as $admin)
-        {
-            DB::table('admins')->insert($admin);
-        }
+        DB::table('admins')->insert($admin);
     }
 }

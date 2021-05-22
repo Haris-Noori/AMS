@@ -1,4 +1,4 @@
-use db_ams;
+use jumpstar_ams_db;
 
 
 source db_ams_admins.sql;
