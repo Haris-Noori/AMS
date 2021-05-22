@@ -218,6 +218,15 @@ class AdminController extends Controller
         return $students;
     }
 
+    /**
+     * Removes a Student
+     */
+    public function removeStudent($id)
+    {
+        DB::table('students')->where('id', '=', $id)->delete();
+        return redirect('admin/all_students');
+    }
+
     /***************************************************************************************
      * Functions for Employees
     *************************************************************************************** */
@@ -255,6 +264,15 @@ class AdminController extends Controller
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_employees', $pageData);
+    }
+
+    /**
+     * Removes an Employee
+     */
+    public function removeEmployee($id)
+    {
+        DB::table('employees')->where('id', '=', $id)->delete();
+        return redirect('admin/all-employees');
     }
     
     

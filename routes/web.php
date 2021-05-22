@@ -41,14 +41,19 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::post('/addNewAdmin', 'AdminController@addNewAdmin');
     Route::get('/admin/all_admins', 'AdminController@getAllAdminsView');
     Route::get('/admin/removeAdmin/{id}', 'AdminController@removeAdmin');
+
     // students
     Route::get('/admin/add-student', 'AdminController@addStudent');
     Route::post('/admin/add-student', 'AdminController@addStudent');
     Route::get('/admin/all_students', 'AdminController@getAllStudentsView');
+    Route::get('/admin/removeStudent/{id}', 'AdminController@removeStudent');
+
     //employees
     Route::get('/admin/add-employee', 'AdminController@getAddEmployeeView');
     Route::post('/admin/addEmployee', 'AdminController@addEmployee');
     Route::get('/admin/all-employees', 'AdminController@allEmployeesView');
+    Route::get('/admin/removeEmployee/{id}', 'AdminController@removeEmployee');
+
     //Donations
     Route::get('/admin/add-donation-box', 'AdminController@addDonationBoxView');
     Route::post('/admin/add-donation-box', 'AdminController@addDonationBox');
