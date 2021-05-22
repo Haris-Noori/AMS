@@ -53,7 +53,7 @@ class CreateStudentsTable extends Migration
             // feed and donation info
             $table->string('fee_status');
             $table->string('fee_amount')->nullable();
-            $table->string('fee_plan');
+            $table->string('fee_plan')->nullable();
             $table->string('donation')->default('N/A');
             $table->string('ref_name')->default('N/A');
             $table->string('ref_num')->default('N/A');

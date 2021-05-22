@@ -13,11 +13,12 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
+                        <th>Roll Number</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Email</th>
+                        <th>Father Name</th>
                         <th>Phone</th>
-                        <th>Course Title</th>
+                        <th>Course</th>
                         <th>Current Address</th>
                         <th>Action</th>
                         <th>Action</th>
@@ -30,6 +31,7 @@
                             ?>
                             <tr>
                                 <th> {{$student->id}} </th>
+                                <td> {{$student->rollnumber}} </td>
                                 <td> {{$student->first_name}} </td>
                                 <td> {{$student->last_name}} </td>
                                 <td> {{$student->email}} </td>
