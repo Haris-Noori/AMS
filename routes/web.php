@@ -52,6 +52,8 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/add-employee', 'AdminController@getAddEmployeeView');
     Route::post('/admin/addEmployee', 'AdminController@addEmployee');
     Route::get('/admin/all-employees', 'AdminController@allEmployeesView');
+    Route::get('/admin/removeEmployee/{id}', 'AdminController@removeEmployee');
+
     //Donations
     Route::get('/admin/add-donation-box', 'AdminController@addDonationBoxView');
     Route::post('/admin/add-donation-box', 'AdminController@addDonationBox');
