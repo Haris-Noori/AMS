@@ -34,7 +34,7 @@
                                 <td> {{$student->rollnumber}} </td>
                                 <td> {{$student->first_name}} </td>
                                 <td> {{$student->last_name}} </td>
-                                <td> {{$student->email}} </td>
+                                <td> {{$student->fatherName()}} </td>
                                 <td> {{$student->phone}} </td>
                                 <td> {{$student->course_title}} </td>
                                 <td> {{$student->current_address}} </td>
