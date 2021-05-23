@@ -43,6 +43,11 @@ class EmployeeController extends Controller
         return redirect('/employee/login');
     }
 
+    public function dashboard()
+    {
+        return view('/employee/dashboard', Employee::getEmployeeSessionData());
+    }
+
     public function getAddActivityView()
     {
         return view('employee.add_activity', Employee::getEmployeeSessionData());
@@ -103,6 +108,16 @@ class EmployeeController extends Controller
             Donation::create($donation);
             return back();
         }
+    }
+
+    // returns change_password view
+    public function changePassword(Request $request)
+    {
+        $password = $request->input('new_password');
+        $id = Employee::id();
+       
+        Employee::changePassword($password, $id);
+        return back();
     }
 
 }

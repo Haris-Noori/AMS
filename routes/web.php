@@ -92,9 +92,7 @@ Route::get('/employee/index', function(){
     return view('employee.index');
 });
 
-Route::get('/employee/dashboard', function(){
-    return view('employee.dashboard');
-});
+Route::get('/employee/dashboard', 'EmployeeController@dashboard');
 
 Route::get('/employee/add-activity', 'EmployeeController@getAddActivityView');
 Route::post('/employee/add-activity', 'EmployeeController@addActivity');
@@ -102,6 +100,7 @@ Route::get('/employee/all-activity', 'EmployeeController@getAllActivityView');
 Route::get('/employee/logout', 'EmployeeController@logout');
 Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
 Route::post('/employee/add-donation', 'EmployeeController@addDonation');
-ROute::get('/employee/all-donations', 'EmployeeController@allDonations');
+Route::get('/employee/all-donations', 'EmployeeController@allDonations');
+Route::post('/employee/change-password', 'EmployeeController@changePassword');
 
 

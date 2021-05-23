@@ -110,5 +110,10 @@ class Employee extends Model
         
     }
 
+    public static function changePassword(String $password, String $id)
+    {
+        Employee::where('id', '=', $id)->update(['password' => $password]);
+    }
+
 
 }
