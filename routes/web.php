@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Middleware\AdminAuthGuard;
 use App\Http\Middleware\XSS;
+use App\Http\Controllers\APIController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -103,5 +104,9 @@ Route::get('/employee/logout', 'EmployeeController@logout');
 Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
 Route::post('/employee/add-donation', 'EmployeeController@addDonation');
 ROute::get('/employee/all-donations', 'EmployeeController@allDonations');
+
+
+//Route For API
+Route::get('/api/admins', 'APIController@getAdmins');
 
 

@@ -12,6 +12,7 @@ class Activity extends Model
      * @var string
      */
     protected $table = 'activities';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
