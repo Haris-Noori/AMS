@@ -56,15 +56,11 @@
                 "cors",
                 "stack"
             ],
-<<<<<<< HEAD
-            "time": "2020-10-29T16:03:21+00:00"
-=======
             "support": {
                 "issues": "https://github.com/asm89/stack-cors/issues",
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.3"
             },
             "time": "2021-03-11T06:42:03+00:00"
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
         },
         {
             "name": "brick/math",
@@ -110,57 +106,17 @@
                 "brick",
                 "math"
             ],
-<<<<<<< HEAD
-=======
             "support": {
                 "issues": "https://github.com/brick/math/issues",
                 "source": "https://github.com/brick/math/tree/0.9.2"
             },
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
             "funding": [
                 {
                     "url": "https://tidelift.com/funding/github/packagist/brick/math",
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2020-08-18T23:57:15+00:00"
-        },
-        {
-            "name": "dnoegel/php-xdg-base-dir",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dnoegel/php-xdg-base-dir.git",
-                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dnoegel/php-xdg-base-dir/zipball/8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
-                "reference": "8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~7.0|~6.0|~5.0|~4.8.35"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "XdgBaseDir\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "implementation of xdg base directory specification for php",
-            "time": "2019-12-04T15:06:13+00:00"
-=======
             "time": "2021-01-20T22:51:39+00:00"
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
         },
         {
             "name": "doctrine/inflector",
@@ -572,13 +528,10 @@
                 "crossdomain",
                 "laravel"
             ],
-<<<<<<< HEAD
-=======
             "support": {
                 "issues": "https://github.com/fruitcake/laravel-cors/issues",
                 "source": "https://github.com/fruitcake/laravel-cors/tree/v2.0.4"
             },
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
             "funding": [
                 {
                     "url": "https://github.com/barryvdh",
@@ -666,13 +619,10 @@
                 "rest",
                 "web service"
             ],
-<<<<<<< HEAD
-=======
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
                 "source": "https://github.com/guzzle/guzzle/tree/7.3.0"
             },
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -742,15 +692,11 @@
             "keywords": [
                 "promise"
             ],
-<<<<<<< HEAD
-            "time": "2020-09-30T07:37:28+00:00"
-=======
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
                 "source": "https://github.com/guzzle/promises/tree/1.4.1"
             },
             "time": "2021-03-07T09:25:29+00:00"
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
         },
         {
             "name": "guzzlehttp/psr7",
@@ -821,15 +767,11 @@
                 "uri",
                 "url"
             ],
-<<<<<<< HEAD
-            "time": "2020-09-30T07:37:11+00:00"
-=======
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
                 "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
             "time": "2021-04-26T09:17:50+00:00"
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
         },
         {
             "name": "laravel/framework",
@@ -987,15 +929,11 @@
                 "framework",
                 "laravel"
             ],
-<<<<<<< HEAD
-            "time": "2021-01-15T15:38:30+00:00"
-=======
             "support": {
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2021-01-21T14:10:48+00:00"
->>>>>>> 06072cccbc663eac709a94e9cb1c1694dbf4585c
         },
         {
             "name": "laravel/tinker",
