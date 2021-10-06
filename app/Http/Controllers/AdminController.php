@@ -53,6 +53,7 @@ class AdminController extends Controller
                 session(['session_admin_name' => $admin_name]);
                 session(['session_admin_pass' => $admin_pass]);
                 session(['session_admin_type' => $admin->type]);
+
                 return redirect('/admin');
             }   
         }
@@ -167,7 +168,7 @@ class AdminController extends Controller
 
         if($request->isMethod('post')) {
             // process submitted
-            log::debug("hey2");
+            // log::debug("hey2");
 
             // validation request 
             $request->validate([
