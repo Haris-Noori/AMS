@@ -53,9 +53,9 @@ class Employee extends Model
     ];
 
 
-    public static function login(String $name, String $pass) {
+    public static function login(String $email, String $pass) {
         
-        $employee = Employee::where('first_name', '=', $name)->where('password', '=', $pass)->first();
+        $employee = Employee::where('email', '=', $email)->where('password', '=', $pass)->first();
         //print_r($employee);
         if ($employee === null ) {
             //employee does not exist
@@ -102,7 +102,7 @@ class Employee extends Model
         try {
             // create employee
             $employee = EmployeeTransformer::fromRequest($request);
-            Log::debug('Created Employee', $employee);
+            // Log::debug('Created Employee', $employee);
             Employee::create($employee);
         } catch(Exception $e) {
             return ["error" => "Failed creating employee."];
