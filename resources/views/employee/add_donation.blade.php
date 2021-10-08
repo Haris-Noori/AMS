@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <h4>Donation Details</h4>
 
-        <form action="{{ url('employee/add-donation') }}" method="POST" class="col-md-10 mt-1">
+        <form action="{{ url('employee/add-donation') }}" method="POST" class="col-md-10 mt-1" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -37,7 +37,7 @@
                        
                         <div class="form-group col-md-6">
                             <label for="StartTime">Upload picture(optional)</label>
-                            <input name="" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
+                            <input name="image" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
                         </div>
                         
                     </div>

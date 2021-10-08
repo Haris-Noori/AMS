@@ -100,13 +100,17 @@ class EmployeeController extends Controller
     {
         if($request->isMethod('post'))
         {
-            $donation = [
-                'box_name' => $request->box_name,
-                'amount_collected' => $request->amount_collected,
-                'employee_id' => Employee::id()
-            ];
-            Donation::create($donation);
-            return back();
+            $image = $request->file('image');
+            $image_name = $request->file('image')->getClientOriginalName();
+            return $image_name;
+            
+            // $donation = [
+            //     'box_name' => $request->box_name,
+            //     'amount_collected' => $request->amount_collected,
+            //     'employee_id' => Employee::id()
+            // ];
+            // Donation::create($donation);
+            // return back();
         }
     }
 
