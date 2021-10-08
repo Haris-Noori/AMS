@@ -13,7 +13,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Roll Number</th>
+                        <th>Roll Number(YYMM-xxxx)</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Father Name</th>

@@ -91,7 +91,7 @@ class Student extends Model
         try {
             $guardian = GuardianTransformer::fromRequest($request);
             StudentGuardian::create($guardian);
-            Log::debug("Created Guardian, ", $guardian);
+            // Log::debug("Created Guardian, ", $guardian);
 
             // create student
             $student = StudentTransformer::fromRequest($request);
@@ -100,7 +100,7 @@ class Student extends Model
 
             $rollNumber = Student::rollNumber();
             $student = array_merge($student, ['rollnumber' => $rollNumber]);
-            Log::debug('Created Student', $student);
+            // Log::debug('Created Student', $student);
 
             Student::create($student);
         } catch(Exception $e) {
@@ -118,12 +118,12 @@ class Student extends Model
      * @return bool
      */
     public static function isUnique(String $firstName, String $lastName, String $fatherName) {
-        Log::debug(count(Student::where(['first_name' => $firstName, 'last_name' => $lastName])->get()));
-        Log::debug(count(StudentGuardian::where('father_name', $fatherName)->get()));
-        Log::debug(Student::where('first_name', $firstName)
-        ->where('last_name', $lastName)->get() && StudentGuardian::where('father_name', $fatherName)->get());
-        return (count(Student::where(['first_name' => $firstName, 'last_name' => $lastName])->get()) == 0)
-            && (count(StudentGuardian::where('father_name', $fatherName)->get()) == 0);
+        // Log::debug(count(Student::where(['first_name' => $firstName, 'last_name' => $lastName])->get()));
+        // Log::debug(count(StudentGuardian::where('father_name', $fatherName)->get()));
+        // Log::debug(Student::where('first_name', $firstName)
+        // ->where('last_name', $lastName)->get() && StudentGuardian::where('father_name', $fatherName)->get());
+        return (count(Student::where(['first_name' => $firstName, 'last_name' => $lastName])->get()) == 0);
+            // && (count(StudentGuardian::where('father_name', $fatherName)->get()) == 0);
     }
 
 

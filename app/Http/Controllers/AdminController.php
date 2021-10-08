@@ -173,7 +173,7 @@ class AdminController extends Controller
             // validation request 
             $request->validate([
                 // 'token' => 'required',
-                'st_first_name' => 'required | alpha',
+                'st_first_name' => 'required',
                 'st_last_name' => 'required | alpha',
                 'st_gender' => 'required',
                 'st_dob' => 'required | date',
