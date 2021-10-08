@@ -7,8 +7,8 @@
 <form class="user" action="{{ url('/employee/login') }}" method="POST">
     @csrf
     <div class="form-group">
-        <input name="emp_name" type="text" required class="form-control form-control-user" id="exampleInputEmail"
-            aria-describedby="emailHelp" placeholder="Enter Your Name">
+        <input name="emp_email" type="email" required class="form-control form-control-user" id="exampleInputEmail"
+            aria-describedby="emailHelp" placeholder="Enter Your Email">
     </div>
     <div class="form-group">
         <input name="emp_pass" type="password" required class="form-control form-control-user" id="exampleInputPassword"

@@ -15,12 +15,12 @@ class EmployeeController extends Controller
     public function login(Request $request) {
         
         if($request->isMethod('post')) {
-            $name = $request->emp_name;
+            $email = $request->emp_email;
             $pass = $request->emp_pass;
             //log::debug('Returning login view');
 
 
-            if( ! Employee::login($name, $pass) ) {
+            if( ! Employee::login($email, $pass) ) {
                 // return view('employee.login');//->withErrors([ 'error' => 'invaild credentials' ]);
                 return back()->withErrors([ 'error' => 'invaild credentials' ]);
             } else {
@@ -30,7 +30,7 @@ class EmployeeController extends Controller
 
             }
         } else {
-            log::debug("Hey");
+            // log::debug("Hey");
             return "Not post";
         }
     }
