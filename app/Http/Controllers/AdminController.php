@@ -163,7 +163,7 @@ class AdminController extends Controller
     public function addStudent(Request $request) {
         if($request->isMethod('get')) {
             // return view
-            return view('admin.add-student', $this->getAdminSessionData() );
+            return view('admin.add_student', $this->getAdminSessionData() );
         }
 
         if($request->isMethod('post')) {
@@ -215,8 +215,13 @@ class AdminController extends Controller
      * Removes a Student
      */
     public function removeStudent($id)
-    {
+    {   
+        $guardian = Student::select('guardian_id')->where('id', '=', $id)->get();
+
+        DB::table('student_guardians')->where('id', '=', $guardian[0]->guardian_id)->delete();
+
         DB::table('students')->where('id', '=', $id)->delete();
+        
         return redirect('admin/all_students');
     }
 
