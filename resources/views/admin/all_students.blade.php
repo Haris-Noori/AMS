@@ -14,6 +14,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Roll Number(YYMM-xxxx)</th>
+                        <th>Photo</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Father Name</th>
@@ -32,6 +33,7 @@
                             <tr>
                                 <th> {{$student->id}} </th>
                                 <td> {{$student->rollnumber}} </td>
+                                <td> <img src="{{ asset('uploads/'.$student->image) }}" width="200" alt=""> </td>
                                 <td> {{$student->first_name}} </td>
                                 <td> {{$student->last_name}} </td>
                                 <td> {{$student->fatherName()}} </td>

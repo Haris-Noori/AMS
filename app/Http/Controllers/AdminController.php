@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use League\Fractal;
 use Log;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Admin;
 use App\Models\Student;
@@ -187,12 +188,24 @@ class AdminController extends Controller
             if(!Student::isUnique($request->input('st_first_name'), 
                                  $request->input('st_last_name'), 
                                  $request->input('st_father_name'))) {
-                // echo "Student not unique";
+                echo "Student not unique";
                 return back()->withErrors(['error' => "Student is not unique"]);
             } else {
-                //$request->request->add(['rollnumber' => $new_std_id]);
-                //print_r($request);
+                
                 Student::register($request);
+
+                // uploading image and saving path
+                $image = $request->file('st_image');
+                $image_name = $request->file('st_image')->getClientOriginalName();
+                // return $image_name;
+
+                $student_id = Student::latest()->first()->id;   //  student id
+                Storage::putFileAs('students/'.$student_id, $image, $image_name);
+                $image_path = 'students/'.$student_id.'/'.$image_name;
+                Student::where('id', '=', $student_id)->update(['image' => $image_path]);
+                // return $image_path;
+
+                // Student::where('id', '=', $student_id)->update(['image' => $image_path]);
                 return back()->with('status', 'Student Registered!');
             }
         

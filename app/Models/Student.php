@@ -74,7 +74,6 @@ class Student extends Model
         'ref_name',
         'ref_num',
         'image',
-        'document_path',
 
         // rollnumber
         'rollnumber'
@@ -98,6 +97,7 @@ class Student extends Model
             $student['guardian_id'] = (string)StudentGuardian::latest()->first()->id;
             // Log::debug('Created Student', $student);
 
+            // generate roll number
             $rollNumber = Student::rollNumber();
             $student = array_merge($student, ['rollnumber' => $rollNumber]);
             // Log::debug('Created Student', $student);

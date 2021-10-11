@@ -95,7 +95,7 @@ class StudentTransformer extends TransformerAbstract {
             'ref_name' => $request->input('st_ref_name'),
             'ref_num' => $request->input('st_ref_num'),
             'image' => $request->input('st_image'),
-            'document_path' => $request->input('st_docs')[0]
+            'document_path' => $request->input('st_docs')
         ];
     }
 }

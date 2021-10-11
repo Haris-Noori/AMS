@@ -3,14 +3,14 @@
 @section('pageContent')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Add New Student</h1>
+    <h1 class="h3 mb-0 text-gray-800">Students / Add New Student</h1>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
 <div class="col-md-12">
     <div class="float-right" >Joining Date: <strong><?php date_default_timezone_set("Asia/Karachi"); echo date("d M, Y") ?></strong></div>
-    <h3>Student Registration Form</h3>
-    <form action="{{ url('/admin/add-student') }}" method="POST" class="col-md-12 mt-1">
+    <h4>Student Registration Form</h4>
+    <form action="{{ url('/admin/add-student') }}" method="POST" class="col-md-12 mt-1"  enctype="multipart/form-data">
         @csrf
 
             @if ($errors->any())
@@ -389,7 +389,8 @@
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <span class="btn btn-default btn-file">
-                                    <span class="btn btn-primary">Choose Photo</span><input name="st_image" type="file" id="imgInp">
+                                    <span class="btn btn-primary">Choose Photo</span>
+                                    <input name="st_image" type="file" id="imgInp">
                                 </span>
                             </span>
                             <input type="text" class="form-control" readonly hidden>
