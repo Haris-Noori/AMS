@@ -18,6 +18,7 @@ class CreateAdminsTable extends Migration
             $table->string('admin_name');
             $table->string('admin_pass');
             $table->string('type');
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>Admin ID</th>
+                        <th class="text-center col-2">Image</th>
                         <th>Admin Name</th>
                         <th>Admin Type</th>
                         <th>Action</th>
@@ -27,6 +28,9 @@
                             ?>
                             <tr>
                                 <th> {{$admin->id}} </th>
+                                <td class="text-center">
+                                    <img src="{{ asset('uploads/'.$admin->image_path) }}" width="200" alt="">
+                                </td>
                                 <td> {{$admin->admin_name}} </td>
                                 <td> {{$admin->type}} </td>
                                 <td> <a href="#"><button class="btn btn-success">Reset Password</button></a> </td>

@@ -54,6 +54,7 @@ class AdminController extends Controller
                 session(['session_admin_name' => $admin_name]);
                 session(['session_admin_pass' => $admin_pass]);
                 session(['session_admin_type' => $admin->type]);
+                session(['session_admin_image' => $admin->image_path]);
 
                 return redirect('/admin');
             }   
@@ -70,6 +71,7 @@ class AdminController extends Controller
             'session_admin_name' => session('session_admin_name'),
             'session_admin_pass' => session('session_admin_pass'),
             'session_admin_type' => session('session_admin_type'),
+            'session_admin_image' => session('session_admin_image'),
         ];
     }
 
@@ -137,6 +139,14 @@ class AdminController extends Controller
             'type' => $request->type,
         ];
         Admin::create($data);   // inserting new database
+        
+        $admin_id = Admin::latest()->first()->id;
+        $image = $request->file('admin_image');
+        $image_name = $request->file('admin_image')->getClientOriginalName();
+        Storage::putFileAs('admins/'.$admin_id, $image, $image_name);
+        $image_path = 'admins/'.$admin_id.'/'.$image_name;
+        Admin::where('id', '=', $admin_id)->update(['image_path' => $image_path]);
+
         $pageData = [
             'viewTitle' => 'Add New Admin',
             'successMsg' => 'Admin Created Successfully!',
