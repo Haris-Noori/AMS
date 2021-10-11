@@ -13,6 +13,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
+                        <th class="text-center col-2">Photo</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
@@ -30,6 +31,9 @@
                             ?>
                             <tr>
                                 <th> {{$employee->id}} </th>
+                                <td class="text-center">
+                                    <img src="{{ asset('uploads/'.$employee->image_path) }}" width="200" alt="">
+                                </td>
                                 <td> {{$employee->first_name}} </td>
                                 <td> {{$employee->last_name}} </td>
                                 <td> {{$employee->email}} </td>

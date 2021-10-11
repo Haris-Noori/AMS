@@ -13,7 +13,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th>Admin ID</th>
-                        <th class="text-center col-2">Image</th>
+                        <th class="text-center col-2">Photo</th>
                         <th>Admin Name</th>
                         <th>Admin Type</th>
                         <th>Action</th>

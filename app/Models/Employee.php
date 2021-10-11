@@ -67,6 +67,7 @@ class Employee extends Model
             session(['session_employee_name' => $employee->first_name]);
             session(['session_employee_last_name' => $employee->last_name]);
             session(['session_employee_password'=> $employee->password]);
+            session(['session_employee_image' => $employee->image_path]);
             return TRUE;
             
         }
@@ -85,7 +86,8 @@ class Employee extends Model
         'session_employee_id' => session('session_employee_id'),
         'session_employee_name' => session('session_employee_name'),
         'session_employee_last_name' => session('session_employee_last_name'),
-        'session_employee_pass'=> session('session_employee_password')
+        'session_employee_pass' => session('session_employee_password'),
+        'session_employee_image' => session('session_employee_image'),
        ];
     }
 

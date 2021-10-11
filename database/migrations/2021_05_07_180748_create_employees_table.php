@@ -35,6 +35,7 @@ class CreateEmployeesTable extends Migration
             $table->string('bank_account')->default('N/A');
             $table->string('job_status')->default('N/A');
             $table->string('password')->default('1234');
+            $table->string('image_path')->nullable();
 
             $table->timestamps();
         });

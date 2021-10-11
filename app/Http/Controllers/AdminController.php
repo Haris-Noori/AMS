@@ -268,6 +268,13 @@ class AdminController extends Controller
         ]);
 
         Employee::add($request);
+        // employee image
+        $emp_id = Employee::latest()->first()->id;
+        $image = $request->file('image');
+        $image_name = $request->file('image')->getClientOriginalName();
+        Storage::putFileAs('employees/'.$emp_id, $image, $image_name);
+        $image_path = 'employees/'.$emp_id.'/'.$image_name;
+        Employee::where('id', '=', $emp_id)->update(['image_path' => $image_path]);
 
         return back()->with('status', 'Employee Registered!');
     }

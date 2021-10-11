@@ -21,6 +21,7 @@ class EmployeeSeeder extends Seeder
                 'blood_group'=> 'A+',
                 'email'      => 'employee@employee.com',
                 'password'   => '1234',
+                'image_path' => 'employees/employee.png',
             ],
             [
                 'first_name' => 'Hafeez Ahmad',
@@ -30,6 +31,7 @@ class EmployeeSeeder extends Seeder
                 'blood_group'=> 'A+',
                 'email'      => 'hafeez@email.com',
                 'password'   => '1234',
+                'image_path' => 'employees/employee.png',
             ],
             [
                 'first_name' => 'Muhammad',
@@ -39,6 +41,7 @@ class EmployeeSeeder extends Seeder
                 'blood_group'=> 'B+',
                 'email'      => 'irfan@email.com',
                 'password'   => '1234',
+                'image_path' => 'employees/employee.png',
             ],
             [
                 'first_name' => 'Khalida',
@@ -48,6 +51,7 @@ class EmployeeSeeder extends Seeder
                 'blood_group'=> 'B+',
                 'email'      => 'khalidaperveen360@gmail.com',
                 'password'   => '1234',
+                'image_path' => 'employees/employee.png',
             ],
             [
                 'first_name' => 'Ikhlaq Ahmad',
@@ -57,6 +61,7 @@ class EmployeeSeeder extends Seeder
                 'blood_group'=> 'B+',
                 'email'      => 'ikhlaqahmad1124@gmail.com',
                 'password'   => '1234',
+                'image_path' => 'employees/employee.png',
             ]
             
         ];

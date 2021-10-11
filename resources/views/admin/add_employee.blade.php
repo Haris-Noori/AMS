@@ -3,14 +3,14 @@
 @section('pageContent')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Add New Employee</h1>
+    <h1 class="h3 mb-0 text-gray-800">Employees / Add New Employee</h1>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
 <div class="col-md-12">
     <div class="float-right" >Joining Date: <strong><?php date_default_timezone_set("Asia/Karachi"); echo date("d M, Y") ?></strong></div>
     <h4>Employee Form</h4>
-    <form action="{{ url('/admin/addEmployee') }}" method="POST" class="col-md-12 mt-1">
+    <form action="{{ url('/admin/addEmployee') }}" method="POST" class="col-md-12 mt-1" enctype="multipart/form-data">
         @csrf
         
             @if ($errors->any())
@@ -34,22 +34,22 @@
 
                     <div class="row">
                         <div class="form-group col-md-6" >
-                            <label for="exampleInputEmail1">First Name</label>
+                            <label for="exampleInputEmail1">First Name*</label>
                             <input name="first_name" type="text" required class="form-control" placeholder="First Name">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Last Name</label>
+                            <label for="exampleInputEmail1">Last Name*</label>
                             <input name="last_name" type="text" required class="form-control" placeholder="Last Name">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6" >
-                            <label for="exampleInputEmail1">Father Name</label>
+                            <label for="exampleInputEmail1">Father Name*</label>
                             <input name="father_name" type="text" class="form-control" placeholder="Father Full Name">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlSelect1">Gender</label>
+                            <label for="exampleFormControlSelect1">Gender*</label>
                             <select name="gender" class="form-control" required id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="Male">Male</option>
@@ -96,8 +96,8 @@
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Email Address</label>
-                            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                            <label for="exampleInputEmail1">Email Address*</label>
+                            <input name="email" type="email" class="form-control" required id="exampleFormControlInput1" placeholder="name@example.com">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInput">Phone Number</label>
@@ -143,7 +143,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Joining Date</label>
+                            <label for="exampleInputEmail1">Joining Date*</label>
                             <input name="joining_date" type="date" pattern="de-m-YYYY" placeholder="dd-mm-yyyy" class="form-control">
                         </div>
                     </div>
@@ -180,7 +180,8 @@
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <span class="btn btn-default btn-file">
-                                    <span class="btn btn-primary">Choose Photo</span><input name="image" type="file" id="imgInp">
+                                    <span class="btn btn-primary">Choose Photo</span>
+                                    <input name="image" type="file" id="imgInp">
                                 </span>
                             </span>
                             <input type="text" class="form-control" readonly hidden>
@@ -191,7 +192,7 @@
                         <div class="form-group col-md-12">
                             <label>Upload Documents(if any)</label>
                             <br>
-                            <input name="st_docs[]" type="file" class="btn btn-primary col-md-12" multiple>
+                            <input name="" type="file" class="btn btn-primary col-md-12" multiple>
                         </div>
                     </div>
                 </div>
