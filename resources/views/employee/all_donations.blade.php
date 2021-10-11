@@ -15,8 +15,8 @@
                         <th>ID</th>
                         <th>Donation Box Name</th>
                         <th>Amount Collected</th>
-                        <th>Photo</th>
                         <th>Date-Time</th>
+                        <th class="text-center">Photo</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,8 +26,11 @@
                                 <th> {{ $donation->id }} </th>
                                 <td> {{ $donation->box_name }} </td>
                                 <td> {{ $donation->amount_collected }} </td>
-                                <td> {{ $donation->image_path }} </td>
                                 <td> {{ $donation->created_at }} </td>
+                                <td class="text-center col-4">
+                                    <img src="{{ asset('uploads/'.$donation->image_path) }}" class="col-12" alt=""> 
+                                    {{-- {{  }}  --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
