@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Models\Activity;
 use App\Models\Donation;
 use App\Models\DonationBox;
+use Illuminate\Support\Facades\Storage;
 use Log;
 
 class EmployeeController extends Controller
@@ -102,15 +103,21 @@ class EmployeeController extends Controller
         {
             $image = $request->file('image');
             $image_name = $request->file('image')->getClientOriginalName();
-            return $image_name;
+
+            $emp_id = Employee::id();   //  employee id
+
+            Storage::putFileAs('donations/'.$emp_id, $image, $image_name);
+            $image_path = 'donations/'.$emp_id.'/'.$image_name;
+            // return $image_path;
             
-            // $donation = [
-            //     'box_name' => $request->box_name,
-            //     'amount_collected' => $request->amount_collected,
-            //     'employee_id' => Employee::id()
-            // ];
-            // Donation::create($donation);
-            // return back();
+            $donation = [
+                'box_name' => $request->box_name,
+                'amount_collected' => $request->amount_collected,
+                'image_path' => $image_path,
+                'employee_id' => Employee::id()
+            ];
+            Donation::create($donation);
+            return back();
         }
     }
 

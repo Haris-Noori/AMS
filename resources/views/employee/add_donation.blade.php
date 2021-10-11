@@ -17,19 +17,17 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Select Donation Box</label>
-                            <select name="box_name" class="form-control" id="exampleFormControlSelect1">
+                            <select name="box_name" required class="form-control" id="exampleFormControlSelect1">
                                 @foreach ($donation_boxes as $donation_box)
                                     <option value="{{ $donation_box->box_name }}">{{ $donation_box->box_name }}</option>
                                 @endforeach
                                 {{-- <option value="Lahore-1">Lahore-1</option>
-                                <option value="Lahore-2">Lahore-2</option>
-                                <option value="Mandi-1">Mandi-1</option>
                                 <option value="Mandi-2">Mandi-2</option> --}}
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Amount Collected</label>
-                            <input name="amount_collected" type="number" min="0" class="form-control" id="ActivityDescription" placeholder="1000">
+                            <input name="amount_collected" required type="number" min="0" class="form-control" id="ActivityDescription" placeholder="1000">
                         </div>
                     </div>
                    
