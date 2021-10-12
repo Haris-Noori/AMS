@@ -162,6 +162,8 @@ class AdminController extends Controller
     public function removeAdmin($id)
     {
         // return $id;
+        Storage::deleteDirectory('admins/'.$id);
+
         DB::table('admins')->where('id', '=', $id)->delete();
      
         return redirect('/admin/all_admins');
@@ -243,6 +245,8 @@ class AdminController extends Controller
 
         DB::table('student_guardians')->where('id', '=', $guardian[0]->guardian_id)->delete();
 
+        Storage::deleteDirectory('students/'.$id);
+
         DB::table('students')->where('id', '=', $id)->delete();
         
         return redirect('admin/all_students');
@@ -299,6 +303,8 @@ class AdminController extends Controller
      */
     public function removeEmployee($id)
     {
+        Storage::deleteDirectory('employees/'.$id);    // delete employee's directory
+
         DB::table('employees')->where('id', '=', $id)->delete();
         return redirect('admin/all-employees');
     }
