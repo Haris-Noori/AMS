@@ -105,7 +105,13 @@ class AdminController extends Controller
 
     public function loadDashboard()
     {
-        return view('admin.dashboard', $this->getAdminSessionData());
+        $donation = DB::table('donations')->sum('amount_collected');
+        // return $donation;
+        $pageData = [
+            'donation' => $donation,
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.dashboard', $pageData);
     }
 
     /**
