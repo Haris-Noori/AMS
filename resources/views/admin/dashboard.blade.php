@@ -9,7 +9,13 @@
 
     <!-- Content Row -->
     <div class="row">
-
+        
+        @if (session('status'))
+            <span class="col-md-4 alert alert-success">
+                {{ session('status') }}
+            </span>
+        @endif
+    
         <!-- Expenses (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">

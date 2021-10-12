@@ -35,6 +35,8 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::post('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::get('/admin/logout', 'AdminController@logout');
+    Route::post('/admin/change-password', 'AdminController@changePassword');
+
     Route::get('/admin/dashboard', 'AdminController@loadDashboard');
     // admins
     Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
@@ -60,7 +62,6 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/all-donation-boxes', 'AdminController@getAllDonationBoxes');
     Route::get('/admin/all-donations', 'AdminController@allDonations');
     Route::get('/admin/employees-activities', 'AdminController@employeesActivities');
-    
 });
 
 // Routes for Faculty

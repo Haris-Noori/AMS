@@ -75,6 +75,14 @@ class AdminController extends Controller
         ];
     }
 
+    public function changePassword(Request $request) {
+        $password = $request->input('new_password');
+        $id = session('session_admin_id');
+
+        Admin::where('id', '=', $id)->update(['admin_pass' => $password]);
+        return back()->with('status', 'Password changed succesfully!');
+    }
+
     /**
      * Logout the Admin
      */
