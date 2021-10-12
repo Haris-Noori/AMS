@@ -91,9 +91,17 @@ class EmployeeController extends Controller
 
     public function allDonations()
     {
+        $donations = Donation::where('employee_id', Employee::id())->orderBy('created_at', 'desc')->get();
+        $sum = 0;
+        foreach($donations as $donation) {
+            $sum = $sum + $donation->amount_collected;
+        }
+
         return view('employee.all_donations', 
-            array_merge(Employee::getEmployeeSessionData(),
-                ['donations' => Donation::where('employee_id', Employee::id())->orderBy('created_at', 'desc')->get()]
+            array_merge(Employee::getEmployeeSessionData(), [
+                'donations' => $donations,
+                'sum' => $sum,
+            ]
         ));
     }
 
@@ -101,13 +109,17 @@ class EmployeeController extends Controller
     {
         if($request->isMethod('post'))
         {
-            $image = $request->file('image');
-            $image_name = $request->file('image')->getClientOriginalName();
+            $image_path = "";
+            if($request->file('image') != null ) {
+                $image = $request->file('image');
+                $image_name = $request->file('image')->getClientOriginalName();
 
-            $emp_id = Employee::id();   //  employee id
+                $emp_id = Employee::id();   //  employee id
 
-            Storage::putFileAs('donations/'.$emp_id, $image, $image_name);
-            $image_path = 'donations/'.$emp_id.'/'.$image_name;
+                Storage::putFileAs('donations/'.$emp_id, $image, $image_name);
+                $image_path = 'donations/'.$emp_id.'/'.$image_name;
+            }
+            
             // return $image_path;
             
             $donation = [

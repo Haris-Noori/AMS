@@ -148,12 +148,14 @@ class AdminController extends Controller
         ];
         Admin::create($data);   // inserting new database
         
-        $admin_id = Admin::latest()->first()->id;
-        $image = $request->file('admin_image');
-        $image_name = $request->file('admin_image')->getClientOriginalName();
-        Storage::putFileAs('admins/'.$admin_id, $image, $image_name);
-        $image_path = 'admins/'.$admin_id.'/'.$image_name;
-        Admin::where('id', '=', $admin_id)->update(['image_path' => $image_path]);
+        if($request->file('admin_image') != null) {
+            $admin_id = Admin::latest()->first()->id;
+            $image = $request->file('admin_image');
+            $image_name = $request->file('admin_image')->getClientOriginalName();
+            Storage::putFileAs('admins/'.$admin_id, $image, $image_name);
+            $image_path = 'admins/'.$admin_id.'/'.$image_name;
+            Admin::where('id', '=', $admin_id)->update(['image_path' => $image_path]);
+        }
 
         $pageData = [
             'viewTitle' => 'Add New Admin',
@@ -215,17 +217,16 @@ class AdminController extends Controller
                 Student::register($request);
 
                 // uploading image and saving path
-                $image = $request->file('st_image');
-                $image_name = $request->file('st_image')->getClientOriginalName();
-                // return $image_name;
+                if($request->file('st_image') != null) {
+                    $image = $request->file('st_image');
+                    $image_name = $request->file('st_image')->getClientOriginalName();
 
-                $student_id = Student::latest()->first()->id;   //  student id
-                Storage::putFileAs('students/'.$student_id, $image, $image_name);
-                $image_path = 'students/'.$student_id.'/'.$image_name;
-                Student::where('id', '=', $student_id)->update(['image' => $image_path]);
-                // return $image_path;
-
-                // Student::where('id', '=', $student_id)->update(['image' => $image_path]);
+                    $student_id = Student::latest()->first()->id;   //  student id
+                    Storage::putFileAs('students/'.$student_id, $image, $image_name);
+                    $image_path = 'students/'.$student_id.'/'.$image_name;
+                    Student::where('id', '=', $student_id)->update(['image' => $image_path]);
+                }
+                
                 return back()->with('status', 'Student Registered!');
             }
         
@@ -281,12 +282,14 @@ class AdminController extends Controller
 
         Employee::add($request);
         // employee image
-        $emp_id = Employee::latest()->first()->id;
-        $image = $request->file('image');
-        $image_name = $request->file('image')->getClientOriginalName();
-        Storage::putFileAs('employees/'.$emp_id, $image, $image_name);
-        $image_path = 'employees/'.$emp_id.'/'.$image_name;
-        Employee::where('id', '=', $emp_id)->update(['image_path' => $image_path]);
+        if($request->file('image') != null) {
+            $emp_id = Employee::latest()->first()->id;
+            $image = $request->file('image');
+            $image_name = $request->file('image')->getClientOriginalName();
+            Storage::putFileAs('employees/'.$emp_id, $image, $image_name);
+            $image_path = 'employees/'.$emp_id.'/'.$image_name;
+            Employee::where('id', '=', $emp_id)->update(['image_path' => $image_path]);
+        }
 
         return back()->with('status', 'Employee Registered!');
     }
@@ -367,9 +370,17 @@ class AdminController extends Controller
 
     public function allDonations()
     {
+        $donations = Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.created_at', 'donations.image_path', 'employees.first_name', 'employees.last_name')->join('employees', 'employees.id', '=', 'donations.employee_id')->orderBy('donations.created_at', 'desc')->get();
+        $sum = 0;
+        foreach($donations as $donation) {
+            $sum = $sum + $donation->amount_collected;
+        }
+
         $pageData = [
-            'donations' => Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.created_at', 'donations.image_path', 'employees.first_name', 'employees.last_name')->join('employees', 'employees.id', '=', 'donations.employee_id')->orderBy('donations.created_at', 'desc')->get()
+            'donations' => $donations,
+            'sum' => $sum,
         ];
+
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_donations', $pageData);
     }

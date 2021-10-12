@@ -9,6 +9,7 @@
     
         <div class="col-md-12">
             <div class="table-responsive">
+                <h5>Total: Rs. {{ $sum }}</h5>
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead class="thead-dark">
                     <tr>
