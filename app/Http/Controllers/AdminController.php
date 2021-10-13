@@ -13,6 +13,7 @@ use App\Models\Admin;
 use App\Models\Student;
 use App\Models\StudentGuardian;
 use App\Models\Employee;
+use App\Models\Expense;
 use App\Models\Activity;
 use App\Models\DonationBox;
 use App\Models\Donation;
@@ -106,9 +107,11 @@ class AdminController extends Controller
     public function loadDashboard()
     {
         $donation = DB::table('donations')->sum('amount_collected');
+        $expense = DB::table('expenses')->sum('amount');
         // return $donation;
         $pageData = [
             'donation' => $donation,
+            'expense' => $expense,
         ];
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.dashboard', $pageData);
@@ -325,6 +328,15 @@ class AdminController extends Controller
         DB::table('employees')->where('id', '=', $id)->delete();
         return redirect('admin/all-employees');
     }
+
+    public function employeesActivities()
+    {
+        $pageData = [
+            'activities' => Activity::select('activities.id', 'activities.activity_name', 'activities.activity_description', 'activities.from', 'activities.to', 'activities.created_at', 'employees.first_name')->join('employees', 'employees.id', '=', 'activities.employee_id')->orderBy('activities.created_at', 'desc')->get()
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.employees_activities', $pageData);
+    }
     
     
     /***************************************************************************************
@@ -376,7 +388,9 @@ class AdminController extends Controller
 
     public function allDonations()
     {
-        $donations = Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.created_at', 'donations.image_path', 'employees.first_name', 'employees.last_name')->join('employees', 'employees.id', '=', 'donations.employee_id')->orderBy('donations.created_at', 'desc')->get();
+        $donations = Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.created_at', 'donations.image_path', 'employees.first_name', 'employees.last_name')
+        ->join('employees', 'employees.id', '=', 'donations.employee_id')
+        ->orderBy('donations.created_at', 'desc')->get();
         $sum = 0;
         foreach($donations as $donation) {
             $sum = $sum + $donation->amount_collected;
@@ -386,18 +400,8 @@ class AdminController extends Controller
             'donations' => $donations,
             'sum' => $sum,
         ];
-
         $pageData = array_merge($pageData, $this->getAdminSessionData());
         return view('admin.all_donations', $pageData);
-    }
-
-    public function employeesActivities()
-    {
-        $pageData = [
-            'activities' => Activity::select('activities.id', 'activities.activity_name', 'activities.activity_description', 'activities.from', 'activities.to', 'activities.created_at', 'employees.first_name')->join('employees', 'employees.id', '=', 'activities.employee_id')->orderBy('activities.created_at', 'desc')->get()
-        ];
-        $pageData = array_merge($pageData, $this->getAdminSessionData());
-        return view('admin.employees_activities', $pageData);
     }
 
     public function searchDonations(Request $request) {
@@ -422,6 +426,55 @@ class AdminController extends Controller
         return back();
     }
 
+    /***************************************************************************************
+     * Functions for Expenses
+    *************************************************************************************** */
+
+    public function expenses() {
+        $year_month = date('Y-m');
+        
+        $expenses = Expense::where('created_at', 'LIKE', $year_month.'%')
+        ->orderBy('created_at', 'desc')->get();
+
+        $total = 0;
+        foreach ($expenses as $expense) {
+            $total = $total + $expense->amount;
+        }
+        $pageData = [
+            'total' => $total,
+            'expenses' => $expenses,
+        ];
+        $pageData = array_merge($pageData, $this->getAdminSessionData());
+        return view('admin.expenses.expenses', $pageData);
+    }
+
+    public function searchExpenses(Request $request) {
+        $date = $request->input('date');
+        if($date != null) {
+            $expenses = Expense::where('created_at', 'LIKE', $date.'%')
+            ->orderBy('created_at', 'desc')->get();
+
+            $total = 0;
+            foreach ($expenses as $expense) {
+                $total = $total + $expense->amount;
+            }
+            $pageData = [
+                'total' => $total,
+                'expenses' => $expenses,
+            ];
+            $pageData = array_merge($pageData, $this->getAdminSessionData());
+            return view('admin.expenses.expenses', $pageData);
+        }
+    }
+
+    public function addExpense(Request $request) {
+        if($request->isMethod('get')) {
+
+            $pageData = [];
+            $pageData = array_merge($pageData, $this->getAdminSessionData());
+            return view('admin.expenses.add_expense', $pageData);
+        }
+    }
 
 }
 

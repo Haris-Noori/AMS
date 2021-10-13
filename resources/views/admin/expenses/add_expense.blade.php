@@ -3,7 +3,7 @@
 @section('pageContent')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Donations / Add New Donation Box</h1>
+        <h1 class="h3 mb-0 text-gray-800">Expenses / Add Expense</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -31,9 +31,9 @@
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Collector</label>
                             <select name="collector" class="form-control" id="exampleFormControlSelect1">
-                                @foreach ($employees as $employee)
+                                {{-- @foreach ($employees as $employee)
                                     <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                         </div>
                         <div class="form-group col-md-6">

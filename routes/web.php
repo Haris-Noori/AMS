@@ -63,6 +63,11 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/all-donation-boxes', 'AdminController@getAllDonationBoxes');
     Route::get('/admin/all-donations', 'AdminController@allDonations');
     Route::post('/admin/search-donations', 'AdminController@searchDonations');
+
+    // expenses
+    Route::get('/admin/expenses', 'AdminController@expenses');
+    Route::post('/admin/search-expenses', 'AdminController@searchExpenses');
+    Route::get('/admin/add-expense', 'AdminController@addExpense');
     
 });
 

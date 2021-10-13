@@ -75,19 +75,6 @@
           </div>
       </li>
       @endif
-      {{-- <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <i class="fas fa-fw fa-user-shield"></i>
-              <span>Admins</span>
-          </a>
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Admins</h6>
-                  <a class="collapse-item" href="{{ url('/admin/all_admins') }}">All Admins</a>
-                  <a class="collapse-item" href="{{ url('/admin/add_admin') }}">Add Admin</a>
-              </div>
-          </div>
-      </li> --}}
  
       <!-- Nav Item - Employees Collapse Menu -->
       <li class="nav-item">
@@ -120,21 +107,6 @@
           </div>
       </li>
 
-      <!-- Nav Item - Faculty Collapse Menu -->
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-              <i class="fas fa-fw fa-chalkboard-teacher"></i>
-              <span>Faculty</span>
-          </a>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Faculty</h6>  
-                  <a class="collapse-item" href="#">All Faculty</a>
-                  <a class="collapse-item" href="#">Add New Faculty</a>
-              </div>
-          </div>
-      </li>
-
       <!-- Nav Item - Donations Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDonations" aria-expanded="true" aria-controls="collapseDonations">
@@ -147,6 +119,36 @@
                 <a class="collapse-item" href="{{ url('/admin/all-donation-boxes') }}">All Donation Boxes</a>
                 <a class="collapse-item" href="{{ url('/admin/add-donation-box') }}">Add Donation Box</a>
                 <a class="collapse-item" href="{{ url('/admin/all-donations') }}">Donations</a>
+            </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Expense Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
+            <i class="fas fa-fw fa-money-bill"></i>
+            <span>Expenses</span>
+        </a>
+        <div id="collapseExpenses" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Manage Expenses</h6>  
+                <a class="collapse-item" href="{{ url('/admin/expenses') }}">Expenses</a>
+                <a class="collapse-item" href="{{ url('/admin/add-expense') }}">Add Expense</a>
+            </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Faculty Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-chalkboard-teacher"></i>
+            <span>Faculty</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Manage Faculty</h6>  
+                <a class="collapse-item" href="#">All Faculty</a>
+                <a class="collapse-item" href="#">Add New Faculty</a>
             </div>
         </div>
       </li>
