@@ -136,10 +136,13 @@
                             <label for="exampleFormControlSelect1">Employee Type</label>
                             <select name="employee_type" class="form-control" id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
-                                <option value="">Faculty</option>
-                                <option value="">Accountant</option>
-                                <option value="">Driver</option>
-                                <option value="">Others</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Faculty">Faculty</option>
+                                <option value="Cook">Cook</option>
+                                <option value="Accountant">Accountant</option>
+                                <option value="Security Guard">Security Guard</option>
+                                <option value="Driver">Driver</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
