@@ -22,6 +22,7 @@
                                 <option value="Gardening">Gardening</option>
                                 <option value="Cleaning Washrooms">Cleaning Washrooms</option>
                                 <option value="Had a break">Had a break</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
