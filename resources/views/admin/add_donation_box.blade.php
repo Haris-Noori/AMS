@@ -18,12 +18,12 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Donation Box name</label>
-                            <input name="box_name" type="text" class="form-control" id="ActivityDescription" placeholder="Name">
+                            <input name="box_name" type="text" class="form-control" placeholder="Name">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Reference Name</label>
-                            <input name="reference" type="text" class="form-control" id="ActivityDescription" placeholder="Person Name">
+                            <input name="reference" type="text" class="form-control" placeholder="Person Name">
                         </div>
                     </div>
 

@@ -55,13 +55,15 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::post('/admin/addEmployee', 'AdminController@addEmployee');
     Route::get('/admin/all-employees', 'AdminController@allEmployeesView');
     Route::get('/admin/removeEmployee/{id}', 'AdminController@removeEmployee');
+    Route::get('/admin/employees-activities', 'AdminController@employeesActivities');
 
     //Donations
     Route::get('/admin/add-donation-box', 'AdminController@addDonationBoxView');
     Route::post('/admin/add-donation-box', 'AdminController@addDonationBox');
     Route::get('/admin/all-donation-boxes', 'AdminController@getAllDonationBoxes');
     Route::get('/admin/all-donations', 'AdminController@allDonations');
-    Route::get('/admin/employees-activities', 'AdminController@employeesActivities');
+    Route::post('/admin/search-donations', 'AdminController@searchDonations');
+    
 });
 
 // Routes for Faculty

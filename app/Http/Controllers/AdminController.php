@@ -400,6 +400,28 @@ class AdminController extends Controller
         return view('admin.employees_activities', $pageData);
     }
 
+    public function searchDonations(Request $request) {
+        $date = $request->input('date');
+        if($date != null) {
+            $donations = Donation::select('donations.id', 'donations.box_name', 'donations.amount_collected', 'donations.created_at', 'donations.image_path', 'employees.first_name', 'employees.last_name')
+            ->join('employees', 'employees.id', '=', 'donations.employee_id')
+            ->where('donations.created_at', 'LIKE', $date.'%')
+            ->orderBy('donations.created_at', 'desc')->get();
+
+            $sum = 0;
+            foreach($donations as $donation) {
+                $sum = $sum + $donation->amount_collected;
+            }
+            $pageData = [
+                'donations' => $donations,
+                'sum' => $sum,
+            ];
+            $pageData = array_merge($pageData, $this->getAdminSessionData());
+            return view('admin.all_donations', $pageData);
+        }
+        return back();
+    }
+
 
 }
 
