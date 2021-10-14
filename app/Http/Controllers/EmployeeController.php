@@ -120,8 +120,6 @@ class EmployeeController extends Controller
                 $image_path = 'donations/'.$emp_id.'/'.$image_name;
             }
             
-            // return $image_path;
-            
             $donation = [
                 'box_name' => $request->box_name,
                 'amount_collected' => $request->amount_collected,

@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
             <span></span>
-                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-2"> <i class="fa fa-plus"></i>Add Donation</button>
+                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-2"><i class="fa fa-plus"></i> Add Donation</button>
             </div>
             <div class="form-group col-md-6 btn-outline-warning">
                 

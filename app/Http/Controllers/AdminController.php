@@ -474,6 +474,35 @@ class AdminController extends Controller
             $pageData = array_merge($pageData, $this->getAdminSessionData());
             return view('admin.expenses.add_expense', $pageData);
         }
+
+        if($request->isMethod('post')) {
+
+            $added_by = session('session_admin_name');
+            $user_designation = 'Admin';
+
+            $image_path = '';
+            if($request->file('image') != null) {
+                $image = $request->file('image');
+                $image_name = $image->getClientOriginalName();
+                $image_name = 'admin_'.$added_by.'_'.$image_name;
+                Storage::putFileAs('expenses/', $image, $image_name);
+                $image_path = 'expenses/'.$image_name;
+            }
+
+            $expense = [
+                'category' => $request->input('category'),
+                'sub_category' => $request->input('sub_category'),
+                'description' => $request->input('description'),
+                'amount' => $request->input('amount'),
+                'status' => $request->input('status'),
+                'added_by' => $added_by,
+                'user_designation' => $user_designation,
+                'image_path' => $image_path
+            ];
+
+            Expense::create($expense);
+            return back()->with('status', 'Expense added successfully!');
+        }
     }
 
 }

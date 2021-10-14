@@ -68,6 +68,7 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/expenses', 'AdminController@expenses');
     Route::post('/admin/search-expenses', 'AdminController@searchExpenses');
     Route::get('/admin/add-expense', 'AdminController@addExpense');
+    Route::post('/admin/add-expense', 'AdminController@addExpense');
     
 });
 

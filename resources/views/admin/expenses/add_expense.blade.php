@@ -4,62 +4,90 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Expenses / Add Expense</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <a href="{{ url('/admin/expenses') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-th-list fa-sm text-white-50"></i> Show Expenses</a>
     </div>
 
     <div class="col-md-12">
-        <h4>Fill Donation Box Details</h4>
+        <h4>Expense Details</h4>
 
-        <form action="{{ url('/admin/add-donation-box') }}" method="POST" class="col-md-10 mt-1">
+        @if ($errors->any())
+            <div class="col-md-4 alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if (session('status'))
+            <div class="col-md-4 alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        <form action="{{ url('/admin/add-expense') }}" method="POST" class="col-md-10 mt-1" enctype="multipart/form-data">
         @csrf
         <div class="row">
                 <div class="col-md-12">
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="ActivityDescription">Donation Box name</label>
-                            <input name="box_name" type="text" class="form-control" placeholder="Name">
+                            <label for="exampleFormControlSelect1">Category*</label>
+                            <select name="category" class="form-control" required>
+                                <option value="Bill">Bill</option>
+                                <option value="Food">Food</option>
+                                <option value="Salary">Salary</option>
+                                <option value="Construction">Construction</option>
+                                <option value="Maintenance">Maintenance</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="ActivityDescription">Reference Name</label>
-                            <input name="reference" type="text" class="form-control" placeholder="Person Name">
+                            <label for="exampleFormControlSelect1">Sub Category*</label>
+                            <select name="sub_category" class="form-control" id="exampleFormControlSelect1" required>
+                                <option value="Other">Other (if Other category is selected)</option>
+                                <optgroup label="Bill">
+                                    <option value="Internet">Internet</option>
+                                    <option value="Electricity">Electricity</option>
+                                    <option value="Gas">Gas</option>
+                                    <option value="Water">Water</option>
+                                    <option value="Other">Other</option>
+                                </optgroup>
+                                <optgroup label="Food">
+                                    <option value="Flour">Flour</option>
+                                    <option value="Rice">Rice</option>
+                                    <option value="Oil">Oil</option>
+                                    <option value="Ghee">Ghee</option>
+                                    <option value="Other">Other</option>
+                                </optgroup>
+                                <option value="Salary">Salary</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlSelect1">Collector</label>
-                            <select name="collector" class="form-control" id="exampleFormControlSelect1">
-                                {{-- @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
-                                @endforeach --}}
-                            </select>
+                            <label for="ActivityDescription">Description (must write description, if selected other)</label>
+                            <input name="description" type="text" class="form-control" placeholder="paid yesterday by me..">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlSelect1">Frequency</label>
-                            <select name="frequency" class="form-control" id="exampleFormControlSelect1">
-                                <option value="On wish">On wish</option>
-                                <option value="Weekly">Weekly</option>
-                                <option value="2 Weeks">2 Weeks</option>
-                                <option value="Monthly">Monthly</option>
-                                
-                            </select>
+                            <label for="ActivityDescription">Amount Rs*</label>
+                            <input name="amount" type="number" min="0" class="form-control" placeholder="0" required>
                         </div>
                     </div>  
 
                     <div class="row">
-                       <div class="form-group col-md-4">
-                            <label for="ActivityDescription">Location Name</label>
-                            <input name="location_name" type="text" class="form-control" id="ActivityDescription" placeholder="Any shop/institute name">
+                        <div class="form-group col-md-6">
+                            <label for="exampleFormControlSelect1">Status*</label>
+                            <select name="status" class="form-control" required>
+                                <option value="Paid">Paid</option>
+                                <option value="Unpaid">Unpaid</option>
+                            </select>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="ActivityDescription">Street Address</label>
-                            <input name="address" type="text" class="form-control" id="ActivityDescription" placeholder="Area/Mohalla">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="ActivityDescription">City</label>
-                            <input name="city" type="text" class="form-control" id="ActivityDescription" placeholder="Mandi Sadiq Gunj...">
+                       <div class="form-group col-md-6">
+                            <label for="StartTime">Upload picture(optional)</label>
+                            <input name="image" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
                         </div>
                     </div>
                        
@@ -68,7 +96,7 @@
             
 
             <div class="form-group">
-                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-5">Add Donation Box</button>
+                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-4"><i class="fa fa-plus"></i> Add Expense</button>
             </div>
             <div class="form-group col-md-6 btn-outline-warning">
             
