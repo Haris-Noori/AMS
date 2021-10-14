@@ -111,5 +111,8 @@ Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
 Route::post('/employee/add-donation', 'EmployeeController@addDonation');
 Route::get('/employee/all-donations', 'EmployeeController@allDonations');
 Route::post('/employee/change-password', 'EmployeeController@changePassword');
+Route::get('/employee/get-expenses', 'EmployeeController@getExpenses');
+Route::get('/employee/add-expense', 'EmployeeController@addExpense');
+Route::post('/employee/add-expense', 'EmployeeController@addExpense');
 
 

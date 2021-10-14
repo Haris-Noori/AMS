@@ -90,6 +90,20 @@
           </div>
       </li>
 
+      <!-- Nav Item - Expenses Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
+            <i class="fas fa-fw fa-money-bill"></i>
+            <span>Expenses</span>
+        </a>
+        <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ url('/employee/get-expenses') }}">All Expenses</a>
+                <a class="collapse-item" href="{{ url('/employee/add-expense') }}">Add Expense</a>
+            </div>
+        </div>
+      </li>
+
         <!-- Nav Item - Faculty Collapse Menu -->
         <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -121,19 +135,7 @@
         </div>
       </li> -->
 
-      <!-- Nav Item - Expenses Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
-            <i class="fas fa-fw fa-money-bill"></i>
-            <span>Expenses</span>
-        </a>
-        <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">All Students</a>
-                <a class="collapse-item" href="#">Add Student</a>
-            </div>
-        </div>k
-    </li> -->
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -305,7 +307,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-lg-inline text-gray-600 small"> {{$session_employee_name}} {{ $session_employee_last_name }} </span>
+                <span class="mr-2 d-lg-inline text-gray-600 small"> {{$session_employee_first_name}} {{ $session_employee_last_name }} </span>
                 <img class="img-profile rounded-circle" src="{{ asset('uploads/'.$session_employee_image) }}" width="100">
               </a>
               <!-- Dropdown - User Information -->

@@ -1,10 +1,10 @@
-@extends('admin.index')
+@extends('employee.index')
 
 @section('pageContent')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Expenses / Add Expense</h1>
-        <a href="{{ url('/admin/expenses') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-th-list fa-sm text-white-50"></i> Show Expenses</a>
+        {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
 
     <div class="col-md-12">
@@ -25,11 +25,10 @@
             </div>
         @endif
 
-        <form action="{{ url('/admin/add-expense') }}" method="POST" class="col-md-10 mt-1" enctype="multipart/form-data">
+        <form action="{{ url('/employee/add-expense') }}" method="POST" class="col-md-10 mt-1" enctype="multipart/form-data">
         @csrf
-        <div class="row">
+            <div class="row">
                 <div class="col-md-12">
-
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Category*</label>
@@ -42,7 +41,6 @@
                                 <option value="Maintenance">Maintenance</option>
                             </select>
                         </div>
-
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Sub Category*</label>
                             <select name="sub_category" class="form-control" id="exampleFormControlSelect1" required>
@@ -65,7 +63,7 @@
                             </select>
                         </div>
                     </div>
-
+                   
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Description (must write description, if selected other)</label>
@@ -75,8 +73,8 @@
                             <label for="ActivityDescription">Amount Rs*</label>
                             <input name="amount" type="number" min="0" class="form-control" placeholder="0" required>
                         </div>
-                    </div>  
-
+                    </div>
+                   
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="exampleFormControlSelect1">Status*</label>
@@ -90,43 +88,18 @@
                             <input name="image" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
                         </div>
                     </div>
-                       
+                    
                 </div>
             </div>
-            
-
             <div class="form-group">
-                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-4"><i class="fa fa-plus fa-sm"></i> Add Expense</button>
+            <span></span>
+                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-2"><i class="fa fa-plus fa-sm"></i> Add Expense</button>
             </div>
             <div class="form-group col-md-6 btn-outline-warning">
-            
+                
             </div>
         </form>
     </div>
 
-    <style>
-        .btn-file {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-file input[type=file] {
-            position: absolute;
-            top: 0;
-            right: 0;
-            min-width: 100%;
-            min-height: 100%;
-            font-size: 100px;
-            text-align: right;
-            filter: alpha(opacity=0);
-            opacity: 0;
-            outline: none;
-            background: white;
-            cursor: inherit;
-            display: block;
-        }
-        #img-upload{
-            width: 100%;
-        }
-    </style>
-
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 @endsection

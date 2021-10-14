@@ -7,6 +7,7 @@ use App\Models\Employee;
 use App\Models\Activity;
 use App\Models\Donation;
 use App\Models\DonationBox;
+use App\Models\Expense;
 use Illuminate\Support\Facades\Storage;
 use Log;
 
@@ -139,6 +140,71 @@ class EmployeeController extends Controller
        
         Employee::changePassword($password, $id);
         return back();
+    }
+
+    /*****************************************************************************
+     *                                      Expenses Functions
+    *********************************************************************************/
+    public function addExpense(Request $request) {
+        if($request->isMethod('get')) {
+            $pageData = [];
+            $pageData = array_merge($pageData, Employee::getEmployeeSessionData());
+            return view('employee.expenses.add_expense', $pageData);
+        }
+
+        if($request->isMethod('post')) {
+            
+            $added_by = session('session_employee_first_name').'_'.session('session_employee_last_name');
+            $user_designation = 'Employee';
+
+            $image_path = '';
+            if($request->file('image') != null) {
+                $image = $request->file('image');
+                $image_name = $image->getClientOriginalName();
+                $image_name = 'employee_'.$added_by.'_'.$image_name;
+                // return $image_name;
+                Storage::putFileAs('expenses/', $image, $image_name);
+                $image_path = 'expenses/'.$image_name;
+            }
+
+            $expense = [
+                'category' => $request->input('category'),
+                'sub_category' => $request->input('sub_category'),
+                'description' => $request->input('description'),
+                'amount' => $request->input('amount'),
+                'status' => $request->input('status'),
+                'added_by' => $added_by,
+                'user_designation' => $user_designation,
+                'image_path' => $image_path
+            ];
+            Expense::create($expense);
+            return back()->with('status', 'Expense added successfully');
+        }
+    }
+
+    public function getExpenses(Request $request) {
+        if($request->isMethod('get')) {
+            $year_month = date('Y-m');
+            // return $year_month;
+            $added_by = session('session_employee_first_name').'_'.session('session_employee_last_name');
+            
+            $expenses = Expense::where([
+                ['added_by', '=', $added_by],
+                ['created_at', 'LIKE', $year_month.'%'],
+            ])
+            ->orderBy('created_at', 'desc')->get();
+
+            $total = 0;
+            foreach ($expenses as $expense) {
+                $total = $total + $expense->amount;
+            }
+            $pageData = [
+                'total' => $total,
+                'expenses' => $expenses,
+            ];
+            $pageData = array_merge($pageData, Employee::getEmployeeSessionData());
+            return view('employee.expenses.expenses', $pageData);
+        }
     }
 
 }

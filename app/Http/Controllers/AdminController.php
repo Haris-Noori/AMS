@@ -469,7 +469,6 @@ class AdminController extends Controller
 
     public function addExpense(Request $request) {
         if($request->isMethod('get')) {
-
             $pageData = [];
             $pageData = array_merge($pageData, $this->getAdminSessionData());
             return view('admin.expenses.add_expense', $pageData);
