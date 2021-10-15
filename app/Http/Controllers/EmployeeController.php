@@ -9,6 +9,7 @@ use App\Models\Donation;
 use App\Models\DonationBox;
 use App\Models\Expense;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Log;
 
 class EmployeeController extends Controller
@@ -47,7 +48,16 @@ class EmployeeController extends Controller
 
     public function dashboard()
     {
-        return view('/employee/dashboard', Employee::getEmployeeSessionData());
+        $emp_id = Employee::id();
+        $added_by = session('session_employee_first_name').'_'.session('session_employee_last_name');
+        $donation = DB::table('donations')->where('employee_id', '=', $emp_id)->sum('amount_collected');
+        $expense = DB::table('expenses')->where('added_by', '=', $added_by)->sum('amount');
+        $pageData = [
+            'donation' => $donation,
+            'expense' => $expense,
+        ];
+        $pageData = array_merge($pageData, Employee::getEmployeeSessionData());
+        return view('/employee/dashboard', $pageData);
     }
 
     public function getAddActivityView()
