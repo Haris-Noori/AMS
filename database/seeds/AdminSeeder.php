@@ -14,7 +14,8 @@ class AdminSeeder extends Seeder
         $admin = [
             'admin_name' => 'Noori',
             'admin_pass' => 'Noori@Noori',
-            'type' => 'super'
+            'type' => 'super',
+            'image_path' => 'admins/1/admin.png'
         ];
         DB::table('admins')->insert($admin);
     }

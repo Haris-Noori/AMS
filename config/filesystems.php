@@ -45,13 +45,13 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('/uploads'),    // before change storage_path('app')
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('/public'),
+            'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 
@@ -64,6 +64,11 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
+
+        'public_uploads' => [
+            'driver' => 'local',
+            'root' => public_path() . '/uploads'
+        ]
 
     ],
 
@@ -79,7 +84,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('public') => storage_path('uploads'),
     ],
 
 ];

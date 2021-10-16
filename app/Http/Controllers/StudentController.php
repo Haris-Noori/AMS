@@ -9,7 +9,7 @@ class StudentLoginController extends Controller
     //
     public function index()
     {
-        return "Hello, this is Studen Controller";
+        return "Hello, this is Student Controller";
     }
 
     public function open_admin_View()

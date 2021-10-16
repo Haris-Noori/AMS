@@ -23,7 +23,7 @@ class Donation extends Model
     ];
 
     /**
-     * Get employee associated with this Activity
+     * Get employee associated with this Donation
      */
     public function employee() {
         return $this->hasOne('App\Models\Employee');

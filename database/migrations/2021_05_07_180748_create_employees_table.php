@@ -23,7 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->enum('blood_group', ['N/A', 'A-', 'A+', 'B-', 'B+', 'O-', 'O+', 'AB+', 'AB-']);
             $table->string('cnic')->default('N/A');
             $table->string('marital_status')->default('N/A');
-            $table->string('email')->default('N/A')->default('N/A');
+            $table->string('email')->unique();
             $table->string('phone')->default('N/A')->default('N/A');
             $table->string('current_address')->default('N/A');
             $table->string('permanent_address')->default('N/A');
@@ -35,6 +35,7 @@ class CreateEmployeesTable extends Migration
             $table->string('bank_account')->default('N/A');
             $table->string('job_status')->default('N/A');
             $table->string('password')->default('1234');
+            $table->string('image_path')->nullable();
 
             $table->timestamps();
         });

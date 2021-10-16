@@ -60,6 +60,7 @@
       </div>
 
       <!-- Nav Item - Admins Collapse Menu -->
+      @if (session('session_admin_type') == "super")
       <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               <i class="fas fa-fw fa-user-shield"></i>
@@ -73,6 +74,7 @@
               </div>
           </div>
       </li>
+      @endif
  
       <!-- Nav Item - Employees Collapse Menu -->
       <li class="nav-item">
@@ -105,21 +107,6 @@
           </div>
       </li>
 
-      <!-- Nav Item - Faculty Collapse Menu -->
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-              <i class="fas fa-fw fa-chalkboard-teacher"></i>
-              <span>Faculty</span>
-          </a>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Faculty</h6>  
-                  <a class="collapse-item" href="#">All Faculty</a>
-                  <a class="collapse-item" href="#">Add New Faculty</a>
-              </div>
-          </div>
-      </li>
-
       <!-- Nav Item - Donations Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDonations" aria-expanded="true" aria-controls="collapseDonations">
@@ -132,6 +119,36 @@
                 <a class="collapse-item" href="{{ url('/admin/all-donation-boxes') }}">All Donation Boxes</a>
                 <a class="collapse-item" href="{{ url('/admin/add-donation-box') }}">Add Donation Box</a>
                 <a class="collapse-item" href="{{ url('/admin/all-donations') }}">Donations</a>
+            </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Expense Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
+            <i class="fas fa-fw fa-money-bill"></i>
+            <span>Expenses</span>
+        </a>
+        <div id="collapseExpenses" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Manage Expenses</h6>  
+                <a class="collapse-item" href="{{ url('/admin/expenses') }}">Expenses</a>
+                <a class="collapse-item" href="{{ url('/admin/add-expense') }}">Add Expense</a>
+            </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Faculty Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-chalkboard-teacher"></i>
+            <span>Faculty</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Manage Faculty</h6>  
+                <a class="collapse-item" href="#">All Faculty</a>
+                <a class="collapse-item" href="#">Add New Faculty</a>
             </div>
         </div>
       </li>
@@ -306,8 +323,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{$session_admin_name}} </span>
-                <img class="img-profile rounded-circle" src="AdMINIMAGE" width="100">
+                <span class="mr-2 d-lg-inline text-gray-600 small"> {{$session_admin_name}} </span>
+                <img class="img-profile rounded-circle" src="{{ asset('uploads/'.$session_admin_image) }}" width="100">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -315,9 +332,9 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePasswordModal">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
+                  Change Password
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -367,6 +384,30 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
+
+<!-- Change Password Modal-->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="{{ url('/admin/change-password') }}">
+              @csrf
+              <p>Type your new password <input type="password" name="new_password" placeholder="********" class="form-conrol"></p>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <button class="btn btn-primary" type="submit">Confirm</button>
+            </form>
+          </div>
+      </div>
+  </div>
+</div>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

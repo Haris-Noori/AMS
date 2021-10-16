@@ -3,14 +3,14 @@
 @section('pageContent')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Add New Student</h1>
+    <h1 class="h3 mb-0 text-gray-800">Students / Add New Student</h1>
     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
 <div class="col-md-12">
     <div class="float-right" >Joining Date: <strong><?php date_default_timezone_set("Asia/Karachi"); echo date("d M, Y") ?></strong></div>
-    <h3>Student Registration Form</h3>
-    <form action="{{ url('/admin/add-student') }}" method="POST" class="col-md-12 mt-1">
+    <h4>Student Registration Form</h4>
+    <form action="{{ url('/admin/add-student') }}" method="POST" class="col-md-12 mt-1"  enctype="multipart/form-data">
         @csrf
 
             @if ($errors->any())
@@ -33,17 +33,17 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="form-group col-md-6" >
-                            <label for="exampleInputEmail1">First Name</label>
+                            <label for="exampleInputEmail1">First Name*</label>
                             <input name="st_first_name" type="text" required class="form-control" placeholder="First Name">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Last Name</label>
+                            <label for="exampleInputEmail1">Last Name*</label>
                             <input name="st_last_name" type="text" required class="form-control" placeholder="Last Name">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlSelect1">Gender</label>
+                            <label for="exampleFormControlSelect1">Gender*</label>
                             <select name="st_gender" required class="form-control" required id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="male">Male</option>
@@ -51,7 +51,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Date Of Birth</label>
+                            <label for="exampleInputEmail1">Date Of Birth*</label>
                             <div class="row"><input name="st_dob" type="date" required pattern="de-m-YYYY" max="2010-12-31" placeholder="dd-mm-yyyy" id="st_dob" class="form-control ml-3 col-md-7">
                                 <span id="st_age" class="ml-2">Age: </span>
                             </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlSelect1">Blood Group</label>
+                            <label for="exampleFormControlSelect1">Blood Group*</label>
                             <select name="st_blood" required class="form-control"  id="exampleFormControlSelect1">
                                 <option value="N/A">Not Specified</option>
                                 <option value="A-">A +ve</option>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6" >
-                            <label for="exampleFormControlTextarea1">Student Current Address</label>
+                            <label for="exampleFormControlTextarea1">Student Current Address*</label>
                             <input name="st_cur_st_add" type="text" placeholder="Street Address" class="form-group form-control">
                             <input name="st_cur_city_add" type="text" placeholder="City/Village" class="form-control form-group">
                             <input name="st_cur_dis_add" type="text" placeholder="State/District" class="form-control form-group">
@@ -389,7 +389,8 @@
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <span class="btn btn-default btn-file">
-                                    <span class="btn btn-primary">Choose Photo</span><input name="st_image" type="file" id="imgInp">
+                                    <span class="btn btn-primary">Choose Photo</span>
+                                    <input name="st_image" type="file" id="imgInp">
                                 </span>
                             </span>
                             <input type="text" class="form-control" readonly hidden>

@@ -3,7 +3,7 @@
 @section('pageContent')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Add New Donation Box</h1>
+        <h1 class="h3 mb-0 text-gray-800">Donations / Add New Donation Box</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -18,12 +18,12 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Donation Box name</label>
-                            <input name="box_name" type="text" class="form-control" id="ActivityDescription" placeholder="Name">
+                            <input name="box_name" type="text" class="form-control" placeholder="Name">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="ActivityDescription">Reference Name</label>
-                            <input name="reference" type="text" class="form-control" id="ActivityDescription" placeholder="Person Name">
+                            <input name="reference" type="text" class="form-control" placeholder="Person Name">
                         </div>
                     </div>
 

@@ -16,8 +16,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Expense (This Month)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.40,000</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Expense</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.{{ $expense }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -33,8 +33,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Income (This Month)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.180,000</div>
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Collected Donation</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.{{ $donation }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

@@ -53,9 +53,9 @@ class Employee extends Model
     ];
 
 
-    public static function login(String $name, String $pass) {
+    public static function login(String $email, String $pass) {
         
-        $employee = Employee::where('first_name', '=', $name)->where('password', '=', $pass)->first();
+        $employee = Employee::where('email', '=', $email)->where('password', '=', $pass)->first();
         //print_r($employee);
         if ($employee === null ) {
             //employee does not exist
@@ -64,9 +64,10 @@ class Employee extends Model
         else{
             // //employee exist
             session(['session_employee_id' => $employee->id]);
-            session(['session_employee_name' => $employee->first_name]);
+            session(['session_employee_first_name' => $employee->first_name]);
             session(['session_employee_last_name' => $employee->last_name]);
             session(['session_employee_password'=> $employee->password]);
+            session(['session_employee_image' => $employee->image_path]);
             return TRUE;
             
         }
@@ -83,9 +84,10 @@ class Employee extends Model
        
        return $data = [
         'session_employee_id' => session('session_employee_id'),
-        'session_employee_name' => session('session_employee_name'),
+        'session_employee_first_name' => session('session_employee_first_name'),
         'session_employee_last_name' => session('session_employee_last_name'),
-        'session_employee_pass'=> session('session_employee_password')
+        'session_employee_pass' => session('session_employee_password'),
+        'session_employee_image' => session('session_employee_image'),
        ];
     }
 
@@ -102,12 +104,17 @@ class Employee extends Model
         try {
             // create employee
             $employee = EmployeeTransformer::fromRequest($request);
-            Log::debug('Created Employee', $employee);
+            // Log::debug('Created Employee', $employee);
             Employee::create($employee);
         } catch(Exception $e) {
             return ["error" => "Failed creating employee."];
         }
         
+    }
+
+    public static function changePassword(String $password, String $id)
+    {
+        Employee::where('id', '=', $id)->update(['password' => $password]);
     }
 
 

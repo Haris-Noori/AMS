@@ -35,6 +35,8 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::get('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::post('/admin/login', "AdminController@login")->withoutMiddleware([AdminAuthGuard::class]);
     Route::get('/admin/logout', 'AdminController@logout');
+    Route::post('/admin/change-password', 'AdminController@changePassword');
+
     Route::get('/admin/dashboard', 'AdminController@loadDashboard');
     // admins
     Route::get('/admin/add_admin', 'AdminController@getAddAdminView');
@@ -53,13 +55,20 @@ Route::middleware([AdminAuthGuard::class, XSS::class, 'web'])->group(function ()
     Route::post('/admin/addEmployee', 'AdminController@addEmployee');
     Route::get('/admin/all-employees', 'AdminController@allEmployeesView');
     Route::get('/admin/removeEmployee/{id}', 'AdminController@removeEmployee');
+    Route::get('/admin/employees-activities', 'AdminController@employeesActivities');
 
     //Donations
     Route::get('/admin/add-donation-box', 'AdminController@addDonationBoxView');
     Route::post('/admin/add-donation-box', 'AdminController@addDonationBox');
     Route::get('/admin/all-donation-boxes', 'AdminController@getAllDonationBoxes');
     Route::get('/admin/all-donations', 'AdminController@allDonations');
-    Route::get('/admin/employees-activities', 'AdminController@employeesActivities');
+    Route::post('/admin/search-donations', 'AdminController@searchDonations');
+
+    // expenses
+    Route::get('/admin/expenses', 'AdminController@expenses');
+    Route::post('/admin/search-expenses', 'AdminController@searchExpenses');
+    Route::get('/admin/add-expense', 'AdminController@addExpense');
+    Route::post('/admin/add-expense', 'AdminController@addExpense');
     
 });
 
@@ -92,9 +101,7 @@ Route::get('/employee/index', function(){
     return view('employee.index');
 });
 
-Route::get('/employee/dashboard', function(){
-    return view('employee.dashboard');
-});
+Route::get('/employee/dashboard', 'EmployeeController@dashboard');
 
 Route::get('/employee/add-activity', 'EmployeeController@getAddActivityView');
 Route::post('/employee/add-activity', 'EmployeeController@addActivity');
@@ -102,6 +109,10 @@ Route::get('/employee/all-activity', 'EmployeeController@getAllActivityView');
 Route::get('/employee/logout', 'EmployeeController@logout');
 Route::get('/employee/add-donation', 'EmployeeController@addDonationView');
 Route::post('/employee/add-donation', 'EmployeeController@addDonation');
-ROute::get('/employee/all-donations', 'EmployeeController@allDonations');
+Route::get('/employee/all-donations', 'EmployeeController@allDonations');
+Route::post('/employee/change-password', 'EmployeeController@changePassword');
+Route::get('/employee/get-expenses', 'EmployeeController@getExpenses');
+Route::get('/employee/add-expense', 'EmployeeController@addExpense');
+Route::post('/employee/add-expense', 'EmployeeController@addExpense');
 
 

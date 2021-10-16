@@ -9,7 +9,13 @@
 
     <!-- Content Row -->
     <div class="row">
-
+        
+        @if (session('status'))
+            <span class="col-md-4 alert alert-success">
+                {{ session('status') }}
+            </span>
+        @endif
+    
         <!-- Expenses (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -17,24 +23,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Expense (This Month)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.40,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Income (This Month)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.180,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.{{ $expense }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -43,6 +32,25 @@
                 </div>
             </div>
         </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        @if (session('session_admin_type') == "super")
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Income + Donations (This Month)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rs.{{ $donation }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">

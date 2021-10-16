@@ -3,27 +3,27 @@
 @section('pageContent')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">{{ $viewTitle }}</h1>
+        <h1 class="h3 mb-0 text-gray-800">Admins / {{ $viewTitle }}</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <div class="col-md-12">
         <h3>Admin Details</h3>
 
-        <form action="{{ url('/addNewAdmin') }}" method="POST" class="col-md-10 mt-1">
+        <form action="{{ url('/addNewAdmin') }}" method="POST" class="col-md-10 mt-1" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
                         <div class="form-group col-md-12" >
-                            <label for="exampleInputEmail1">Admin Name</label>
-                            <input name="admin_name" type="text" required class="form-control" placeholder="Name">
+                            <label for="exampleInputEmail1">Admin Name (unique)</label>
+                            <input name="admin_name" type="text" required class="form-control" placeholder="nospaces">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input name="admin_pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="exampleInputPassword1">Set Password</label>
+                            <input name="admin_pass" required type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
                     </div>
                     <div class="row">
@@ -44,7 +44,8 @@
                         <div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">
-                                <span class="btn btn-primary">Choose Photo</span><input name="admin_image" type="file" id="imgInp">
+                                <span class="btn btn-primary">Choose Photo</span>
+                                <input name="admin_image" type="file" id="imgInp">
                             </span>
                         </span>
                             <input type="text" class="form-control" readonly hidden>

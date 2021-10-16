@@ -10,26 +10,24 @@
     <div class="col-md-12">
         <h4>Donation Details</h4>
 
-        <form action="{{ url('employee/add-donation') }}" method="POST" class="col-md-10 mt-1">
+        <form action="{{ url('employee/add-donation') }}" method="POST" class="col-md-10 mt-1" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="exampleFormControlSelect1">Select Donation Box</label>
-                            <select name="box_name" class="form-control" id="exampleFormControlSelect1">
+                            <label for="exampleFormControlSelect1">Select Donation Box*</label>
+                            <select name="box_name" required class="form-control" id="exampleFormControlSelect1">
                                 @foreach ($donation_boxes as $donation_box)
                                     <option value="{{ $donation_box->box_name }}">{{ $donation_box->box_name }}</option>
                                 @endforeach
                                 {{-- <option value="Lahore-1">Lahore-1</option>
-                                <option value="Lahore-2">Lahore-2</option>
-                                <option value="Mandi-1">Mandi-1</option>
                                 <option value="Mandi-2">Mandi-2</option> --}}
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="ActivityDescription">Amount Collected</label>
-                            <input name="amount_collected" type="number" min="0" class="form-control" id="ActivityDescription" placeholder="1000">
+                            <label for="ActivityDescription">Amount Collected*</label>
+                            <input name="amount_collected" required type="number" min="0" class="form-control" id="ActivityDescription" placeholder="1000">
                         </div>
                     </div>
                    
@@ -37,7 +35,7 @@
                        
                         <div class="form-group col-md-6">
                             <label for="StartTime">Upload picture(optional)</label>
-                            <input name="" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
+                            <input name="image" type="file" class="form-control btn btn-primary" placeholder="Choose photo">
                         </div>
                         
                     </div>
@@ -47,7 +45,7 @@
             </div>
             <div class="form-group">
             <span></span>
-                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-2"> <i class="fa fa-plus"></i>Add Donation</button>
+                <button name="add-btn" type="submit" class="btn btn-success col-md-4 float-right mt-2"><i class="fa fa-plus"></i> Add Donation</button>
             </div>
             <div class="form-group col-md-6 btn-outline-warning">
                 
